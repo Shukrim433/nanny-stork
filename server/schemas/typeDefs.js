@@ -3,7 +3,7 @@ const typeDefs = `
     _id: ID
     username: String
     email: String
-    thoughts: [Thought]!
+    posts: [Post]!
     friends: [User]!
   }
 
@@ -55,6 +55,8 @@ const typeDefs = `
     login(email: String!, password: String!): Auth
     addPost(postText: String!): Post
     addComment(postId: ID!, commentText: String!): Post
+    addFriend(friendId: String!): User
+    removeFriend(friendId: String!): User
     removePost(postId: ID!): Post
     removeComment(postId: ID!, commentId: ID!): Post
     addPregnancyTracker(userId: ID!, stage: Stage!, dueDate: String, birthDate: String): PregnancyTracker
