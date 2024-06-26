@@ -117,12 +117,12 @@ const resolvers = {
             }
             throw AuthenticationError;
         },
-        // mutation to update a specific post's "comments" array with that comment passed in
+        // mutation to update a specific post's "comments" array with that comment passed in (only if logged in)
         // addComment(postId: ID!, commentText: String!): Post
         addComment: async (parent, { postId, commentText }, context) => {
             if (context.user) {
                 try {
-                    return Post.findOneAndUpdate(
+                    return await Post.findOneAndUpdate(
                         { _id: postId },
                         {
                           $addToSet: {
@@ -140,7 +140,40 @@ const resolvers = {
             throw AuthenticationError;
         }
         },
-        // mutation to delete a post and update a specific user by removing the deleted post from their "posts" array
+        // mutation to update a user by adding another user to their "friends" array (only if logged in)
+        // addFriend(username: String!): User
+        addFriend: async (parent, { friendId }, context) => {
+            if (context.user) {
+                try {
+                   return await User.findOneAndUpdate(
+                        { _id: context.user._id },
+                        { $addToSet: { friends: friendId } },  
+                        { new: true }
+                    ) 
+
+                } catch(error) {
+                    console.error("Server Error adding friend to user:", error)
+                }
+            }
+            throw AuthenticationError;
+        },
+        // mutation to update a user by removing another user from their "friends" array (only if logged in)
+        // removeFriend(friendId: String!): User
+        removeFriend: async (parent, { friendId }, context) => {
+            if (context.user) {
+                try {
+                    await User.findOneAndUpdate(
+                        { _id: context.user._id },
+                        { $pull: {friends: friendId} },  // removes the friend's _id from the user's friends array
+                        { new: true }
+                    )
+                } catch {
+                    console.error("Server Error removing friend from user:", error)
+                }
+            }
+            throw AuthenticationError;
+        },
+        // mutation to delete a post and update a specific user by removing the deleted post from their "posts" array (only if logged in)
         // removePost(postId: ID!): Post
         removePost: async (parent, { postId }, context) => {
             if (context.user) {
@@ -163,7 +196,7 @@ const resolvers = {
             }
             throw AuthenticationError;
         },
-        // mutation to update a Post by removing a comment from its "comments array"
+        // mutation to update a Post by removing a comment from its "comments array" (only if logged in)
         // removeComment(postId: ID!, commentId: ID!): Post
         removeComment: async (parent, { postId, commentId }, context) => {
             if (context.user) {
