@@ -22,5 +22,7 @@ const PregnancyTrackerSchema = new Schema({
     },
     
   });
+
+  const PregnancyTracker = model('PregnancyTracker', PregnancyTrackerSchema);
   
-  module.exports = mongoose.model('PregnancyTracker', PregnancyTrackerSchema);
+  module.exports = PregnancyTracker;
