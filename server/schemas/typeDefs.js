@@ -3,7 +3,6 @@ const typeDefs = `
     _id: ID
     username: String
     email: String
-    password: String
     thoughts: [Thought]!
     friends: [User]!
   }
@@ -28,12 +27,27 @@ const typeDefs = `
     user: User
   }
 
+  type PregnancyTracker {
+    _id: ID
+    userId: ID
+    stage: Stage
+    dueDate: String
+    birthDate: String
+    }
+
+  enum Stage {
+    pregnancy
+    postpartum
+}
+
   type Query {
     users: [User]
     user(username: String!): User
     posts(username: String): [Post]
     post(postId: ID!): Post
     me: User
+    pregnancyTracker: [PregnancyTracker]
+    pregnancyTrackers(userId: ID!): [PregnancyTracker]
   }
 
   type Mutation {
@@ -43,6 +57,9 @@ const typeDefs = `
     addComment(postId: ID!, commentText: String!): Post
     removePost(postId: ID!): Post
     removeComment(postId: ID!, commentId: ID!): Post
+    addPregnancyTracker(userId: ID!, stage: Stage!, dueDate: String, birthDate: String): PregnancyTracker
+    updatePregnancyTracker(id: ID!, userId: ID, stage: Stage, dueDate: String, birthDate: String): PregnancyTracker
+    removePregnancyTracker(_id: ID!): PregnancyTracker
   }
     
 `
