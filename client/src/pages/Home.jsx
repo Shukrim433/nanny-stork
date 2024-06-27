@@ -1,7 +1,7 @@
 import { Button } from "@material-tailwind/react";
 
 export default function Home() {
-    rreturn (
+    return (
         <>
         <div className="baby-quote-container">
             <div className="baby-quote">
