@@ -1,3 +1,14 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+html, body {
+  height: 100%;
+  margin: 0;
+}
+
+.info-box {
+  width: 20%;
+  outline: solid 1px black;
+  height: 30px;
+}
