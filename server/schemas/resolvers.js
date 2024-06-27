@@ -1,4 +1,4 @@
-const { User, Post } = require('../models');
+const { User, Post, PregnancyTracker } = require('../models');
 const { signToken, AuthenticationError } = require('../utils/auth');
 
 const resolvers = {
@@ -8,7 +8,7 @@ const resolvers = {
         // users: [User]
         users: async () => {
             try {
-                await User.find().populate('posts').populate('friends')
+                return await User.find().populate('posts').populate('friends')
 
             } catch (error) {
                 console.error("Server Error fetching users:", error)
@@ -43,6 +43,26 @@ const resolvers = {
 
             } catch (error) {
                 console.error("Server Error fetching single post:", error)
+            }
+        },
+        // query to get an array of all pregnancy trackers and each associated user
+        // pregnancyTrackers: [PregnancyTracker]
+        pregnancyTrackers: async () => {
+            try {
+                return await PregnancyTracker.find().populate('userId')
+
+            } catch (error) {
+                console.error("Server Error fetching pregnancy trackers:", error)
+            }
+        },
+        // query to get a single pregnancy tracker object and the associated user
+        // pregnancyTracker(userId: ID!): PregnancyTracker
+        pregnancyTracker: async (parent, { userId }) => {
+            try {
+                return await PregnancyTracker.findOne({ userId }).populate('userId')
+
+            } catch (error) {
+                console.error("Server Error fetching user's preganacy tracker:", error)
             }
         },
         // query to get the current logged-in user based on the context's user _id
@@ -141,7 +161,7 @@ const resolvers = {
         }
         },
         // mutation to update a user by adding another user to their "friends" array (only if logged in)
-        // addFriend(username: String!): User
+        // addFriend(username: ID!): User
         addFriend: async (parent, { friendId }, context) => {
             if (context.user) {
                 try {
@@ -157,12 +177,63 @@ const resolvers = {
             }
             throw AuthenticationError;
         },
+        // mutation to create a pregnancy tracker (the associated user wil be the user currently logged in)
+        // addPregnancyTracker(stage: Stage!, dueDate: String, birthDate: String): PregnancyTracker
+        addPregnancyTracker: async (parent, { stage, dueDate, birthDate }, context) => {
+            if (context.user) {
+                try {
+                    return await PregnancyTracker.create({
+                        userId: context.user._id,
+                        stage,
+                        dueDate,
+                        birthDate
+                    })
+                } catch(error) {
+                    console.error("Server Error creating pregnancy tracker:", error)
+                }
+            }
+            throw AuthenticationError;
+        },
+        // mutation to update a single existing pregnancy tracker, by the _id of the pregnancy
+        // updatePregnancyTracker(trackerId: ID!, stage: Stage, dueDate: String, birthDate: String): PregnancyTracker
+        updatePregnancyTracker: async (parent, { trackerId, stage, dueDate, birthDate }, context) => {
+            if (context.user) {
+                try {
+                    return await PregnancyTracker.findOneAndUpdate(
+                        { 
+                            _id: trackerId,
+                            userId:  context.user._id 
+                        },                                      // find one where _id = pregtracker's id AND userId = loggedin user's id  - so users can only update their own pregTracker
+                        { $set: { stage, dueDate, birthDate } },  
+                        { new: true }
+                    ) 
+                } catch(error) {
+                    console.error("Server Error updating pregnancy tracker:", error)
+                }
+            }
+            throw AuthenticationError;
+        },
+        // mutation to delete a single preganancy tracker by the tracker's _id
+        // removePregnancyTracker(trackerId: ID!): PregnancyTracker
+        removePregnancyTracker: async (parent, { trackerId }, context) => {
+            if (context.user) {
+                try {
+                    return await PregnancyTracker.findOneAndDelete({ 
+                        _id: trackerId,
+                        userId: context.user._id 
+                    })                                                 // delete one where _id = pregtracker's id AND userId = loggedin user's id - so users can only delete their own pregTracker
+                } catch(error) {
+                    console.error("Server Error deleting pregnancy tracker:", error)
+                }
+            }
+            throw AuthenticationError;
+        },
         // mutation to update a user by removing another user from their "friends" array (only if logged in)
-        // removeFriend(friendId: String!): User
+        // removeFriend(friendId: ID!): User
         removeFriend: async (parent, { friendId }, context) => {
             if (context.user) {
                 try {
-                    await User.findOneAndUpdate(
+                    return await User.findOneAndUpdate(
                         { _id: context.user._id },
                         { $pull: {friends: friendId} },  // removes the friend's _id from the user's friends array
                         { new: true }
