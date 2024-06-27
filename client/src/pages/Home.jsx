@@ -1,6 +1,7 @@
 import { Button } from "@material-tailwind/react";
 
 export default function Home() {
+
   return (
     <>
       <div className="page-container flex flex-col min-h-screen">
