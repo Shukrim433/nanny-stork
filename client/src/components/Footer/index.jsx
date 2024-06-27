@@ -17,6 +17,11 @@ export default function Footer() {
                 <li><a href="#">Contact Details </a></li>
             </ul>
         </div>
+        <div class="footer-section">
+                <h4>Contact</h4>
+                <p>Email: nannystork@gmail.com</p>
+                <p>Phone: 00000</p>
+            </div>
     <p className="text">Copyright Hustler HQ 2024 ©</p>
     </footer>
     );
