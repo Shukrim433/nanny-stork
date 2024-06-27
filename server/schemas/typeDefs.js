@@ -3,7 +3,7 @@ const typeDefs = `
     _id: ID
     username: String
     email: String
-    thoughts: [Thought]!
+    posts: [Post]!
     friends: [User]!
   }
 
@@ -46,8 +46,8 @@ const typeDefs = `
     posts(username: String): [Post]
     post(postId: ID!): Post
     me: User
-    pregnancyTracker: [PregnancyTracker]
-    pregnancyTrackers(userId: ID!): [PregnancyTracker]
+    pregnancyTrackers: [PregnancyTracker]
+    pregnancyTracker(userId: ID!): PregnancyTracker
   }
 
   type Mutation {
@@ -55,11 +55,18 @@ const typeDefs = `
     login(email: String!, password: String!): Auth
     addPost(postText: String!): Post
     addComment(postId: ID!, commentText: String!): Post
+    addFriend(friendId: ID!): User
+    removeFriend(friendId: ID!): User
     removePost(postId: ID!): Post
     removeComment(postId: ID!, commentId: ID!): Post
-    addPregnancyTracker(userId: ID!, stage: Stage!, dueDate: String, birthDate: String): PregnancyTracker
-    updatePregnancyTracker(id: ID!, userId: ID, stage: Stage, dueDate: String, birthDate: String): PregnancyTracker
-    removePregnancyTracker(_id: ID!): PregnancyTracker
+    addPregnancyTracker(stage: Stage!, dueDate: String, birthDate: String): PregnancyTracker
+    updatePregnancyTracker(trackerId: ID!, stage: Stage, dueDate: String, birthDate: String): PregnancyTracker
+    removePregnancyTracker(trackerId: ID!): PregnancyTracker
   }
     
 `
+
+//_id is the id of the pregnancy tracker - userId is the id of the user associated with that pregnancy tracker
+// for the add/updatePregnancyTracker mutation:  since we're creating a pregnancy tracker for the currently logged-in user, 
+//we don't need to pass userId as an argument. You can retrieve it from the context.user. in the resolver (same as commentAuthor)
+// friendId is just the user id of the friend

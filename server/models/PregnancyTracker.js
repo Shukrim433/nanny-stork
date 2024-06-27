@@ -1,7 +1,7 @@
 const { Schema, model } = require('mongoose');
 
 const PregnancyTrackerSchema = new Schema({
-    userId: {
+    userId: { // associated user
         type: Schema.Types.ObjectId, 
         ref: 'User', 
         required: true 
