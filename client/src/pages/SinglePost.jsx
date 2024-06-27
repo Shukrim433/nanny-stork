@@ -1,7 +1,5 @@
 export default function SinglePost() {
-    return (
-        <div>
-            <h1>Single Post Page</h1>
-        </div>
-    )
+  return (
+   <p>single Post page</p>
+  );
 }
