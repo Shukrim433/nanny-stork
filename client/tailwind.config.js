@@ -6,7 +6,11 @@ module.exports = withMT({
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      height: {
+        '25': '25%',
+      }
+    },
   },
   plugins: [],
 });
