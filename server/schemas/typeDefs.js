@@ -47,7 +47,7 @@ const typeDefs = `
     post(postId: ID!): Post
     me: User
     pregnancyTrackers: [PregnancyTracker]
-    pregnancyTracker(userId: ID!): PregnancyTracker
+    pregnancyTracker(trackerId: ID!): PregnancyTracker
   }
 
   type Mutation {
@@ -65,6 +65,8 @@ const typeDefs = `
   }
     
 `
+
+module.exports = typeDefs;
 
 //_id is the id of the pregnancy tracker - userId is the id of the user associated with that pregnancy tracker
 // for the add/updatePregnancyTracker mutation:  since we're creating a pregnancy tracker for the currently logged-in user, 

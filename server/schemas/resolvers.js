@@ -56,10 +56,10 @@ const resolvers = {
             }
         },
         // query to get a single pregnancy tracker object and the associated user
-        // pregnancyTracker(userId: ID!): PregnancyTracker
-        pregnancyTracker: async (parent, { userId }) => {
+        // pregnancyTracker(trackerId: ID!): PregnancyTracker
+        pregnancyTracker: async (parent, { trackerId }) => {
             try {
-                return await PregnancyTracker.findOne({ userId }).populate('userId')
+                return await PregnancyTracker.findOne({ _id: trackerId }).populate('userId')
 
             } catch (error) {
                 console.error("Server Error fetching user's preganacy tracker:", error)
@@ -130,7 +130,7 @@ const resolvers = {
                         { $addToSet: { posts: post._id } }
                     )
                 
-                    return post //** may need to remove
+                    return post  // may need to remove
                 } catch(error) {
                     console.error("Server Error adding post to user:", error)
                 }
@@ -150,15 +150,14 @@ const resolvers = {
                           },
                         },
                         {
-                          new: true,
-                          runValidators: true,
+                          new: true
                         }
                       );
                 } catch(error) {
                     console.error("Server Error adding comment to post:", error)
                 }
+            }
             throw AuthenticationError;
-        }
         },
         // mutation to update a user by adding another user to their "friends" array (only if logged in)
         // addFriend(username: ID!): User
