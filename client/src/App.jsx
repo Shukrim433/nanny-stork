@@ -1,6 +1,13 @@
-import { useState } from 'react'
-import './App.css'
-import { Button } from "@material-tailwind/react";
+import React from "react"
+import { Outlet } from 'react-router-dom'
+import "./styles/App.css"
 
-export default function App() {
+function App() {
+  return (
+<main>
+  <Outlet />
+</main>
+  );
 }
+
+export default App
