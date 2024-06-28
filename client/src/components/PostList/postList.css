@@ -1,0 +1,16 @@
+/*temporary css just so you can see the individual posts clearly*/
+.single-post{
+    background: #d1e4ef;
+    margin: 1%;
+    padding: 1%;
+
+}
+
+.posts-card-body{
+    margin: 2%;
+}
+
+h4{
+    size: 10px;
+}
+
