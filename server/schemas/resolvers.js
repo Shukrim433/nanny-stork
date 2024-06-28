@@ -24,7 +24,7 @@ const resolvers = {
                 console.error("Server Error fetching user:", error)
             }
         },
-        // query to get an array of all the posts of a specific user
+        // query to get an array of all the posts of a specific user (or if no username is passed into this resolver it will just get all posts by all users = "{}" empty filter)
         // posts(username: String): [Post]
         posts: async (parent, { username }) => {
             const params = username ? { username } : {}
@@ -117,11 +117,12 @@ const resolvers = {
             }
         },
         // mutation to create a post and update a specfic user's "posts" array with that created post (only if logged in)
-        // addPost(postText: String!): Post
-        addPost: async (parent, { postText }, context) => {
+        // addPost(postText: String!, postTitle: String): Post
+        addPost: async (parent, { postText, postTitle }, context) => {
             if (context.user) {
                 try {
                     const post = await Post.create({ 
+                        postTitle,
                         postText,
                         postAuthor: context.user.username,
                     })
