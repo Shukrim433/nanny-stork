@@ -29,7 +29,7 @@ class AuthService {
 
   login(idToken) { // JWT returned by addUser and loginUser mutations, is passed in here
     localStorage.setItem('id_token', idToken); // saves newly created jwt to local storage under the key id_token
-    window.location.assign('/'); // Redirect the user to the home page when they login 
+    window.location.assign('/me'); // Redirect the user to the home page when they login 
   }
 
   logout() {

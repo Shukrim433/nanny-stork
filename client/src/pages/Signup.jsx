@@ -1,5 +1,5 @@
-import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { useState, useEffect } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 
 import { useMutation } from '@apollo/client';
 import { ADD_USER } from '../utils/mutations';
@@ -7,6 +7,14 @@ import { ADD_USER } from '../utils/mutations';
 import Auth from '../utils/auth'; 
 
 const Signup = () => {
+    const navigate = useNavigate();
+
+    useEffect(() => {
+        if (Auth.loggedIn()) {
+            navigate('/me'); // Redirects user to profile page if logged in
+        }
+    }, [navigate]);
+
     // holds signup formState 
     const [formState, setFormState] = useState({
         username: '',
@@ -61,7 +69,7 @@ const Signup = () => {
                             placeholder="Your username"
                             name="username"
                             type="text"
-                            value={formState.name}
+                            value={formState.username}
                             onChange={handleChange}
                             />
                             <input

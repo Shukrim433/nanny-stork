@@ -1,11 +1,19 @@
-import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { useState, useEffect } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import { useMutation } from '@apollo/client';
 import { LOGIN_USER } from '../utils/mutations';
 
 import Auth from '../utils/auth';
 
 const Login = (props) => {
+    const navigate = useNavigate();
+
+    useEffect(() => {
+        if (Auth.loggedIn()) {
+            navigate('/me'); // Redirects user to profile page if logged in
+        }
+    }, [navigate]);
+
     // login formState
     const [formState, setFormState] = useState({ email: '', password: '' });
 
@@ -40,7 +48,7 @@ const Login = (props) => {
         setFormState({
             email: '',
             password: '',
-        });
+        }); 
     }
 
     return(
@@ -48,13 +56,8 @@ const Login = (props) => {
             <div className="login-form-card">
                 <h3 className="login-form-header"> Login</h3>
                 <div className="login-form-card-body">
-                    {/* check if the "data" returned by the useMutation hook is truthy if yes "success" else display login form */}
-                    {data ? (
-                        <p>
-                            Success! You may now head{' '}
-                            <Link to="/">back to the homepage.</Link>
-                        </p>
-                        ) : (
+                    {/* when user logs in they will be redirected to the profile page */}
+                    
                             <form onSubmit={handleFormSubmit}>
                                 <input
                                 className="form-input"
@@ -80,7 +83,7 @@ const Login = (props) => {
                                 Login
                                 </button>
                             </form>
-                        )}
+                        
                         {/* check if the "error" returned by the useMutation hook is truthy if yes display error message*/}
                         {error && (
                             <div className="login-form-error-msg">
