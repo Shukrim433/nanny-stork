@@ -13,7 +13,7 @@ const Signup = () => {
         if (Auth.loggedIn()) {
             navigate('/me'); // Redirects user to profile page if logged in
         }
-    }, [history]);
+    }, [navigate]);
 
     // holds signup formState 
     const [formState, setFormState] = useState({
