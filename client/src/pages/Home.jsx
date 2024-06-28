@@ -1,6 +1,7 @@
 import { Button } from "@material-tailwind/react";
 import Footer from "../components/Footer";
 import Header from "../components/Header";
+import InfoCard from "../components/InfoCard";
 export default function Home() {
   return (
     <>
@@ -13,21 +14,9 @@ export default function Home() {
           </div>
         </div>
         <div className="info-allignment flex justify-center">
-          <div className="info-container w-2/3 flex flex-row justify-between items-stretch h-[400px] gap-24 mb-6">
-            <div className="info-box bg-white shadow-md rounded-lg p-4 flex-1">
-              <p className="info-text text-center text-md font-medium">Blog</p>
-            </div>
-            <div className="info-box bg-white shadow-md rounded-lg p-4 flex-1">
-              <p className="info-text text-center text-md font-medium text-gray-800">AI</p>
-            </div>
-          </div>
-        </div>
-        <div className="btn-allignment flex justify-center">
-          <div className="flex flex-none items-center justify-center w-[100px]">
-            <Button style={{ backgroundColor: '#F59191' }}>
-              Get Started
-            </Button>
-          </div>
+            <InfoCard
+            imageURL="images/stork-playing.png"/>
+            <InfoCard/>
         </div>  
         <Footer />
       </div>
