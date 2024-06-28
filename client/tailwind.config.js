@@ -7,8 +7,20 @@ module.exports = withMT({
   ],
   theme: {
     extend: {
-      height: {
-        '25': '25%',
+      colors: {
+        fem: {
+          Pri: "#E76262",
+          Sec: "#F59191",
+          Ter: "#FFCACA",
+          Qua: "#ECCCCF",
+        },
+
+        boy: {
+          boyPri: "#2062A4",
+          boySec: "#B7E6FF", 
+          boyTer: "#93B9DE",
+          boyQua: "#8BADD3",
+        },
       }
     },
   },
