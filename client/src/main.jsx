@@ -10,6 +10,7 @@ import SinglePost from './pages/SinglePost';
 import Profile from './pages/Profile';
 import Error from './pages/Error';
 import NewPost from './pages/NewPost';
+import Posts from './pages/Posts.jsx'
 
 const router = createBrowserRouter([
   {
@@ -37,9 +38,13 @@ const router = createBrowserRouter([
         element: <SinglePost />
       },
       {
+        path: '/posts',
+        element: <Posts />
+      },
+      {
         path: '/newPost',
         element: <NewPost />
-      }
+      },
     ]
   }
 ])
