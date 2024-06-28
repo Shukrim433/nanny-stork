@@ -9,6 +9,7 @@ import Login from './pages/Login';
 import SinglePost from './pages/SinglePost';
 import Profile from './pages/Profile';
 import Error from './pages/Error';
+import NewPost from './pages/NewPost';
 
 const router = createBrowserRouter([
   {
@@ -34,6 +35,10 @@ const router = createBrowserRouter([
       }, {
         path: '/posts/:postId',
         element: <SinglePost />
+      },
+      {
+        path: '/newPost',
+        element: <NewPost />
       }
     ]
   }
