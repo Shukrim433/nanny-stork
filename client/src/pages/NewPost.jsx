@@ -49,6 +49,12 @@ export default function NewPost() {
         }
     };
 
+    // when you click post button it redirects you to the posts page
+    const handleClick = () => {  
+        window.location.assign('/posts')
+    }
+
+
     return (
         <Card>
             <CardBody>
@@ -86,6 +92,7 @@ export default function NewPost() {
                         ripple="light" 
                         type="submit" 
                         disabled={loading}
+                        onClick={handleClick}
                     >
                         {loading ? 'Posting...' : 'Post'}
                     </Button>
