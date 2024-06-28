@@ -1,11 +1,19 @@
-import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { useState, useEffect } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import { useMutation } from '@apollo/client';
 import { LOGIN_USER } from '../utils/mutations';
 
 import Auth from '../utils/auth';
 
 const Login = (props) => {
+    const navigate = useNavigate();
+
+    useEffect(() => {
+        if (Auth.loggedIn()) {
+            navigate('/me'); // Redirects user to profile page if logged in
+        }
+    }, [navigate]);
+
     // login formState
     const [formState, setFormState] = useState({ email: '', password: '' });
 
