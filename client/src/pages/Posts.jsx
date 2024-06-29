@@ -1,7 +1,5 @@
 import { useQuery } from '@apollo/client';
-
 import PostList from '../components/PostList';
-
 import { QUERY_POSTS } from '../utils/queries';
 
 const Posts = () => {
@@ -11,7 +9,8 @@ const Posts = () => {
     const posts = data?.posts || []
 
     return (
-        <div className="posts-container">
+        <div className="container">
+
             <div className="posts-card">
                     {loading ? (
                         <div>Loading...</div>

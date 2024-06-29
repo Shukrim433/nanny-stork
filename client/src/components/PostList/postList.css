@@ -1,5 +1,5 @@
 /*temporary css just so you can see the individual posts clearly*/
-.single-post{
+.single-post-card{
     background: #d1e4ef;
     margin: 1%;
     padding: 1%;
@@ -8,9 +8,7 @@
 
 .posts-card-body{
     margin: 2%;
+    margin-left: 5%;
 }
 
-h4{
-    size: 10px;
-}
 

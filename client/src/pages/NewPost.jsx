@@ -58,7 +58,7 @@ export default function NewPost() {
     return (
         <Card>
             <CardBody>
-            <p className="post-character-count">
+                <p className="character-count">
                     {characterCount}/280
                 </p>
                 <form onSubmit={handleSubmit}>
