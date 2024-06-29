@@ -8,6 +8,7 @@ import Signup from './pages/Signup';
 import Login from './pages/Login';
 import SinglePost from './pages/SinglePost';
 import Profile from './pages/Profile';
+import OtherProfile from './pages/OtherProfile.jsx'
 import Error from './pages/Error';
 import NewPost from './pages/NewPost';
 import Posts from './pages/Posts.jsx'
@@ -31,8 +32,8 @@ const router = createBrowserRouter([
         path: '/me',
         element: <Profile />
       }, {
-        path: '/profiles/:profileId',
-        element: <Profile />
+        path: '/profiles/:username', // probably change to /:username OR /:userId
+        element: <OtherProfile /> // change this to <OtherProfiles/>
       }, {
         path: '/posts/:postId',
         element: <SinglePost />
