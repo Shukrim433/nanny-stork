@@ -34,7 +34,7 @@ class AuthService {
 
   logout() {
     localStorage.removeItem('id_token'); // remove jwt from local storage when user loggs out, new one will be created when they log in, with any updated data if the paylod, ie usernae changed since they were last logged in, check notebook
-    window.location.reload(); // reload page when they logout, should probs change to / for homepage
+    window.location.assign('/'); // reload page when they logout, should probs change to / for homepage
   }
 }
 
