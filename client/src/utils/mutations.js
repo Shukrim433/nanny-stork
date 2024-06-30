@@ -13,6 +13,7 @@ export const LOGIN_USER = gql`
   }
 `;
 
+//addUser(username: String!, email: String!, password: String!): Auth
 export const ADD_USER = gql`
   mutation addUser($username: String!, $email: String!, $password: String!) {
     addUser(username: $username, email: $email, password: $password) {
@@ -25,6 +26,20 @@ export const ADD_USER = gql`
   }
 `;
 
+// addPregnancyTracker(stage: Stage!, dueDate: String, birthDate: String): PregnancyTracker
+export const ADD_PREGNANCY_TRACKER =gql`
+  mutation addPregnancyTracker($stage: Stage!, $dueDate: String!, $birthDate: String!) {
+    addPregnancyTracker(stage: $stage, dueDate: $dueDate, birthDate: $birthDate) {
+      _id
+      userId
+      stage
+      dueDate
+      birthDate
+    }
+  }
+`;
+
+// addPost(postText: String!, postTitle: String): Post
 export const ADD_POST = gql`
   mutation addPost($postText: String!, $postTitle: String!) {
     addPost(postText: $postText, postTitle: $postTitle) {
