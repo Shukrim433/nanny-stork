@@ -70,7 +70,7 @@ const resolvers = {
         me: async (parent, args, context) => {
             if (context.user) {
                 try {
-                    return User.findOne({ _id: context.user._id }).populate('thoughts');
+                    return User.findOne({ _id: context.user._id }).populate('thoughts').populate('friends');
 
                 } catch(error) {
                     console.error("Server Error fetching me/loggedin user:", error);
