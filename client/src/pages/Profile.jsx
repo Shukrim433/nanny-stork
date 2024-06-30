@@ -1,12 +1,21 @@
+import React, { useState } from 'react';
 import { useQuery } from '@apollo/client';
 import { QUERY_ME, QUERY_USER } from '../utils/queries';
-
+import { Button, Input, Textarea, Card, CardBody, Alert } from '@material-tailwind/react';
 import PostsList from '../components/PostList'
+import PregnancyTrackerForm from '../components/PregnancyTrackerForm';
 
 import Auth from '../utils/auth';
 
 
 const Profile = () => {
+
+  const [showForm, setShowForm] = useState(false);
+
+    // Toggle the visibility of the form
+    const handleButtonClick = () => {
+        setShowForm(!showForm);
+    };
 
   // QUERY_USER query
   const { loading, data } = useQuery(QUERY_USER, {
@@ -25,10 +34,25 @@ const Profile = () => {
       <div>
         {Auth.loggedIn() ? (
           <div>
-          <h1>{user.username}'s Profile</h1>
+            <Button 
+              color="lightBlue" 
+              buttonType="filled" 
+              size="regular" 
+              rounded={false} 
+              block={false} 
+              iconOnly={false} 
+              ripple="light" 
+              onClick={handleButtonClick}
+            >
+            add pregnancy tracker
+            </Button>
+            
+          {/* only show pregnancy tracker when showFormstate is true */}
+          {showForm && <PregnancyTrackerForm />}
 
+          <h1>Your Profile</h1>
           <div>
-              <h2>{user.username}'s posts:</h2>
+              <h2>Your Posts:</h2>
               <PostsList
               posts={user.posts}
               />
