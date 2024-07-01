@@ -1,11 +1,10 @@
-import React, { useState } from 'react';
+import { useState,  } from 'react';
 import { useMutation } from '@apollo/client';
 import { ADD_POST } from '../utils/mutations';
 import { Button, Input, Textarea, Card, CardBody, Alert } from '@material-tailwind/react';
-
-
+import { useLogInRedirect } from '../utils/log-in-redirection';
 export default function NewPost() {
-
+    useLogInRedirect(); //redirects to login page if not logged in
     //holds character count state
     const [characterCount, setCharacterCount] = useState(0);
     const [formState, setFormState] = useState({ postTitle: '', postText: '' });

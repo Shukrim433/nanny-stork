@@ -4,12 +4,12 @@ import { QUERY_ME, QUERY_USER } from '../utils/queries';
 import { Button, Input, Textarea, Card, CardBody, Alert } from '@material-tailwind/react';
 import PostsList from '../components/PostList'
 import PregnancyTrackerForm from '../components/PregnancyTrackerForm';
-
+import { useLogInRedirect } from '../utils/log-in-redirection';
 import Auth from '../utils/auth';
 
 
 const Profile = () => {
-
+  useLogInRedirect(); //redirects to login page if not logged in
   const [showForm, setShowForm] = useState(false);
 
     // Toggle the visibility of the form
