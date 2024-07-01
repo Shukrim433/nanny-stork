@@ -45,6 +45,7 @@ export const QUERY_ME = gql`
   }
 `;
 
+// post(postId: ID!): Post
 export const QUERY_SINGLE_POST = gql`
   query getSinglePost($postId: ID!) {
     post(postId: $postId) {
@@ -62,6 +63,19 @@ export const QUERY_SINGLE_POST = gql`
     }
   }
 `;
+
+// pregnancyTracker(trackerId: ID!): PregnancyTracker
+export const QUERY_PREGNANCY_TRACKER = gql`
+  query getPregnancyTracker($trackerId: ID!) {
+    pregnancyTracker(trackerId: $trackerId) {
+    _id
+    userId
+    stage
+    dueDate
+    birthDate
+    }
+  }
+`
 
 
 // getPosts - name of the query

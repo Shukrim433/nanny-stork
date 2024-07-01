@@ -180,14 +180,18 @@ const resolvers = {
         // mutation to create a pregnancy tracker (the associated user wil be the user currently logged in)
         // addPregnancyTracker(stage: Stage!, dueDate: String, birthDate: String): PregnancyTracker
         addPregnancyTracker: async (parent, { stage, dueDate, birthDate }, context) => {
+            console.log(context.user)
             if (context.user) {
+
                 try {
                     return await PregnancyTracker.create({
                         userId: context.user._id,
                         stage,
                         dueDate,
                         birthDate
-                    })
+                    },
+                    { new: true }
+                )
                 } catch(error) {
                     console.error("Server Error creating pregnancy tracker:", error)
                 }

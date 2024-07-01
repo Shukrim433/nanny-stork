@@ -4,18 +4,21 @@ import { QUERY_ME, QUERY_USER } from '../utils/queries';
 import { Button, Input, Textarea, Card, CardBody, Alert } from '@material-tailwind/react';
 import PostsList from '../components/PostList'
 import PregnancyTrackerForm from '../components/PregnancyTrackerForm';
+import PregnancyTracker from '../components/PregnancyTracker'
 
 import Auth from '../utils/auth';
 
 
 const Profile = () => {
-
+  
+  // state for showing form boolean
   const [showForm, setShowForm] = useState(false);
 
-    // Toggle the visibility of the form
-    const handleButtonClick = () => {
-        setShowForm(!showForm);
-    };
+  // Toggle the visibility of the form
+  const handleButtonClick = () => {
+      setShowForm(!showForm);
+  };
+
 
   // QUERY_USER query
   const { loading, data } = useQuery(QUERY_USER, {
@@ -26,7 +29,7 @@ const Profile = () => {
   // if the "data" returned by the query is falsy, post = empty object{}
   const user = data?.user || {}
 
-  if (loading) {
+  if (loading  ) {
     return <div>Loading...</div>
   }
 
@@ -48,7 +51,7 @@ const Profile = () => {
             </Button>
             
           {/* only show pregnancy tracker when showFormstate is true */}
-          {showForm && <PregnancyTrackerForm />}
+          {showForm && <PregnancyTrackerForm/>}
 
           <h1>Your Profile</h1>
           <div>
@@ -56,6 +59,9 @@ const Profile = () => {
               <PostsList
               posts={user.posts}
               />
+          </div>
+          <div>
+            
           </div>
       </div>
         ) : (
