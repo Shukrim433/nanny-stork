@@ -75,10 +75,10 @@ export const ADD_COMMENT = gql`
 `;
 
 export const ADD_FRIEND = gql`
-  mutation AddFriend($friendId: ID!) {
-    addFriend(friendId: $friendId) {
-      _id
-      friends
-    }
+mutation AddFriend($friendName: String!) {
+  addFriend(friendName: $friendName) {
+    _id
+    friends
   }
+}
 `;
