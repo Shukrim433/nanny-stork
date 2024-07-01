@@ -1,53 +1,286 @@
 [
-    {
-      "PostTitle": "TEXT",
-      "PostText": "Everyone knows that debugging is twice as hard as writing a program in the first place. So if you're as clever as you can be when you write it, how will you ever debug it?",
-      "PostAuthor": "Brian Kernighan"
+{
+"PostTitle": "Newborn Health - Vaccinations",
+"PostText": "Key Vaccinations for Newborns
+Hepatitis B Vaccine
+
+First Dose: Given at birth.
+Purpose: Protects against hepatitis B, a serious liver infection.
+BCG (Bacillus Calmette-Guérin):
+
+First Dose: Given at birth in some countries.
+Purpose: Protects against tuberculosis (TB).
+Polio Vaccine:
+
+First Dose: Administered within the first few months.
+Purpose: Protects against poliovirus, which can cause paralysis.
+DTP (Diphtheria, Tetanus, Pertussis):
+
+First Dose: Given at 2 months.
+Purpose: Protects against diphtheria, tetanus, and whooping cough.
+Hib (Haemophilus influenzae type b):
+
+First Dose: Given at 2 months.
+Purpose: Protects against bacterial meningitis and pneumonia.
+Pneumococcal Vaccine:
+
+First Dose: Given at 2 months.
+Purpose: Protects against pneumococcal infections that can cause meningitis, pneumonia, and sepsis.
+Rotavirus Vaccine:
+
+First Dose: Given at 2 months.
+Purpose: Protects against rotavirus infections, which cause severe diarrhea.",
+"PostAuthor": "Brian Han"
+},
+
+{
+"PostTitle": "Newborn-Health - Common Illnesses",
+"PostText": "Colds:
+Symptoms: Runny nose, sneezing, mild fever, cough.
+Management: Ensure your baby stays hydrated and comfortable. Use a humidifier to ease breathing.
+
+
+Jaundice:
+Symptoms: Yellowing of the skin and eyes.
+Management: Often resolves on its own. Increased feedings and sometimes phototherapy may be recommended.
+
+Diaper Rash:
+Symptoms: Red, irritated skin in the diaper area.
+Management: Keep the area clean and dry, use diaper cream, and change diapers frequently.
+
+Ear Infections:
+Symptoms: Ear pulling, irritability, difficulty sleeping, fever.
+Management: Consult a doctor for proper diagnosis and treatment, which may include antibiotics.
+
+Gastroesophageal Reflux:
+Symptoms: Spitting up, irritability, feeding difficulties.
+Management: Feed smaller amounts more frequently, keep the baby upright after feeding.",
+"PostAuthor": "Max Alexander"
+},
+
+{
+"PostTitle": "Newborn-Health - When to Call a Doctor",
+"PostText": "While many minor illnesses can be managed at home, certain symptoms require prompt medical attention. Here’s when you should call your doctor:
+
+Fever:
+When to Call: If your newborn has a fever of 100.4°F (38°C) or higher, call your doctor immediately.
+
+Breathing Difficulties:
+When to Call: If your baby is breathing rapidly, has a persistent cough, wheezing, or bluish skin color, seek immediate medical help.
+
+Persistent Crying or Irritability:
+When to Call: If your baby is inconsolable for an extended period, it could indicate pain or illness.
+
+Dehydration:
+When to Call: If your baby has fewer wet diapers than usual, dry mouth, or sunken eyes, contact your doctor.
+
+Rash with Fever:
+When to Call: If a rash is accompanied by a fever, it could be a sign of an infection that needs medical evaluation.
+
+Vomiting or Diarrhea:
+When to Call: Persistent vomiting or diarrhea can lead to dehydration and requires medical attention.
+
+Lethargy or Unresponsiveness:
+When to Call: If your baby is unusually sleepy, difficult to wake, or not responsive, seek immediate medical care..",
+"PostAuthor": "Whisky Johnny"
+},
+{
+"PostTitle": "Feeding and Nutrition",
+"PostText": "Breastfeeding: Benefits and Challenges
+Benefits of Breastfeeding
+
+Optimal Nutrition:
+Breast milk provides the perfect balance of nutrients, including vitamins, minerals, proteins, and fats that are essential for your baby's growth and development.
+
+Immune Support:
+Breast milk contains antibodies that help protect your baby from infections and illnesses.
+
+Bonding:
+Breastfeeding promotes a unique emotional connection between mother and baby through close physical contact.
+
+Convenience and Cost:
+Breast milk is always available, at the right temperature, and free of cost.
+
+Health Benefits for Mothers:
+Breastfeeding can help the uterus return to its pre-pregnancy size more quickly and reduce the risk of certain cancers.
+Challenges of Breastfeeding
+
+Initial Difficulties:
+Many mothers experience challenges with latching and milk supply in the early days.
+
+Time-Consuming:
+Breastfeeding can be demanding, requiring frequent feedings, especially during growth spurts.
+
+Physical Discomfort:
+Some mothers experience nipple pain, engorgement, or mastitis.
+
+Public Perception:
+Breastfeeding in public can sometimes lead to discomfort due to societal attitudes.
+
+Proper Latch Techniques
+A proper latch is crucial for effective breastfeeding and preventing nipple pain. Here are some tips for achieving a good 
+
+latch:
+
+Positioning:
+Hold your baby close with their nose level with your nipple.
+
+Head Support:
+Support your baby’s head and neck but allow them to tilt their head back slightly.
+
+Mouth Wide Open:
+Encourage your baby to open their mouth wide by tickling their lip with your nipple.
+
+Full Mouthful:
+Aim for your baby to take a large portion of the areola, not just the nipple.
+
+
+Pumping and Storing Breast Milk
+Pumping:
+
+Use a high-quality breast pump and ensure proper flange fit for comfort and efficiency.
+
+Storage:
+Store breast milk in clean, BPA-free containers. Freshly pumped milk can be stored at room temperature for up to 4 hours, in the refrigerator for up to 4 days, and in the freezer for up to 6 months.
+
+Thawing:
+Thaw frozen milk in the refrigerator or by placing the container in warm water. Avoid microwaving.
+
+Formula Feeding: Choosing the Right Formula
+Choosing the Right Formula
+
+Types of Formula:
+Cow’s Milk-Based Formula: The most common type, suitable for most babies.
+Soy-Based Formula: For babies with lactose intolerance or milk protein allergies.
+Hydrolyzed Formula: Proteins are broken down for easier digestion, ideal for babies with allergies or digestion issues.
+
+Consult Your Pediatrician:
+Always consult your pediatrician before choosing a formula to ensure it meets your baby's specific nutritional needs.
+
+Proper Preparation and Storage
+Preparation:
+Follow the instructions on the formula packaging precisely. Use the correct water-to-formula ratio to avoid under- or over-concentration.
+
+Storage:
+Prepared formula can be stored in the refrigerator for up to 24 hours. Discard any unused formula after a feeding session to prevent bacterial growth.
+
+Feeding Schedules
+Newborns:
+Feed on demand, typically every 2-3 hours, including overnight.
+
+Older Infants:
+As your baby grows, they may naturally develop a more predictable feeding schedule, typically every 3-4 hours.
+
+Introduction to Solid Foods
+When and How to Start
+
+Timing:
+Most babies are ready to start solids around 6 months of age. Look for signs of readiness, such as sitting up with support and showing interest in food.
+
+First Foods:
+Begin with single-grain cereals or pureed vegetables and fruits. Introduce one new food at a time and wait a few days before adding another to monitor for allergies.
+Allergy Prevention
+
+Common Allergens:
+Introduce common allergens like peanuts, eggs, and dairy early and often, but one at a time, while monitoring for reactions.
+
+Consult Your Pediatrician:
+If there is a family history of allergies, consult your pediatrician before introducing allergenic foods.
+Healthy Food Choices
+
+Nutrient-Rich Foods:
+Offer a variety of fruits, vegetables, grains, and proteins to ensure a balanced diet.
+
+Avoid Added Sugars and Salt:
+Foods for babies should be free of added sugars and salt to promote healthy eating habits.
+
+Conclusion
+Feeding your newborn is a journey filled with choices and learning opportunities. Whether you opt for breastfeeding, formula feeding, or a combination, understanding the benefits, challenges, and best practices will help you provide the best nutrition for your baby. As your baby grows, introducing solid foods will become an exciting milestone. By staying informed and consulting with your pediatrician, you can navigate these feeding stages with confidence and care, ensuring your baby's health and happiness..",
+"PostAuthor": "Kent Beck"
+},
+{
+"PostTitle": "TEXT",
+"PostText": "Walking on water and developing software from a specification are easy if both are frozen.",
+"PostAuthor": "Edward Bernard"
+},
+{
+"PostTitle": "TEXT",
+"PostText": "The most disastrous thing that you can ever learn is your first programming language.",
+"PostAuthor": "Alan Kay"
+},
+{
+"PostTitle": "TEXT",
+"PostText": "The most important property of a program is whether it accomplishes the intention of its user.",
+"PostAuthor": "Caddy Hair"
+},
+{
+"PostTitle": "TEXT",
+"PostText": "Delivering good software today is often better than perfect software tomorrow, so finish things and ship.",
+"PostAuthor": "David Thomas"
+},
+{
+"PostTitle": "TEXT",
+"PostText": "If you optimize everything, you will always be unhappy.",
+"PostAuthor": "Donald Knuth"
+},
+{
+"PostTitle": "TEXT",
+"PostText": "It's not a bug; it's an undocumented feature.",
+"PostAuthor": "Ler Toto"
+},
+{
+"PostTitle": "TEXT",
+"PostText": "The most important property of a program is whether it accomplishes the intention of its user.",
+"PostAuthor": "Brian Khan"
+},
+{
+"PostTitle": "TEXT",
+"PostText": "Delivering good software today is often better than perfect software tomorrow, so finish things and ship.",
+"PostAuthor": "Maxim Lander"
+},
+{
+"PostTitle": "TEXT",
+"PostText": "If you optimize everything, you will always be unhappy.",
+"PostAuthor": "Lucky Coin"
+},
+{
+"PostTitle": "TEXT",
+"PostText": "It's not a bug; it's an undocumented feature.",
+"PostAuthor": "Becky Ham"
+},
+{
+    "PostTitle": "TEXT",
+    "PostText": "Delivering good software today is often better than perfect software tomorrow, so finish things and ship.",
+    "PostAuthor": "Edwin Bad"
     },
     {
-      "PostTitle": "TEXT",
-      "PostText": "Some of the best programming is done on paper, really. Putting it into the computer is just a minor detail.",
-      "PostAuthor": "Max Kanat-Alexander"
+    "PostTitle": "TEXT",
+    "PostText": "If you optimize everything, you will always be unhappy.",
+    "PostAuthor": "Alan May"
     },
     {
-      "PostTitle": "TEXT",
-      "PostText": "When you don't create things, you become defined by your tastes rather than ability. Your tastes only narrow & exclude people. So create.",
-      "PostAuthor": "Why The Lucky Stiff"
+    "PostTitle": "TEXT",
+    "PostText": "It's not a bug; it's an undocumented feature.",
+    "PostAuthor": "Cindy Ore"
     },
     {
-      "PostTitle": "TEXT",
-      "PostText": "I'm not a great programmer; I'm just a good programmer with great habits.",
-      "PostAuthor": "Kent Beck"
+    "PostTitle": "TEXT",
+    "PostText": "The most important property of a program is whether it accomplishes the intention of its user.",
+    "PostAuthor": "Danny Tom"
     },
     {
-      "PostTitle": "TEXT",
-      "PostText": "Walking on water and developing software from a specification are easy if both are frozen.",
-      "PostAuthor": "Edward V. Berard"
+    "PostTitle": "TEXT",
+    "PostText": "Delivering good software today is often better than perfect software tomorrow, so finish things and ship.",
+    "PostAuthor": "Don Johnson"
     },
     {
-      "PostTitle": "TEXT",
-      "PostText": "The most disastrous thing that you can ever learn is your first programming language.",
-      "PostAuthor": "Alan Kay"
+    "PostTitle": "TEXT",
+    "PostText": "If you optimize everything, you will always be unhappy.",
+    "PostAuthor": "Lucky Coin"
     },
     {
-      "PostTitle": "TEXT",
-      "PostText": "The most important property of a program is whether it accomplishes the intention of its user.",
-      "PostAuthor": "C.A.R. Hoare"
-    },
-    {
-      "PostTitle": "TEXT",
-      "PostText": "Delivering good software today is often better than perfect software tomorrow, so finish things and ship.",
-      "PostAuthor": "David Thomas"
-    },
-    {
-      "PostTitle": "TEXT",
-      "PostText": "If you optimize everything, you will always be unhappy.",
-      "PostAuthor": "Donald Knuth"
-    },
-    {
-      "PostTitle": "TEXT",
-      "PostText": "It's not a bug; it's an undocumented feature.",
-      "PostAuthor": "Lernantino"
+    "PostTitle": "TEXT",
+    "PostText": "It's not a bug; it's an undocumented feature.",
+    "PostAuthor": "Nanny Bird"
     }
-  ]
-  
+]
