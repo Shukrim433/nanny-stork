@@ -2,13 +2,17 @@ import React, { useState } from 'react';
 import { useMutation } from '@apollo/client';
 import { ADD_PREGNANCY_TRACKER } from '../../utils/mutations';
 import { Button, Input, Textarea, Card, CardBody, Alert } from '@material-tailwind/react';
+import PregnancyTracker from '../PregnancyTracker'
 import Auth from '../../utils/auth';
 
 const PregnancyTrackerForm = () => {
     // holds PregnancyTrackerForm form state
     const [formState, setFormState] = useState({ stage: '', dueDate: '', birthDate: '' });
+    // holds the id of the created PregnancyTracker
+    const [trackerId, setTrackerId] = useState(null); 
     // ADD_PREGNANCY_TRACKER mutation
-    const [addPregnancyTracker, { loading, error }] = useMutation(ADD_PREGNANCY_TRACKER);
+    const [addPregnancyTracker, { loading, error, data }] = useMutation(ADD_PREGNANCY_TRACKER);
+
 
     // update formState based on what user inputs (OnChange event)
     const handleChange = (event) => {
@@ -27,6 +31,9 @@ const PregnancyTrackerForm = () => {
 
         try {
             await addPregnancyTracker({ variables: { ...formState } });
+            console.log(data)
+            const newTrackerId = data.addPregnancyTracker._id;  // Extract the id from the mutation response
+            setTrackerId(newTrackerId);
             // Clear the textarea after successful submission
             setFormState({
                 stage: '',
@@ -34,7 +41,7 @@ const PregnancyTrackerForm = () => {
                 birthDate: ''
             });
         } catch(error) {
-            console.error("Error adding pregnancy tracker:", err);
+            console.error("Error adding pregnancy tracker:", error);
         }
     }
 
@@ -85,6 +92,8 @@ const PregnancyTrackerForm = () => {
                 </button>
                 {error && <p>Error submitting the form: {error.message}</p>}
             </form>
+            {trackerId &&<PregnancyTracker trackerId={trackerId} />} {/* Pass the trackerId to the PregnancyTracker component */}
+            
             </CardBody>
         </Card>
     )
