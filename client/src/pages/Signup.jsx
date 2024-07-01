@@ -45,7 +45,6 @@ const Signup = () => {
                 variables: { ...formState }, // input formState (email, username, password) to create user
             })
             Auth.login(data.addUser.token)  
-            //history.push('/');  // Redirect to the home page onsubmit (IF signup/addUser is successful)
         } catch (e) {
             console.error(e)
         }
