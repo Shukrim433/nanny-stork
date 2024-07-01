@@ -1,16 +1,16 @@
 [
     {
-      "username": "Brian Kernighan",
+      "username": "Brian Han",
       "email": "bkernighan@techfriends.dev",
       "password": "password01"
     },
     {
-      "username": "Max Kanat-Alexander",
+      "username": "Max Alexander",
       "email": "mkanatalexander@techfriends.dev",
       "password": "password02"
     },
     {
-      "username": "Why The Lucky Stiff",
+      "username": "Whisky Johnny",
       "email": "wtls@techfriends.dev",
       "password": "password03"
     },
@@ -20,7 +20,7 @@
       "password": "password04"
     },
     {
-      "username": "Edward V. Berard",
+      "username": "Edward Bernard",
       "email": "evberard@techfriends.dev",
       "password": "password05"
     },
@@ -30,7 +30,7 @@
       "password": "password06"
     },
     {
-      "username": "C.A.R. Hoare",
+      "username": "Caddy Hair",
       "email": "choare@techfriends.dev",
       "password": "password07"
     },
@@ -45,9 +45,59 @@
       "password": "password09"
     },
     {
-      "username": "Lernantino",
-      "email": "lernantino@techfriends.dev",
+      "username": "Ler Toto",
+      "email": "ler@techfriends.dev",
       "password": "password10"
-    }
+    },
+    {
+        "username": "Brian Khan",
+        "email": "bkhan@techfriends.dev",
+        "password": "password11"
+      },
+      {
+        "username": "Maxim Lander",
+        "email": "mlander@techfriends.dev",
+        "password": "password12"
+      },
+      {
+        "username": "Lucky Coin",
+        "email": "Lucky@techfriends.dev",
+        "password": "password13"
+      },
+      {
+        "username": "Becky Ham",
+        "email": "Ham@techfriends.dev",
+        "password": "password14"
+      },
+      {
+        "username": "Edwin Bad",
+        "email": "bad@techfriends.dev",
+        "password": "password15"
+      },
+      {
+        "username": "Alan May",
+        "email": "may@techfriends.dev",
+        "password": "password16"
+      },
+      {
+        "username": "Cindy Ore",
+        "email": "ore@techfriends.dev",
+        "password": "password17"
+      },
+      {
+        "username": "Danny Tom",
+        "email": "tom@techfriends.dev",
+        "password": "password18"
+      },
+      {
+        "username": "Don Johnson",
+        "email": "dknuth@techfriends.dev",
+        "password": "password19"
+      },
+      {
+        "username": "Nanny Bird",
+        "email": "lernantino@techfriends.dev",
+        "password": "password20"
+      }
   ]
   
