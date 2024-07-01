@@ -27,28 +27,55 @@ const SinglePost = () => {
   }
 
   return (
-    <div className="single-post-card">
-      <p>
-        {/* click on username it takes u to the user's profile page, if the username is the logged in user's then ur redirect to /me */}
-      <Link to={ post.postAuthor === Auth.getProfile().authenticatedPerson.username ? (`/me`) : (`/profiles/${post.postAuthor}`)} > 
-        {post.postAuthor}
-        </Link>
-      </p>
-      <h2>{post.postTitle}</h2>
-      <div>
-        <p>{post.postText}</p>
-      </div>
-      <p> posted on {post.createdAt}</p> <br/>
+    <>
+    {/* if youre logged in you can click on the postAuthor to go to another users profile or your own,*/}
+    {Auth.loggedIn() ? (
+      <div className="single-post-card">
+        <p>
+          {/* click on username it takes u to the user's profile page, if the username is the logged in user's then ur redirect to /me */}
+        <Link to={ post.postAuthor === Auth.getProfile().authenticatedPerson.username ? (`/me`) : (`/profiles/${post.postAuthor}`)} > 
+          {post.postAuthor}
+          </Link>
+        </p>
+        <h2>{post.postTitle}</h2>
+        <div>
+          <p>{post.postText}</p>
+        </div>
+        <p> posted on {post.createdAt}</p> <br/>
 
-      <div>
-      <CommentList comments={post.comments} post={post}/>
-      </div>
+        <div>
+        <CommentList comments={post.comments} post={post}/>
+        </div>
 
-      <div>
-        <CommentForm postId={post._id} />
+        <div>
+          <CommentForm postId={post._id} />
+        </div>
+
       </div>
+    ) : ( // if youre not logged in you can click on the postAuthor and it will take you to that user's profile
+      <div>
+        <p> 
+            <Link to={`/profiles/${post.postAuthor}`} > 
+            {post.postAuthor} 
+            </Link>
+        </p> 
+        <h2>{post.postTitle}</h2>
+        <div>
+          <p>{post.postText}</p>
+        </div>
+        <p> posted on {post.createdAt}</p> <br/>
+
+        <div>
+        <CommentList comments={post.comments} post={post}/>
+        </div>
+
+        <div>
+          <CommentForm postId={post._id} />
+        </div>
 
     </div>
+    )}
+    </>
 
   )
 }

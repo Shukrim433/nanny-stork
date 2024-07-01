@@ -9,6 +9,9 @@ const PostList = ({ posts, title}) => {
     }
 
     return(
+        <>
+        {/* if youre logged in you can click on the postAuthor to go to their profile,*/}
+        {Auth.loggedIn() ? (
         <div className="posts-card-body">
             <h2>{title}</h2>
             {posts &&
@@ -36,6 +39,36 @@ const PostList = ({ posts, title}) => {
                 ))
             }
         </div>
+        ) : ( // if youre not logged in you cant click on the postAuthor to got to their profile:
+            <div className="posts-card-body">
+            <h2>{title}</h2>
+            {posts &&
+                posts.map((post) => (
+                    <div key={post._id} className="single-post-card">
+                        <p> 
+                            <Link to={`/profiles/${post.postAuthor}`} > 
+                            {post.postAuthor} 
+                            </Link>
+                        </p> 
+                        {/* click on post title it take you to the posts individual page */}
+                        <h2>
+                            <Link to={`/posts/${post._id}`}>
+                            {post.postTitle}
+                            </Link>
+                        </h2>
+                        
+                        <div>
+                            <p>{post.postText}</p>
+                        </div>
+
+                        <p> posted on {post.createdAt}</p>
+                    </div>
+                ))
+            }
+        </div>
+
+        )}
+        </>
     )
 }
 
