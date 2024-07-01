@@ -29,12 +29,12 @@ class AuthService {
 
   login(idToken) { // JWT returned by addUser and loginUser mutations, is passed in here
     localStorage.setItem('id_token', idToken); // saves newly created jwt to local storage under the key id_token
-    window.location.assign('/'); // Redirect the user to the home page when they login 
+    window.location.assign('/me'); // Redirect the user to the home page when they login 
   }
 
   logout() {
     localStorage.removeItem('id_token'); // remove jwt from local storage when user loggs out, new one will be created when they log in, with any updated data if the paylod, ie usernae changed since they were last logged in, check notebook
-    window.location.reload(); // reload page when they logout, should probs change to / for homepage
+    window.location.assign('/'); // reload page when they logout, should probs change to / for homepage
   }
 }
 

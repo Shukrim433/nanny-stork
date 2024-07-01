@@ -9,6 +9,7 @@ const typeDefs = `
 
   type Post {
     _id: ID
+    postTitle: String
     postText: String
     postAuthor: String
     createdAt: String
@@ -53,7 +54,7 @@ const typeDefs = `
   type Mutation {
     addUser(username: String!, email: String!, password: String!): Auth
     login(email: String!, password: String!): Auth
-    addPost(postText: String!): Post
+    addPost(postText: String!, postTitle: String): Post
     addComment(postId: ID!, commentText: String!): Post
     addFriend(friendId: ID!): User
     removeFriend(friendId: ID!): User
