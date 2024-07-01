@@ -59,7 +59,7 @@ export function Login() {
     <>
     <Card className="w-96 justify-center m-auto mt-20 ">
       <CardHeader
-        style={{ background:  '#E76262' }}
+        style={{ background:  '#f48fb1' }}
         className="mb-4 grid h-28 place-items-center"
       >
         <Typography variant="h3" color="white">
@@ -94,7 +94,7 @@ export function Login() {
             />
           </div>
           <CardFooter className="pt-0">
-            <Button fullWidth type="submit" style={{ background: '#E76262' }}>
+            <Button fullWidth type="submit" style={{ background: '#f48fb1' }}>
                 
               Sign In
             </Button>
