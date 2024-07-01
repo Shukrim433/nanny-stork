@@ -57,7 +57,7 @@ const Signup = () => {
     }
 
     return (
-        <main className="flex justify-center items-center h-screen">
+        <main className="flex justify-center items-center mt-10">
           <Card color="transparent" shadow={false} className="p-5">
             {data ? (
               <Typography color="green" className="text-center">
