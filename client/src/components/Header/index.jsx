@@ -2,13 +2,15 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { Button } from "@material-tailwind/react";
 import Auth from '../../utils/auth';
+import { useHandleNavLinkClick } from '../../utils/log-in-redirection';
 
 export default function Header() {
-        // a function that logs out user (onClick - logout button)
+  // a function that logs out user (onClick - logout button)
   const logout = (event) => {
     event.preventDefault();
     Auth.logout();
   };
+
   return (
     <>
       <header className="flex justify-center items-center flex-col">
@@ -22,34 +24,38 @@ export default function Header() {
           </div>
           <img src="images/ns-logo.png" alt="nanny-stork-logo" className="w-56" />
           <div className="header-buttons-right flex justify-center items-center">
-          {Auth.loggedIn() ? (
-            <>
-              <Link to="/me">
-                profile     
-              </Link>
-              <p className="text-xl mx-2 text-gray-500">|</p>
-              <button onClick={logout}>
-                Logout
-              </button>
-            </>
-          ) : ( /* else if user is logged out show "login" btn and "signup" btn */
-            <>
-              <Link to="/login" className="text-black hover:underline">
-              Login
-            </Link>
-            <p className="text-xl mx-2 text-gray-500">|</p>
-            <Link to="/signup" className="text-black hover:underline">
-              Signup
-            </Link>
-            </>
-          )}
+            {Auth.loggedIn() ? (
+              <>
+                <Link to="/me">
+                  profile
+                </Link>
+                <p className="text-xl mx-2 text-gray-500">|</p>
+                <button onClick={logout}>
+                  Logout
+                </button>
+              </>
+            ) : (
+              <>
+                <Link to="/login" className="text-black hover:underline">
+                  Login
+                </Link>
+                <p className="text-xl mx-2 text-gray-500">|</p>
+                <Link to="/signup" className="text-black hover:underline">
+                  Signup
+                </Link>
+              </>
+            )}
           </div>
         </div>
-        <nav className="w-2/3 ">
+        <nav className="w-2/3">
           <ul className="navbar flex justify-between">
             <li className="navLink text-lg font-thin hover:text-gray-700"><Link to="/">HOME</Link></li>
-            <li className="navLink text-lg font-thin hover:text-gray-700"><Link to="/me">PROFILE</Link></li>
-            <li className="navLink text-lg font-thin hover:text-gray-700"><Link to="/newPost">NEW POST</Link></li>
+            {Auth.loggedIn() ? (
+              <>
+                <li className="navLink text-lg font-thin hover:text-gray-700"><Link to="/me">PROFILE</Link></li>
+                <li className="navLink text-lg font-thin hover:text-gray-700"><Link to="/newPost">NEW POST</Link></li>
+              </>
+            ) : null}
           </ul>
         </nav>
       </header>
