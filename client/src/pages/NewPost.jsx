@@ -1,16 +1,10 @@
-import { useState, useEffect } from 'react';
+import { useState,  } from 'react';
 import { useMutation } from '@apollo/client';
 import { ADD_POST } from '../utils/mutations';
 import { Button, Input, Textarea, Card, CardBody, Alert } from '@material-tailwind/react';
-import { useNavigate } from 'react-router-dom';
-import Auth from '../utils/auth';
+import { useLogInRedirect } from '../utils/log-in-redirection';
 export default function NewPost() {
-    const navigate = useNavigate(); //use of useNavigate hook and Auth to redirect user to login page if not logged in
-    useEffect(() => {
-        if (!Auth.loggedIn()) {
-            navigate('/login');
-        }
-    })
+    useLogInRedirect(); //redirects to login page if not logged in
     //holds character count state
     const [characterCount, setCharacterCount] = useState(0);
     const [formState, setFormState] = useState({ postTitle: '', postText: '' });
