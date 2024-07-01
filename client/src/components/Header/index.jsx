@@ -48,7 +48,7 @@ export default function Header() {
           </div>
         </div>
         <nav className="w-2/3">
-          <ul className="navbar flex justify-between">
+          <ul className="navbar flex justify-between lg:ml-9">
             <li className="navLink text-lg font-thin hover:text-gray-700"><Link to="/">HOME</Link></li>
             {Auth.loggedIn() ? (
               <>
