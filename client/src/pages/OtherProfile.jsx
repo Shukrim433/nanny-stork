@@ -1,6 +1,6 @@
 import { useParams, } from 'react-router-dom';
 import { useQuery, useMutation, } from '@apollo/client';
-import { ADD_FRIEND } from '../utils/mutations';
+import { ADD_FRIEND, REMOVE_FRIEND } from '../utils/mutations';
 import { QUERY_USER } from '../utils/queries';
 import PostsList from '../components/PostList'
 import { Button } from "@material-tailwind/react";
@@ -15,6 +15,7 @@ const OtherProfile = () => {
         variables: { username: username }
     })
     const [addFriend, { loading: mutationLoading, error: mutationError }] = useMutation(ADD_FRIEND);
+    const [removeFriend, { loading: removeLoading, error: removeError }] = useMutation(REMOVE_FRIEND);
 
     const user = data?.user || {};
     
@@ -36,6 +37,25 @@ const OtherProfile = () => {
             }
         }
     };
+
+    const useRemoveFriend = async () => {
+        try {
+            const friendName = user.username; 
+            console.log(`Removing friend: ${friendName}`); 
+            await removeFriend({
+                variables: { friendName: friendName }
+            });
+            // Update UI or cache here upon success
+        } catch (err) {
+            console.error("Error removing friend:", err);
+            if (err.networkError) {
+                console.log(`Network error: ${err.networkError.message}`);
+            }
+            if (err.graphQLErrors) {
+                err.graphQLErrors.forEach(e => console.log(`GraphQL error: ${e.message}`));
+            }
+        }
+    }
     
    
 
