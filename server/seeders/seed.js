@@ -12,21 +12,22 @@ db.once('open', async () => {
     await User.create(userSeeds);
 
     for (let i = 0; i < postSeeds.length; i++) {
+      console.log('Creating post:', postSeeds[i]); // Debugging line
       const { _id, postAuthor } = await Post.create(postSeeds[i]);
       const user = await User.findOneAndUpdate(
         { username: postAuthor },
-        {
-          $addToSet: {
-            posts: _id,
-          },
-        }
+        { $addToSet: { posts: _id } },
+        { new: true } // Return the updated document
       );
+      if (!user) {
+        console.error(`No user found for username: ${postAuthor}`);
+      }
     }
   } catch (err) {
-    console.error(err);
+    console.error('Error during seeding:', err);
     process.exit(1);
   }
 
-  console.log('all done!');
+  console.log('All done!');
   process.exit(0);
 });

@@ -162,12 +162,12 @@ const resolvers = {
         },
         // mutation to update a user by adding another user to their "friends" array (only if logged in)
         // addFriend(username: ID!): User
-        addFriend: async (parent, { friendId }, context) => {
+        addFriend: async (parent, { friendName }, context) => {
             if (context.user) {
                 try {
                    return await User.findOneAndUpdate(
                         { _id: context.user._id },
-                        { $addToSet: { friends: friendId } },  
+                        { $addToSet: { friends: friendName } },  
                         { new: true }
                     ) 
 
