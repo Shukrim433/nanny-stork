@@ -26,7 +26,6 @@ const OtherProfile = () => {
             await addFriend({
                 variables: { friendName: friendName }
             });
-            // Update UI or cache here upon success
         } catch (err) {
             console.error("Error adding friend:", err);
             if (err.networkError) {
@@ -45,7 +44,6 @@ const OtherProfile = () => {
             await removeFriend({
                 variables: { friendName: friendName }
             });
-            // Update UI or cache here upon success
         } catch (err) {
             console.error("Error removing friend:", err);
             if (err.networkError) {
