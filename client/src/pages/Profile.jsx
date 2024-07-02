@@ -5,13 +5,16 @@ import { Button, Input, Textarea, Card, CardBody, Alert } from '@material-tailwi
 import PostsList from '../components/PostList'
 import PregnancyTrackerForm from '../components/PregnancyTrackerForm';
 import PregnancyTracker from '../components/PregnancyTracker'
+import { useLogInRedirect } from '../utils/log-in-redirection';
 
 
 import Auth from '../utils/auth';
 
 
 const Profile = () => {
+
   
+  useLogInRedirect(); //redirects to login page if not logged in
   // state for showing form boolean
   const [showForm, setShowForm] = useState(false);
 

@@ -57,8 +57,8 @@ const typeDefs = `
     login(email: String!, password: String!): Auth
     addPost(postText: String!, postTitle: String): Post
     addComment(postId: ID!, commentText: String!): Post
-    addFriend(friendId: ID!): User
-    removeFriend(friendId: ID!): User
+    addFriend(friendName: String!): User
+    removeFriend(friendName: String!): User
     removePost(postId: ID!): Post
     removeComment(postId: ID!, commentId: ID!): Post
     addPregnancyTracker(stage: Stage!, dueDate: String, birthDate: String): PregnancyTracker
