@@ -85,3 +85,6 @@ mutation AddFriend($friendName: String!) {
   }
 }
 `;
+
+export const REMOVE_FRIEND = gql`
+`

@@ -241,20 +241,31 @@ const resolvers = {
         },
         // mutation to update a user by removing another user from their "friends" array (only if logged in)
         // removeFriend(friendId: ID!): User
-        removeFriend: async (parent, { friendId }, context) => {
-            if (context.user) {
-                try {
-                    return await User.findOneAndUpdate(
-                        { _id: context.user._id },
-                        { $pull: {friends: friendId} },  // removes the friend's _id from the user's friends array
-                        { new: true }
-                    )
-                } catch {
-                    console.error("Server Error removing friend from user:", error)
-                }
+        removeFriend: async (parent, { friendName }, context) => { // copied from addFriend with the change of pull instead of addToSet
+            if (!context.user) {
+              throw new AuthenticationError('You must be logged in to perform this action');
             }
-            throw AuthenticationError;
-        },
+            try {
+              const friend = await User.findOne({ username: friendName });
+              if (!friend) {
+                throw new Error('Friend not found');
+              }
+              const updatedUser = await User.findOneAndUpdate(
+                { _id: context.user._id },
+                { $pull: { friends: friend._id } }, // Remove by friend's _id
+                { new: true }
+              ).populate('friends'); 
+          
+              if (!updatedUser) {
+                throw new Error('User not found after update');
+              }
+          
+              return updatedUser;
+            } catch (error) {
+              console.error("Server Error removing friend from user:", error);
+              throw new Error('Error removing friend');
+            }
+          },
         // mutation to delete a post and update a specific user by removing the deleted post from their "posts" array (only if logged in)
         // removePost(postId: ID!): Post
         removePost: async (parent, { postId }, context) => {
