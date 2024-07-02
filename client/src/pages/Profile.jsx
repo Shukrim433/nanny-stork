@@ -6,6 +6,7 @@ import PostsList from '../components/PostList'
 import PregnancyTrackerForm from '../components/PregnancyTrackerForm';
 import PregnancyTracker from '../components/PregnancyTracker'
 
+
 import Auth from '../utils/auth';
 
 
@@ -34,10 +35,16 @@ const Profile = () => {
   }
 
     return (
+      <>
       <div>
         {Auth.loggedIn() ? (
           <div>
-            <Button 
+          <h2>Welcome, {Auth.getProfile().authenticatedPerson.username}!</h2>
+          <div>
+            {/* if user already has a tracker, display tracker, else show addPregTracker btn */}
+            {user.tracker? (
+              <PregnancyTracker/>
+            ): (<Button 
               color="lightBlue" 
               buttonType="filled" 
               size="regular" 
@@ -49,20 +56,17 @@ const Profile = () => {
             >
             add pregnancy tracker
             </Button>
-            
-          {/* only show pregnancy tracker when showFormstate is true */}
-          {showForm && <PregnancyTrackerForm/>}
-
-          <h1>Your Profile</h1>
+          )}
+            {/* only show pregnancy tracker when showFormstate is true */}
+            {showForm && <PregnancyTrackerForm/>}
+          </div>
           <div>
               <h2>Your Posts:</h2>
               <PostsList
               posts={user.posts}
               />
           </div>
-          <div>
             
-          </div>
       </div>
         ) : (
           <p>
@@ -72,6 +76,7 @@ const Profile = () => {
         )}
 
      </div>
+     </>
     );
 }
 
