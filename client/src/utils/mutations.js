@@ -87,4 +87,13 @@ mutation AddFriend($friendName: String!) {
 `;
 
 export const REMOVE_FRIEND = gql`
-`
+mutation RemoveFriend($friendName: String!) {
+  removeFriend(friendName: $friendName) {
+    _id
+    friends {
+      _id
+      username
+    }
+  }
+}
+`;
