@@ -56,6 +56,19 @@ export const ADD_POST = gql`
   }
 `;
 
+// updatePregnancyTracker(trackerId: ID!, stage: Stage, dueDate: String, birthDate: String): PregnancyTracker
+export const UPDATE_PREGNANCY_TRACKER = gql`
+  mutation updatePregnancyTracker($trackerId: ID!, $stage: Stage, $dueDate: String, $birthDate: String) {
+    updatePregnancyTracker(trackerId: $trackerId, stage: $stage, dueDate: $dueDate, birthDate: $birthDate) {
+      _id
+      userId
+      stage
+      dueDate
+      birthDate
+    }
+  }
+`
+
 // addComment(postId: ID!, commentText: String!): Post
 export const ADD_COMMENT = gql`
   mutation addComment($postId: ID!, $commentText: String!) {
