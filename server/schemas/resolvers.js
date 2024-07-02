@@ -163,20 +163,31 @@ const resolvers = {
         // mutation to update a user by adding another user to their "friends" array (only if logged in)
         // addFriend(username: ID!): User
         addFriend: async (parent, { friendName }, context) => {
-            if (context.user) {
-                try {
-                   return await User.findOneAndUpdate(
-                        { _id: context.user._id },
-                        { $addToSet: { friends: friendName } },  
-                        { new: true }
-                    ) 
-
-                } catch(error) {
-                    console.error("Server Error adding friend to user:", error)
-                }
+            if (!context.user) {
+              throw new AuthenticationError('You must be logged in to perform this action');
             }
-            throw AuthenticationError;
-        },
+            try {
+              const friend = await User.findOne({ username: friendName });
+              if (!friend) {
+                throw new Error('Friend not found');
+              }
+              // Add the friend's _id to the current user's friends array
+              const updatedUser = await User.findOneAndUpdate(
+                { _id: context.user._id },
+                { $addToSet: { friends: friend._id } }, // Add friend's _id as users is an array of objects
+                { new: true }
+              ).populate('friends'); // Populate the friends field to match the expected return type
+          
+              if (!updatedUser) {
+                throw new Error('User not found after update');
+              }
+          
+              return updatedUser;
+            } catch (error) {
+              console.error("Server Error adding friend to user:", error);
+              throw new Error('Error adding friend');
+            }
+          },
         // mutation to create a pregnancy tracker (the associated user wil be the user currently logged in)
         // addPregnancyTracker(stage: Stage!, dueDate: String, birthDate: String): PregnancyTracker
         addPregnancyTracker: async (parent, { stage, dueDate, birthDate }, context) => {
