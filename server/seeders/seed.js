@@ -12,12 +12,12 @@ db.once('open', async () => {
     await User.create(userSeeds);
 
     for (let i = 0; i < postSeeds.length; i++) {
-      console.log('Creating post:', postSeeds[i]); // Debugging line
+      console.log('Creating post:', postSeeds[i]); 
       const { _id, postAuthor } = await Post.create(postSeeds[i]);
       const user = await User.findOneAndUpdate(
         { username: postAuthor },
         { $addToSet: { posts: _id } },
-        { new: true } // Return the updated document
+        { new: true } 
       );
       if (!user) {
         console.error(`No user found for username: ${postAuthor}`);
