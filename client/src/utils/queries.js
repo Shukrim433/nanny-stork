@@ -52,6 +52,19 @@ export const QUERY_ME = gql`
   }
 `;
 
+// searchPosts(query: String!): [Post]
+export const SEARCH_POSTS = gql`
+  query searchPosts($query: String!) {
+    searchPosts(query: $query) {
+       _id
+      postTitle
+      postText
+      postAuthor
+      createdAt
+    }
+  }
+`
+
 // post(postId: ID!): Post
 export const QUERY_SINGLE_POST = gql`
   query getSinglePost($postId: ID!) {

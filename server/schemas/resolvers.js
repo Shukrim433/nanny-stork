@@ -24,6 +24,20 @@ const resolvers = {
         console.error("Server Error fetching user:", error);
       }
     },
+    // searchPosts(query: String!): [Post]
+    searchPosts:  async (parent, { query }) => {
+      try {
+        return Post.find({
+          $or: [
+            { postTitle: { $regex: query, $options: 'i' } },
+            { postText: { $regex: query, $options: 'i' } },
+            { postAuthor: { $regex: query, $options: 'i' } }
+          ]
+        })
+      } catch(error) {
+        console.error("Server Error fetching searchPosts:", error);
+      }
+    },
 
     // query to get an array of all the posts of a specific user (or if no username is passed into this resolver it will just get all posts by all users = "{}" empty filter)
     // posts(username: String): [Post]

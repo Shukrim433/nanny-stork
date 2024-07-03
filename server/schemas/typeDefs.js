@@ -50,6 +50,7 @@ const typeDefs = `
     me: User
     pregnancyTrackers: [PregnancyTracker]
     pregnancyTracker(trackerId: ID!): PregnancyTracker
+    searchPosts(query: String!): [Post]
   }
 
   type Mutation {
