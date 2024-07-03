@@ -4,6 +4,8 @@ import { ADD_FRIEND, REMOVE_FRIEND } from '../utils/mutations';
 import { QUERY_USER } from '../utils/queries';
 import PostsList from '../components/PostList'
 import { Button } from "@material-tailwind/react";
+import OtherPregnancyTracker from '../components/OtherPregnancyTracker'
+
 
 const OtherProfile = () => {
     // use useParams() hook to get the value of the route param in the url `/profiles/:username`
@@ -65,6 +67,10 @@ const OtherProfile = () => {
         <div>
             <h1>{user.username}'s Profile</h1>
             <Button onClick={useAddFriend} loading={mutationLoading} >Add Friend</Button>
+            <div>
+               <OtherPregnancyTracker username={username} />
+            </div>
+
             <div>
                 <h2>{user.username}'s posts:</h2>
                 <PostsList
