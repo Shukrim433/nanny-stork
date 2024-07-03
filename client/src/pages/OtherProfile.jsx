@@ -12,7 +12,7 @@ const OtherProfile = () => {
     const { username } = useParams()
 
     // QUERY_USER and QUERY_ME query
-    const { loading, data } = useQuery(QUERY_USER, {
+    const { loading: pregnancyTrackerLoading, data } = useQuery(QUERY_USER, {
     // pass the URL parameter(the username) to the query
         variables: { username: username }
     })
@@ -66,7 +66,7 @@ const OtherProfile = () => {
     
    
 
-    if (loading|| myLoading) {
+    if (pregnancyTrackerLoading|| myLoading) {
         return <div>Loading...</div>
     }
 
@@ -79,7 +79,7 @@ const OtherProfile = () => {
                 <Button onClick={useRemoveFriend}>Remove Friend</Button>
             )}
             <div>
-               <OtherPregnancyTracker username={username} />
+            { user.tracker && <OtherPregnancyTracker user={user} />}
             </div>
 
             <div>
