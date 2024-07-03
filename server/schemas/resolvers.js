@@ -15,6 +15,7 @@ const resolvers = {
     // query to get a single user object by their username and their associated posts and friends arrays
     // user(username: String!): User
     user: async (parent, { username }) => {
+        console.log(username, "username in resolver")
       try {
         return await User.findOne({ username })
           .populate("posts")
@@ -69,7 +70,7 @@ const resolvers = {
       if (context.user) {
         try {
           return User.findOne({ _id: context.user._id })
-            .populate("thoughts")
+            .populate("posts")
             .populate("friends");
         } catch (error) {
           console.error("Server Error fetching me/loggedin user:", error);
