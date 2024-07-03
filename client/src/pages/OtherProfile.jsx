@@ -3,6 +3,8 @@ import { useQuery } from '@apollo/client';
 
 import { QUERY_USER } from '../utils/queries';
 import PostsList from '../components/PostList'
+import OtherPregnancyTracker from '../components/OtherPregnancyTracker'
+
 
 const OtherProfile = () => {
     // use useParams() hook to get the value of the route param in the url `/profiles/:username`
@@ -24,6 +26,10 @@ const OtherProfile = () => {
     return (
         <div>
             <h1>{user.username}'s Profile</h1>
+
+            <div>
+               <OtherPregnancyTracker username={username} />
+            </div>
 
             <div>
                 <h2>{user.username}'s posts:</h2>

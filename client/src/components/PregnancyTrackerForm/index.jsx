@@ -1,14 +1,23 @@
-import React, { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useMutation } from '@apollo/client';
-import { ADD_PREGNANCY_TRACKER } from '../../utils/mutations';
+import { ADD_PREGNANCY_TRACKER, UPDATE_PREGNANCY_TRACKER } from '../../utils/mutations';
 import { Button, Input, Textarea, Card, CardBody, Alert } from '@material-tailwind/react';
 import Auth from '../../utils/auth';
 
-const PregnancyTrackerForm = () => {
+const PregnancyTrackerForm = ({ initialData, trackerId }) => {
     // holds PregnancyTrackerForm form state
     const [formState, setFormState] = useState({ stage: '', dueDate: '', birthDate: '' });
-    // ADD_PREGNANCY_TRACKER mutation
-    const [addPregnancyTracker, { loading, error }] = useMutation(ADD_PREGNANCY_TRACKER);
+
+    const [addPregnancyTracker, {  loading: adding, error: addError  }] = useMutation(ADD_PREGNANCY_TRACKER);
+
+    const [updatePregnancyTracker, { loading: updating, error: updateError }] = useMutation(UPDATE_PREGNANCY_TRACKER);
+
+    // runs everytime the initialData state/prop runs
+    useEffect(() => {
+        if (initialData) {
+          setFormState(initialData);
+        }
+    }, [initialData])
 
     // update formState based on what user inputs (OnChange event)
     const handleChange = (event) => {
@@ -26,16 +35,35 @@ const PregnancyTrackerForm = () => {
         e.preventDefault();
 
         try {
-            await addPregnancyTracker({ variables: { ...formState } });
-            // Clear the textarea after successful submission
+            if (initialData) {
+                await updatePregnancyTracker({ variables: { trackerId, ...formState } })
+            } else {
+                await addPregnancyTracker({ variables: { ...formState } })
+            }
             setFormState({
                 stage: '',
                 dueDate: '',
                 birthDate: ''
             });
+            window.location.assign('/me')
         } catch(error) {
-            console.error("Error adding pregnancy tracker:", err);
+            console.error("Error adding pregnancy tracker:", error);
         }
+
+    }
+
+    // determine if the submit button should be disabled
+    const isSubmitDisabled = () => {
+        if (formState.stage === '') {
+            return true
+        }
+        if (formState.stage === 'pregnancy' && formState.dueDate === '') {
+            return true
+        }
+        if (formState.stage === 'postpartum' && formState.birthDate === '') {
+            return true
+        }
+        return false
     }
 
     return (
@@ -80,10 +108,11 @@ const PregnancyTrackerForm = () => {
                         />
                     </div>
                 )}
-                <button type="submit" disabled={loading}>
-                    {loading ? 'Submitting...' : 'Submit'}
+                <button type="submit" disabled={isSubmitDisabled() || adding || updating}>
+                    {adding || updating ? 'Submitting...' : 'Submit'}
                 </button>
-                {error && <p>Error submitting the form: {error.message}</p>}
+                {addError && <p>Error adding the form: {addError.message}</p>}
+                {updateError && <p>Error updating the form: {updateError.message}</p>}
             </form>
             </CardBody>
         </Card>
@@ -91,3 +120,5 @@ const PregnancyTrackerForm = () => {
 }
 
 export default PregnancyTrackerForm
+
+// 
