@@ -91,7 +91,22 @@ export const ADD_FRIEND = gql`
 mutation AddFriend($friendName: String!) {
   addFriend(friendName: $friendName) {
     _id
-    friends
+    friends {
+      _id
+      username
+    }
+  }
+}
+`;
+
+export const REMOVE_FRIEND = gql`
+mutation RemoveFriend($friendName: String!) {
+  removeFriend(friendName: $friendName) {
+    _id
+    friends {
+      _id
+      username
+    }
   }
 }
 `;
