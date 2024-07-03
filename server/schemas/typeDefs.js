@@ -5,7 +5,7 @@ const typeDefs = `
     email: String
     posts: [Post]!
     friends: [User]!
-    tracker: PregnancyTracker!
+    tracker: PregnancyTracker
   }
 
   type Post {
