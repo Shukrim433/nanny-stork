@@ -5,7 +5,7 @@ const typeDefs = `
     email: String
     posts: [Post]!
     friends: [User]!
-    tracker: PregnancyTracker!
+    tracker: PregnancyTracker
   }
 
   type Post {
@@ -50,6 +50,7 @@ const typeDefs = `
     me: User
     pregnancyTrackers: [PregnancyTracker]
     pregnancyTracker(trackerId: ID!): PregnancyTracker
+    searchPosts(query: String!): [Post]
   }
 
   type Mutation {
