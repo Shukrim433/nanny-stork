@@ -33,6 +33,9 @@ export default function Home() {
         <button>  {/* temporary button to take me to the posts page */}
           <Link to={`/posts`} > POSTS PAGE</Link>
         </button>
+        <button>  {/* temporary button to take me to the posts page */}
+          <Link to={`/nanny-bot`} > AI PAGE</Link>
+        </button>
 
         <Footer />
       </div>
