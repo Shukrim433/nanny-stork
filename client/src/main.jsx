@@ -12,6 +12,7 @@ import OtherProfile from './pages/OtherProfile.jsx'
 import Error from './pages/Error';
 import NewPost from './pages/NewPost';
 import Posts from './pages/Posts.jsx'
+import Ai from './pages/Ai.jsx'
 
 const router = createBrowserRouter([
   {
@@ -46,6 +47,10 @@ const router = createBrowserRouter([
         path: '/newPost',
         element: <NewPost />
       },
+      {
+        path: '/nanny-bot',
+        element: <Ai />
+      }
     ]
   }
 ])

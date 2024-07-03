@@ -4,10 +4,9 @@ import Credits from '../components/Credits'
 import HomeOptions from '../components/HomeOptions'
 import TypeWriterText from '../components/TypeWriterTextEffect'
 
-import answers from './answers/bootcamp.json'
 //import answers from './answers/fl1.json'
 
-export default function App() {
+export default function Ai() {
 
   const [search, setSearch] = useState('')
   const [showMore, setShowMore] = useState(false)
