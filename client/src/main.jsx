@@ -2,6 +2,14 @@ import ReactDOM from 'react-dom/client'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom/dist'
 import './index.css'
 
+import TimeAgo from 'javascript-time-ago'
+
+import en from 'javascript-time-ago/locale/en'
+import ru from 'javascript-time-ago/locale/ru'
+
+TimeAgo.addDefaultLocale(en)
+TimeAgo.addLocale(ru)
+
 import App from './App.jsx'
 import Home from './pages/Home';
 import Signup from './pages/Signup';
