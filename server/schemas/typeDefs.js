@@ -5,12 +5,15 @@ const typeDefs = `
     email: String
     posts: [Post]!
     friends: [User]!
+    tracker: PregnancyTracker
   }
 
   type Post {
     _id: ID
+    postTitle: String
     postText: String
     postAuthor: String
+    postCategory: String
     createdAt: String
     comments: [Comment]!
   }
@@ -48,15 +51,17 @@ const typeDefs = `
     me: User
     pregnancyTrackers: [PregnancyTracker]
     pregnancyTracker(trackerId: ID!): PregnancyTracker
+    searchPosts(query: String): [Post]
+    searchCategories(category: String) : [Post]
   }
 
   type Mutation {
     addUser(username: String!, email: String!, password: String!): Auth
     login(email: String!, password: String!): Auth
-    addPost(postText: String!): Post
+    addPost(postText: String!, postTitle: String): Post
     addComment(postId: ID!, commentText: String!): Post
-    addFriend(friendId: ID!): User
-    removeFriend(friendId: ID!): User
+    addFriend(friendName: String!): User
+    removeFriend(friendName: String!): User
     removePost(postId: ID!): Post
     removeComment(postId: ID!, commentId: ID!): Post
     addPregnancyTracker(stage: Stage!, dueDate: String, birthDate: String): PregnancyTracker
