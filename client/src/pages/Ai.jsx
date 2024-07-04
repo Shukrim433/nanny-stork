@@ -23,17 +23,17 @@ export default function Ai() {
   }
 
   return (
-    <main className="flex flex-col items-center justify-center w-full h-screen bg-gray-900">
-      <header className="flex items-center justify-center w-1/2 py-6 text-white bg-gray-900">
+    <main className="flex flex-col items-center justify-center w-full h-screen bg-white overflow-hidden">
+      <header className="flex items-center justify-center w-1/2 py-6 text-black bg-white">
         <h1 className="text-4xl font-bold">Nanny Stork</h1>
       </header>
-      <section className="flex flex-col items-center justify-center w-1/2 py-6 text-white bg-gray-900">
+      <section className="flex flex-col items-center justify-center w-1/2 py-6 text-black bg-white overflow-auto" style={{ maxHeight: 'calc(100vh - 12rem)' }}>
         {search.length === 0 ?
           <HomeOptions />
           :
           responses.map((item, index) => (
             <div key={index} className='flex flex-col items-center justify-center w-full mt-10'>
-              <p className="text-white">{item.query}</p>
+              <p className="text-black">{item.query}</p>
               <TypeWriterText text={item.response} onTextCompleted={() => setShowMore(true)} />
             </div>
           ))
@@ -42,7 +42,7 @@ export default function Ai() {
           <SearchInput onSearch={onSearch} />
         </div>
       </section>
-      <footer className="flex items-center justify-center w-1/2 py-6 text-white bg-gray-900">
+      <footer className="flex items-center justify-center w-1/2 py-6 text-black bg-white">
         <Credits />
       </footer>
     </main>
