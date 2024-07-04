@@ -81,8 +81,8 @@ const Posts = () => {
 </div>
             </form>
         </div>
-        <div className="container">
-            <div className="posts-card">
+        <div className="container w-100">
+            <div className="posts-card w-100">
                 {loading || searchLoading ? (
                     <div>Loading...</div>
                 ) : error || searchError ? (
