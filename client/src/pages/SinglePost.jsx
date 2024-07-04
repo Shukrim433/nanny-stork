@@ -4,6 +4,7 @@ import { useQuery } from '@apollo/client';
 import CommentForm from '../components/CommentForm';
 import CommentList from '../components/CommentList'
 import { QUERY_SINGLE_POST } from '../utils/queries';
+import ReactTimeAgo from 'react-time-ago'
 import Auth from '../utils/auth'; 
 
 
@@ -36,11 +37,12 @@ const SinglePost = () => {
           {post.postAuthor}
           </Link>
         </p>
+        <p> posted <ReactTimeAgo date={new Date(parseInt(post.createdAt))} locale="en-US" /> </p> <br/>
         <h2>{post.postTitle}</h2>
         <div>
           <p>{post.postText}</p>
         </div>
-        <p> posted on {post.createdAt}</p> <br/>
+        
 
         <div>
         <CommentList comments={post.comments} post={post}/>

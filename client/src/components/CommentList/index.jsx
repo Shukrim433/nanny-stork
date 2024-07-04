@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import ReactTimeAgo from 'react-time-ago'
 // comments = [] is a default value - if the comments prop is not provided or is undefined when the CommentList component is called, 
 // comments will default to an empty array [].
 
@@ -21,8 +22,8 @@ const CommentList = ({comments = [], post}) => {
                         <Link to={`/profiles/${comment.commentAuthor}`} > 
                         {comment.commentAuthor}
                          </Link>
-                            </p> commented{' '}
-                        <span> on {comment.createdAt}</span>
+                            </p> 
+                        <span> <ReactTimeAgo date={new Date(parseInt(comment.createdAt))} locale="en-US" /> </span>
                         </div>
                         <div>
                             <p>{comment.commentText}</p>
