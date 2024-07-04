@@ -10,11 +10,15 @@ export default function Ai() {
 
   const [search, setSearch] = useState('');
   const [showMore, setShowMore] = useState(false);
-  const [responseText, setResponseText] = useState('');
+  const [responses, setResponses] = useState([]);
 
   const onSearch = (searchText) => {
-    const response = answers.keywords[searchText] || answers.default;
-    setResponseText(response);
+    const searchTextLower = searchText.toLowerCase();
+    const keyword = Object.keys(answers.keywords).find(key =>
+      searchTextLower.includes(key.toLowerCase())
+    );
+    const response = keyword ? answers.keywords[keyword] : answers.default;
+    setResponses(prevResponses => [...prevResponses, { query: searchText, response }]);
     setSearch(searchText);
   }
 
@@ -27,16 +31,13 @@ export default function Ai() {
         {search.length === 0 ?
           <HomeOptions />
           :
-          <>
-            <div className='flex items-center justify-center w-full mt-10'>
-              <TypeWriterText text={responseText} onTextCompleted={setShowMore} />
+          responses.map((item, index) => (
+            <div key={index} className='flex flex-col items-center justify-center w-full mt-10'>
+              <p className="text-white">{item.query}</p>
+              <TypeWriterText text={item.response} onTextCompleted={() => setShowMore(true)} />
             </div>
-            {showMore &&
-              <div className='flex items-center justify-center w-full mt-10'>
-                {/* Optionally, handle additional responses or actions when 'showMore' is true */}
-              </div>
-            }
-          </>}
+          ))
+        }
         <div className='flex items-center justify-center w-full mt-10'>
           <SearchInput onSearch={onSearch} />
         </div>
@@ -45,5 +46,5 @@ export default function Ai() {
         <Credits />
       </footer>
     </main>
-  )
+  );
 }

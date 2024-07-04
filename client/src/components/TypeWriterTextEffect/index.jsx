@@ -5,7 +5,7 @@ function TypeWriterText({ text, onTextCompleted }) {
     return (
         <Typewriter
             options={{
-                delay: 30,
+                delay: 15,
                 autoStart: true
             }}
             onInit={(typewriter) => {
