@@ -13,7 +13,7 @@ export default function Ai() {
   const [responseText, setResponseText] = useState('');
 
   const onSearch = (searchText) => {
-    const response = answers[searchText] || answers.default;
+    const response = answers.keywords[searchText] || answers.default;
     setResponseText(response);
     setSearch(searchText);
   }
