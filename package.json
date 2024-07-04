@@ -21,6 +21,8 @@
     "tailwindcss": "^3.4.4"
   },
   "dependencies": {
-    "@material-tailwind/react": "^2.1.9"
+    "@material-tailwind/react": "^2.1.9",
+    "javascript-time-ago": "^2.5.10",
+    "react-time-ago": "^7.3.3"
   }
 }

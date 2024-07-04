@@ -24,13 +24,21 @@ const resolvers = {
         console.error("Server Error fetching user:", error);
       }
     },
+    // searchCategories(category: String) : [Post]
+    searchCategories: async (parent, { category }) => {
+      try {
+        Post.find({postCategory: category})
+      } catch(error) {
+        console.error("Server Error fetching posts by category:", error);
+      }
+    },
     // searchPosts(query: String!): [Post]
     searchPosts:  async (parent, { query }) => {
       try {
         return Post.find({
           $or: [
             { postTitle: { $regex: query, $options: 'i' } },
-            { postText: { $regex: query, $options: 'i' } },
+             { postCategory: { $regex: query, $options: 'i' } },  
             { postAuthor: { $regex: query, $options: 'i' } }
           ]
         })

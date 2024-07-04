@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import './postList.css';
+import ReactTimeAgo from 'react-time-ago'
 import Auth from '../../utils/auth';
 
 const PostList = ({ posts, title}) => {
@@ -22,19 +23,21 @@ const PostList = ({ posts, title}) => {
                             <Link to={ post.postAuthor === Auth.getProfile().authenticatedPerson.username ? (`/me`) : (`/profiles/${post.postAuthor}`)} > 
                             {post.postAuthor}
                             </Link>
+                            
                         </p> 
+                        <p> posted <ReactTimeAgo date={new Date(parseInt(post.createdAt))} locale="en-US" /> </p> <br/>
                         {/* click on post title it take you to the posts individual page */}
                         <h2>
                             <Link to={`/posts/${post._id}`}>
                             {post.postTitle}
                             </Link>
-                        </h2>
+                        </h2> <br/>
                         
                         <div>
                             <p>{post.postText}</p>
                         </div>
-
-                        <p> posted on {post.createdAt}</p>
+                        
+                        
                     </div>
                 ))
             }
