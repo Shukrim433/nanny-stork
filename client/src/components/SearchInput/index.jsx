@@ -19,22 +19,16 @@ const SearchInput = ({ onSearch }) => {
             <div className="flex flex-col w-full py-2 flex-grow md:py-3 md:pl-4 relative bg-white dark:bg-gray-700 rounded-md shadow-lg">
                 <Input
                     type="text"
-                    color="lightBlue"
-                    size="regular"
-                    outline={true}
+                    color='pink'
+                    size="md"
                     placeholder="Send a message..."
                     value={search}
                     onChange={handleChange}
                 />
                 <Button
-                    color="lightBlue"
-                    buttonType="filled"
-                    size="regular"
-                    rounded={false}
-                    block={false}
-                    iconOnly={true}
-                    ripple="light"
-                    className="absolute bottom-1.5 md:bottom-2.5 right-1 md:right-2"
+                    style={{ background: '#f48fb1' }}
+                    size="sm"
+                    className="absolute bottom-1.5 md:bottom-2.5 right-1 md:right-2 mb-1"
                     onClick={onClickSearch}
                 >
                     <svg stroke="currentColor" fill="none" strokeWidth="2" viewBox="0 0 24 24" strokeLinecap="round" strokeLinejoin="round" className="h-4 w-4 mr-1" xmlns="http://www.w3.org/2000/svg">

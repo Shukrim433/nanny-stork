@@ -4,14 +4,17 @@ import Credits from '../components/Credits';
 import HomeOptions from '../components/HomeOptions';
 import TypeWriterText from '../components/TypeWriterTextEffect';
 
-//import answers from './answers/fl1.json';
+import answers from '../utils/answers.json';
 
 export default function Ai() {
 
   const [search, setSearch] = useState('');
   const [showMore, setShowMore] = useState(false);
+  const [responseText, setResponseText] = useState('');
 
   const onSearch = (searchText) => {
+    const response = answers[searchText] || answers.default;
+    setResponseText(response);
     setSearch(searchText);
   }
 
@@ -21,24 +24,22 @@ export default function Ai() {
         <h1 className="text-4xl font-bold">Nanny Stork</h1>
       </header>
       <section className="flex flex-col items-center justify-center w-1/2 py-6 text-white bg-gray-900">
-
         {search.length === 0 ?
           <HomeOptions />
           :
           <>
             <div className='flex items-center justify-center w-full mt-10'>
-              <TypeWriterText text={answers.answer1} onTextCompleted={setShowMore} />
+              <TypeWriterText text={responseText} onTextCompleted={setShowMore} />
             </div>
             {showMore &&
               <div className='flex items-center justify-center w-full mt-10'>
-                <TypeWriterText text={answers.answer2} onTextCompleted={setShowMore} />
+                {/* Optionally, handle additional responses or actions when 'showMore' is true */}
               </div>
             }
           </>}
         <div className='flex items-center justify-center w-full mt-10'>
           <SearchInput onSearch={onSearch} />
         </div>
-
       </section>
       <footer className="flex items-center justify-center w-1/2 py-6 text-white bg-gray-900">
         <Credits />
