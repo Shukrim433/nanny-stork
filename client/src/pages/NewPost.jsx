@@ -7,7 +7,7 @@ export default function NewPost() {
     useLogInRedirect(); //redirects to login page if not logged in
     //holds character count state
     const [characterCount, setCharacterCount] = useState(0);
-    const [formState, setFormState] = useState({ postTitle: '', postText: '' });
+    const [formState, setFormState] = useState({ postTitle: '', postText: '', postCategory: '' });
     const [addPost, { loading, error }] = useMutation(ADD_POST);
 
     // update formState based on what user inputs (OnChange event)
@@ -42,6 +42,7 @@ export default function NewPost() {
             setFormState({
                 postTitle: '',
                 postText: '',
+                postCategory: ''
             });
         } catch (err) {
             console.error("Error adding post:", err);
@@ -71,6 +72,21 @@ export default function NewPost() {
                      onChange={handleChange} 
                      required 
                     /> <br/>   {/* the placeholder wont show up in the input area */} {/* put the br for a line break */}
+                    <div>
+                        <select
+                        name="postCategory"
+                        value={formState.postCategory}
+                        onChange={handleChange}
+                        >
+                            <option value="">category</option>
+                            <option value="Health and Development">Health and Development</option>
+                            <option value="Sleep and Routine">Sleep and Routine</option>
+                            <option value="Feeding and Nutrition">Feeding and Nutrition</option>
+                            <option value="Parental Well-being">Parental Well-being</option>
+                            <option value="Education">Education</option>
+                            <option value="Finance">Finance</option>
+                        </select>
+                    </div> <br/>
                     <Textarea 
                         color="lightBlue" 
                         size="regular" 
