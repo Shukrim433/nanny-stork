@@ -52,6 +52,7 @@ export default function Header() {
             <li className="navLink text-lg font-thin hover:text-gray-700"><Link to="/">HOME</Link></li>
             {Auth.loggedIn() ? (
               <>
+                <li className="navLink text-lg font-thin hover:text-gray-700"><Link to="/about">ABOUT US</Link></li>
                 <li className="navLink text-lg font-thin hover:text-gray-700"><Link to="/me">PROFILE</Link></li>
                 <li className="navLink text-lg font-thin hover:text-gray-700"><Link to="/newPost">NEW POST</Link></li>
               </>
