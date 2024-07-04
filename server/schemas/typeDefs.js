@@ -13,6 +13,7 @@ const typeDefs = `
     postTitle: String
     postText: String
     postAuthor: String
+    postCategory: String
     createdAt: String
     comments: [Comment]!
   }
@@ -50,7 +51,8 @@ const typeDefs = `
     me: User
     pregnancyTrackers: [PregnancyTracker]
     pregnancyTracker(trackerId: ID!): PregnancyTracker
-    searchPosts(query: String!): [Post]
+    searchPosts(query: String): [Post]
+    searchCategories(category: String) : [Post]
   }
 
   type Mutation {

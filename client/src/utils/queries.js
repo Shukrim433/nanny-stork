@@ -12,6 +12,7 @@ export const QUERY_USER = gql`
         postTitle
         postText
         postAuthor
+        postCategory
         createdAt
       }
       friends {
@@ -60,6 +61,20 @@ export const SEARCH_POSTS = gql`
       postTitle
       postText
       postAuthor
+      postCategory
+      createdAt
+    }
+  }
+`
+// searchCategories(category: String) : [Post]
+export const SEARCH_CATEGORIES = gql`
+  query searchCategories($category: String) {
+    searchCategories(category: $category) {
+       _id
+      postTitle
+      postText
+      postAuthor
+      postCategory
       createdAt
     }
   }
@@ -73,6 +88,7 @@ export const QUERY_SINGLE_POST = gql`
       postTitle
       postText
       postAuthor
+      postCategory
       createdAt
       comments {
         _id
@@ -107,6 +123,7 @@ export const QUERY_POSTS = gql`
       postTitle
       postText
       postAuthor
+      postCategory
       createdAt
     }
   }
