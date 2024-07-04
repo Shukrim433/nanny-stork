@@ -74,7 +74,7 @@ const Posts = () => {
                     ) : (
                         <PostList
                             posts={searchTerm ? searchedPosts : posts}
-                            title={searchTerm ? "Search Results" : "Recent Posts..."}
+                            /* title={searchTerm ? "Search Results" : "Recent Posts..."} */
                         />
                     )}
             </div>
