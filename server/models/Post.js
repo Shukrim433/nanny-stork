@@ -18,10 +18,12 @@ const PostSchema = new Schema({
     required: true,
     trim: true,
   },
+  postCategory: {
+    type: String
+  },
   createdAt: {
     type: Date,
-    default: Date.now,
-    get: (timestamp) => dateFormat(timestamp),
+    default: Date.now
   },
   comments: [
     {
@@ -37,8 +39,7 @@ const PostSchema = new Schema({
       },
       createdAt: {
         type: Date,
-        default: Date.now,
-        get: (timestamp) => dateFormat(timestamp),
+        default: Date.now
       },
     },
   ],
