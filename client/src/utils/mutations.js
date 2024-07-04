@@ -47,6 +47,7 @@ export const ADD_POST = gql`
       postTitle
       postText
       postAuthor
+      postCategory
       createdAt
       comments {
         _id
