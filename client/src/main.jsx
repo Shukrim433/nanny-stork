@@ -19,8 +19,9 @@ import Profile from './pages/Profile';
 import OtherProfile from './pages/OtherProfile.jsx'
 import Error from './pages/Error';
 import NewPost from './pages/NewPost';
-import Posts from './pages/Posts.jsx'
-import Ai from './pages/Ai.jsx'
+import Posts from './pages/Posts.jsx';
+import Ai from './pages/Ai.jsx';
+import AboutUs from './pages/AboutUs.jsx';
 
 const router = createBrowserRouter([
   {
@@ -58,6 +59,10 @@ const router = createBrowserRouter([
       {
         path: '/nanny-bot',
         element: <Ai />
+      },
+      {
+        path: '/about',
+        element: <AboutUs/>
       }
     ]
   }
