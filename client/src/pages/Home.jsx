@@ -24,9 +24,6 @@ export default function Home() {
             btnText="Start Now"
             />
         </div>
-        <button>  {/* temporary button to take me to the posts page */}
-          <Link to={`/nanny-bot`} > AI PAGE</Link>
-        </button>
 
         <Footer />
       </div>
