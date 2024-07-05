@@ -21,8 +21,8 @@ export function Login() {
 
   const { pinkTheme, toggleTheme } = useTheme(); // theme changung functionality
   const themeStyles = pinkTheme
-  ? { background: '#f48fb1' }
-  : { background: '#90caf9' };
+  ? { background: '#f48fb1', transitionProperty: 'background-color', transitionDuration: '300ms' }
+  : { background: '#90caf9', transitionProperty: 'background-color', transitionDuration: '300ms' };
 
   const navigate = useNavigate();
   const [formState, setFormState] = useState({ email: '', password: '', rememberMe: false });

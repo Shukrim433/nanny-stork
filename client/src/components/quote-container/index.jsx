@@ -10,8 +10,8 @@ export default function QuoteContainer() {
 
     // Object containing CSS gradient for pinkTheme and blueTheme
     const themeStyles = pinkTheme  // if pinkTheme is set to true...
-        ? "baby-quote-container w-full bg-pink-200 flex items-center justify-center mb-11 mt-5 py-20"// this is the pinl theme styling  
-        : "baby-quote-container w-full bg-blue-200 flex items-center justify-center mb-11 mt-5 py-20" // else this is the blue theme styling
+        ? "baby-quote-container w-full bg-pink-200 flex items-center justify-center mb-11 mt-5 py-20 transition duration-300"// this is the pinl theme styling  
+        : "baby-quote-container w-full bg-blue-200 flex items-center justify-center mb-11 mt-5 py-20 transition duration-300" // else this is the blue theme styling
  
 
     const [Currentquote, setCurrentQuote] = useState({});
