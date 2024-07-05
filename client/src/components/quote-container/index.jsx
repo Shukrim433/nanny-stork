@@ -1,7 +1,18 @@
 import quoteArray from "../../utils/quotes";
 import { useState, useEffect } from "react";
+// Import our custom hook.
+import { useTheme } from '../../utils/ThemeContext'
+
 
 export default function QuoteContainer() {
+    // Pluck values from our ThemeContext by invoking our useTheme hook
+    const { pinkTheme, toggleTheme } = useTheme();
+
+    // Object containing CSS gradient for pinkTheme and blueTheme
+    const themeStyles = pinkTheme  // if pinkTheme is set to true...
+        ? "baby-quote-container w-full bg-pink-200 flex items-center justify-center mb-11 mt-5 py-20"// this is the pinl theme styling  
+        : "baby-quote-container w-full bg-blue-200 flex items-center justify-center mb-11 mt-5 py-20" // else this is the blue theme styling
+ 
 
     const [Currentquote, setCurrentQuote] = useState({});
 
@@ -12,7 +23,7 @@ export default function QuoteContainer() {
     },[]);
 
     return (
-    <div className="baby-quote-container w-full bg-pink-200 flex items-center justify-center mb-11 mt-5 py-20">
+    <div className={themeStyles}>
         <div className="baby-quote max-w-xl text-center">
             <p className="baby-quote-text text-xl font-semibold text-white">
                 "{Currentquote.quote}" - {Currentquote.author}
