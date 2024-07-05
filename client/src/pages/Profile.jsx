@@ -93,7 +93,7 @@ const handleButtonClickPosts = () => {
                 <button 
                   className={showFriends ? "font-bold underline" : "navLink text-lg font-thin hover:text-gray-700"}  
                   onClick={handleButtonClickFriends}>
-                     FRIENDS 
+                     FOLLOWING 
                 </button> 
               </li>
             </ul>

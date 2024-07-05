@@ -3,18 +3,29 @@ import { Link, useNavigate } from 'react-router-dom';
 import QuoteContainer from '../components/quote-container';
 import Footer from '../components/Footer';
 import {
-    Card,
-    Input,
-    Checkbox,
-    Button,
-    Typography,
+  Card,
+  CardHeader,
+  CardBody,
+  CardFooter,
+  Typography,
+  Input,
+  Checkbox,
+  Button,
   } from "@material-tailwind/react";
 import { useMutation } from '@apollo/client';
 import { ADD_USER } from '../utils/mutations';
+import { useTheme } from '../utils/ThemeContext';
 
 import Auth from '../utils/auth'; 
 
 const Signup = () => {
+
+  const { pinkTheme, toggleTheme } = useTheme(); // theme changung functionality
+  const themeStyles = pinkTheme
+  ? { background: '#f48fb1', transitionProperty: 'background-color', transitionDuration: '300ms' }
+  : { background: '#90caf9', transitionProperty: 'background-color', transitionDuration: '300ms' };
+
+
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -60,85 +71,75 @@ const Signup = () => {
 
     return (
       <>
-      <QuoteContainer/>
-        <main className="flex justify-center items-center mt-10">
-          <Card color="transparent" shadow={false} className="p-5">
-            {data ? (
-              <Typography color="green" className="text-center">
-               
+      <QuoteContainer />
+      <Card className="w-96 justify-center m-auto mt-20">
+        <CardHeader
+          style={themeStyles}
+          className="mb-4 grid h-28 place-items-center"
+        >
+          <Typography variant="h3" color="white">
+            Sign Up
+          </Typography>
+        </CardHeader>
+        <CardBody className="flex flex-col gap-4">
+          <form onSubmit={handleFormSubmit}>
+          <div className="mb-4">
+  <Input
+    label="Username"
+    size="lg"
+    name="username"
+    value={formState.username}
+    onChange={handleChange}
+  />
+</div>
+<div className="mb-4">
+  <Input
+    label="Email"
+    size="lg"
+    name="email"
+    value={formState.email}
+    onChange={handleChange}
+    type="email"
+  />
+</div>
+<div className="mb-4">
+  <Input
+    label="Password"
+    size="lg"
+    name="password"
+    value={formState.password}
+    onChange={handleChange}
+    type="password"
+  />
+</div>
+            <CardFooter className="pt-0">
+              <Button fullWidth type="submit" style={themeStyles}>
+                Sign Up
+              </Button>
+              {error && (
+                <div className="text-red-500 mt-2">
+                  {error.message}
+                </div>
+              )}
+              <Typography variant="small" className="mt-6 flex justify-center">
+              Already have an account?
+              <Link to="/login" style={{ textDecoration: 'none' }}>
+              <Typography
+                as="span"
+                variant="small"
+                color="blue-gray"
+                className="ml-1 font-bold"
+              >
+                Log In
               </Typography>
-            ) : (
-              <>
-                <Typography variant="h4" color="blue-gray" className="text-center">
-                  Sign Up
-                </Typography>
-                <Typography color="gray" className="mt-1 mb-4 font-normal text-center">
-                  Nice to meet you! Enter your details to register.
-                </Typography>
-                <form onSubmit={handleFormSubmit} className="w-full max-w-screen-md">
-                  <div className="mb-4 flex flex-col gap-4">
-                    <Input
-                      size="lg"
-                      placeholder="Your username"
-                      name="username"
-                      type="text"
-                      value={formState.username}
-                      onChange={handleChange}
-                      className=" !border-t-blue-gray-200 focus:!border-t-gray-900"
-                    />
-                    <Input
-                      size="lg"
-                      placeholder="Your email"
-                      name="email"
-                      type="email"
-                      value={formState.email}
-                      onChange={handleChange}
-                      className=" !border-t-blue-gray-200 focus:!border-t-gray-900"
-                    />
-                    <Input
-                      size="lg"
-                      placeholder="******"
-                      name="password"
-                      type="password"
-                      value={formState.password}
-                      onChange={handleChange}
-                      className=" !border-t-blue-gray-200 focus:!border-t-gray-900"
-                    />
-                  </div>
-                  <Checkbox
-                    label={
-                      <Typography
-                        variant="small"
-                        color="gray"
-                        className="flex items-center font-normal"
-                      >
-                        I agree to the
-                        <a
-                          href="#"
-                          className="font-medium transition-colors hover:text-gray-900"
-                        >
-                          &nbsp;Terms and Conditions
-                        </a>
-                      </Typography>
-                    }
-                    containerProps={{ className: "-ml-2.5" }}
-                  />
-                  <Button type="submit" className="mt-6" fullWidth>
-                    Sign Up
-                  </Button>
-                  <Typography color="gray" className="mt-4 text-center font-normal">
-                    Already have an account?{" "}
-                    <Link to="/login" className="font-medium text-gray-900">
-                      Sign In
-                    </Link>
-                  </Typography>
-                </form>
-              </>
-            )}
-          </Card>
-        </main>
-        <Footer />
-        </>
+              </Link>
+            </Typography>
+            </CardFooter>
+          </form>
+        </CardBody>
+      </Card>
+      <Footer />
+    </>
       );
 
 }
