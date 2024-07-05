@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom';
 import './postList.css';
 import ReactTimeAgo from 'react-time-ago'
 import Auth from '../../utils/auth';
+import ReactMarkdown from 'react-markdown';
 
 const PostList = ({ posts}) => {
     
@@ -27,15 +28,15 @@ const PostList = ({ posts}) => {
                         </p> 
                         <p> posted <ReactTimeAgo date={new Date(parseInt(post.createdAt))} locale="en-US" /> </p> <br/>
                         {/* click on post title it take you to the posts individual page */}
-                        <h2>
+                        <h2 className='post-title'>
                             <Link to={`/posts/${post._id}`}>
                             {post.postTitle}
                             </Link>
                         </h2> <br/>
                         
-                        {/* <div>
-                            <p>{post.postText}</p>
-                        </div> */}
+                        <div className='whitespace-pre-wrap'>
+                            <ReactMarkdown>{post.postText}</ReactMarkdown>
+                        </div>
                         
                         
                     </div>
@@ -55,7 +56,7 @@ const PostList = ({ posts}) => {
                         </p> 
                         <p> posted <ReactTimeAgo date={new Date(parseInt(post.createdAt))} locale="en-US" /> </p> <br/>
                         {/* click on post title it take you to the posts individual page */}
-                        <h2>
+                        <h2 className='post-title'>
                             <Link to={`/posts/${post._id}`}>
                             {post.postTitle}
                             </Link>

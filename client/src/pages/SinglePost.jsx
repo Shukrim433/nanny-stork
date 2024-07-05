@@ -6,6 +6,8 @@ import CommentList from '../components/CommentList'
 import { QUERY_SINGLE_POST } from '../utils/queries';
 import ReactTimeAgo from 'react-time-ago'
 import Auth from '../utils/auth'; 
+import QuoteContainer from '../components/quote-container';
+import Footer from '../components/Footer';
 
 
 
@@ -28,6 +30,7 @@ const SinglePost = () => {
 
   return (
     <>
+    <QuoteContainer />
     {/* if youre logged in you can click on the postAuthor to go to another users profile or your own,*/}
     {Auth.loggedIn() ? (
       <div className="single-post-card">
@@ -77,6 +80,7 @@ const SinglePost = () => {
 
     </div>
     )}
+    <Footer />
     </>
 
   )

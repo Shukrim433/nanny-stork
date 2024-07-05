@@ -6,6 +6,8 @@ import PostsList from '../components/PostList'
 import FriendsList from '../components/FriendsList'
 import { Button } from "@material-tailwind/react";
 import OtherPregnancyTracker from '../components/OtherPregnancyTracker'
+import QuoteContainer from '../components/quote-container';
+import Footer from '../components/Footer';
 import Auth from '../utils/auth';
 
 
@@ -73,6 +75,8 @@ const OtherProfile = () => {
     }
 
     return (
+        <>
+        <QuoteContainer />
         <div className="container mx-auto p-4">
             <div className="bg-white shadow-lg rounded-lg p-6">
                 <h1 className="text-2xl font-bold mb-4">{user.username}'s Profile</h1>
@@ -102,6 +106,8 @@ const OtherProfile = () => {
 
             </div>
         </div>
+        <Footer />
+        </>
     )
     
 
