@@ -3,10 +3,12 @@ import { useQuery, useMutation, } from '@apollo/client';
 import { ADD_FRIEND, REMOVE_FRIEND } from '../utils/mutations';
 import { QUERY_USER, QUERY_ME } from '../utils/queries';
 import PostsList from '../components/PostList'
+import FriendsList from '../components/FriendsList'
 import { Button } from "@material-tailwind/react";
 import OtherPregnancyTracker from '../components/OtherPregnancyTracker'
 import QuoteContainer from '../components/quote-container';
 import Footer from '../components/Footer';
+import Auth from '../utils/auth';
 
 
 const OtherProfile = () => {
@@ -75,22 +77,33 @@ const OtherProfile = () => {
     return (
         <>
         <QuoteContainer />
-        <div>
-            <h1>{user.username}'s Profile</h1>
-            {!isFriend ? (
-                <Button onClick={useAddFriend}>Add Friend</Button>
-            ) : (
-                <Button onClick={useRemoveFriend}>Remove Friend</Button>
-            )}
-            <div>
-            { user.tracker && <OtherPregnancyTracker user={user} />}
-            </div>
+        <div className="container mx-auto p-4">
+            <div className="bg-white shadow-lg rounded-lg p-6">
+                <h1 className="text-2xl font-bold mb-4">{user.username}'s Profile</h1>
+                <h3 className=" font-bold mb-4">  <span className="p-4">Friends: {user.friends.length}</span>  Posts: {user.posts.length}
+                <span className="p-4">
+                {Auth.loggedIn() ? (
+                !isFriend ? (
+                    <Button onClick={useAddFriend}>Add Friend</Button>
+                ) : (
+                    <Button onClick={useRemoveFriend}>Remove Friend</Button>
+                )) : (<></>)}
+                </span>
+                </h3>
 
-            <div>
-                <h2>{user.username}'s posts:</h2>
-                <PostsList
-                posts={user.posts}
-                />
+                <div>
+                { user.tracker && <OtherPregnancyTracker user={user} />}
+                </div>
+
+                <div className="flex flex-wrap">
+                    <div className="w-full md:w-1/2 mb-4">
+                    <PostsList posts={user.posts} />
+                    </div>
+                    <div className="w-full md:w-1/2 mb-4 flex justify-center ">
+                    <FriendsList friends={user.friends} />
+                    </div>
+                </div>
+
             </div>
         </div>
         <Footer />

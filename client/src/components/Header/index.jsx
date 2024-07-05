@@ -50,10 +50,10 @@ export default function Header() {
         <nav className="w-2/3">
           <ul className="navbar flex justify-between lg:ml-9">
             <li className="navLink text-lg font-thin hover:text-gray-700"><Link to="/">HOME</Link></li>
+            <li className="navLink text-lg font-thin hover:text-gray-700"><Link to="/posts">POSTS</Link></li>
             {Auth.loggedIn() ? (
               <>
                 <li className="navLink text-lg font-thin hover:text-gray-700"><Link to="/about">ABOUT US</Link></li>
-                <li className="navLink text-lg font-thin hover:text-gray-700"><Link to="/posts">POSTS</Link></li>
                 <li className="navLink text-lg font-thin hover:text-gray-700"><Link to="/newPost">NEW POST</Link></li>
               </>
             ) : null}

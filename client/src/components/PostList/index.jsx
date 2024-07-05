@@ -4,10 +4,10 @@ import ReactTimeAgo from 'react-time-ago'
 import Auth from '../../utils/auth';
 import ReactMarkdown from 'react-markdown';
 
-const PostList = ({ posts, title}) => {
+const PostList = ({ posts}) => {
     
-    if (!posts) {
-        return <h3>No Posts Yet</h3>;
+    if (!posts.length) {
+        return <div> </div>
     }
 
     return(
@@ -15,7 +15,7 @@ const PostList = ({ posts, title}) => {
         {/* if youre logged in you can click on the postAuthor to go to their profile,*/}
         {Auth.loggedIn() ? (
         <div className="posts-card-body">
-            <h2>{title}</h2>
+            
             {posts &&
                 posts.map((post) => (
                     <div key={post._id} className="single-post-card">
@@ -45,7 +45,7 @@ const PostList = ({ posts, title}) => {
         </div>
         ) : ( // if youre not logged in you cant click on the postAuthor to got to their profile:
             <div className="posts-card-body">
-            <h2>{title}</h2>
+            
             {posts &&
                 posts.map((post) => (
                     <div key={post._id} className="single-post-card">
@@ -54,18 +54,17 @@ const PostList = ({ posts, title}) => {
                             {post.postAuthor} 
                             </Link>
                         </p> 
+                        <p> posted <ReactTimeAgo date={new Date(parseInt(post.createdAt))} locale="en-US" /> </p> <br/>
                         {/* click on post title it take you to the posts individual page */}
                         <h2 className='post-title'>
                             <Link to={`/posts/${post._id}`}>
                             {post.postTitle}
                             </Link>
-                        </h2>
-                        
+                        </h2> <br/>
+                        {/* 
                         <div>
                             <p>{post.postText}</p>
-                        </div>
-
-                        <p> posted on {post.createdAt}</p>
+                        </div> */}
                     </div>
                 ))
             }

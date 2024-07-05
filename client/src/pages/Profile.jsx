@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
 import { useQuery } from '@apollo/client';
 import { QUERY_ME, QUERY_USER } from '../utils/queries';
-import { Button, Input, Textarea, Card, CardBody, Alert } from '@material-tailwind/react';
 import PostsList from '../components/PostList'
+import FriendsList from '../components/FriendsList'
 import PregnancyTrackerForm from '../components/PregnancyTrackerForm';
 import PregnancyTracker from '../components/PregnancyTracker'
+import { Button } from "@material-tailwind/react";
 import { useLogInRedirect } from '../utils/log-in-redirection';
 import QuoteContainer from '../components/quote-container';
 import Footer from '../components/Footer';
@@ -42,49 +43,49 @@ const Profile = () => {
     return (
       <>
       <QuoteContainer />
-      <div>
-        {Auth.loggedIn() ? (
-          <div>
-          <h2>Welcome, {Auth.getProfile().authenticatedPerson.username}!</h2>
-          <div>
-            {/* if user already has a tracker, display tracker, else show addPregTracker btn */}
-            {user.tracker? (
-              <PregnancyTracker/>
-            ): (<Button 
-              color="lightBlue" 
-              buttonType="filled" 
-              size="regular" 
-              rounded={false} 
-              block={false} 
-              iconOnly={false} 
-              ripple="light" 
-              onClick={handleButtonClick}
-            >
-            add pregnancy tracker
-            </Button>
-          )}
-            {/* only show pregnancy tracker when showFormstate is true */}
-            {showForm && <PregnancyTrackerForm/>}
+      <div className="container mx-auto p-4">
+      {Auth.loggedIn() ? (
+        <div className="bg-white shadow-lg rounded-lg p-6">
+          <h2 className="text-2xl font-bold mb-4">
+            Welcome, {Auth.getProfile().authenticatedPerson.username}!
+          </h2>
+          <h3 className=" font-bold mb-4">  <span className="p-4">Friends: {user.friends.length}</span>  Posts: {user.posts.length}</h3>
+          <div className="mb-4">
+            {/* If user already has a tracker, display tracker, else show addPregTracker btn */}
+            {user.tracker ? (
+              <PregnancyTracker />
+            ) : (
+              <Button onClick={handleButtonClick}> Add Pregnancy Tracker </Button>
+            )}
+            {/* Only show pregnancy tracker when showForm state is true */}
+            {showForm && <PregnancyTrackerForm />}
           </div>
-          <div>
-              <h2>Your Posts:</h2>
-              <PostsList
-              posts={user.posts}
-              />
+
+          <div className="flex flex-wrap">
+            <div className="w-full md:w-1/2 mb-4">
+              <PostsList posts={user.posts} />
+            </div>
+            <div className="w-full md:w-1/2 mb-4 flex justify-center ">
+              <FriendsList friends={user.friends} />
+            </div>
           </div>
-            
-      </div>
-        ) : (
-          <p>
-              You need to be logged in to view your profile. Please{' '}
-              <Link to="/login">login</Link> or <Link to="/signup">signup.</Link>
-          </p>
-        )}
 
-     </div>
-      <Footer />
-     </>
-    );
-}
-
+        </div>
+      ) : (
+        <p className="text-center mt-5">
+          You need to be logged in to view your profile. Please{' '}
+          <Link to="/login" className="text-blue-500 underline">
+            login
+          </Link>{' '}
+          or{' '}
+          <Link to="/signup" className="text-blue-500 underline">
+            signup.
+          </Link>
+        </p>
+      )}
+    </div>
+    <Footer />
+    </>
+  );
+};
   export default Profile;
