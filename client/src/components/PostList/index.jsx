@@ -28,7 +28,7 @@ const PostList = ({ posts, title}) => {
                         </p> 
                         <p> posted <ReactTimeAgo date={new Date(parseInt(post.createdAt))} locale="en-US" /> </p> <br/>
                         {/* click on post title it take you to the posts individual page */}
-                        <h2>
+                        <h2 className='post-title'>
                             <Link to={`/posts/${post._id}`}>
                             {post.postTitle}
                             </Link>
@@ -55,7 +55,7 @@ const PostList = ({ posts, title}) => {
                             </Link>
                         </p> 
                         {/* click on post title it take you to the posts individual page */}
-                        <h2>
+                        <h2 className='post-title'>
                             <Link to={`/posts/${post._id}`}>
                             {post.postTitle}
                             </Link>
