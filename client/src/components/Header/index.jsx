@@ -34,7 +34,7 @@ export default function Header() {
               </svg>
             </Button>
           </div>
-          <img src="./images/ns-logo.png" alt="nanny-stork-logo" className="w-56 lg:ml-12" />
+          <img src="/images/ns-logo.png" alt="nanny-stork-logo" className="w-56 lg:ml-12" />
           <div className="header-buttons-right flex justify-center items-center">
             {Auth.loggedIn() ? (
               <>

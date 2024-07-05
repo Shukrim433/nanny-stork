@@ -20,10 +20,11 @@ const OtherPregnancyTracker = ({user}) => {
 
     return (
         <div className="tracker-container bg-white shadow-md rounded-lg p-4 ">
-            <p>
+            <div className="flex flex-col justify-center items-center text-xl font-semibold">
             {trackerData.stage === 'pregnancy' ? (
                 <>
                 <p className="text-lg font-semibold">{user.username} is currently pregnant! </p>
+                <img  className="w-1/2 lg:w-1/4 my-3"src="/images/stork-delivery.gif" alt="stork flying holding baby" />
                 {trackerData.dueDate ? (<p className="text-lg font-semibold">Their due date is: {trackerData.dueDate}</p>) : ('')}
                 </>
                 ) : (
@@ -32,7 +33,7 @@ const OtherPregnancyTracker = ({user}) => {
                 {trackerData.birthDate ? (<p className="text-lg font-semibold">Their birth date was: {trackerData.birthDate}</p>) : ('') }
                 </>
                 )}
-            </p>
+            </div>
       </div>
     )
     

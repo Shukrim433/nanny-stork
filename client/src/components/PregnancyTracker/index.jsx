@@ -35,10 +35,11 @@ const PregnancyTracker = () => {
   return (
   <div className="tracker-container bg-white shadow-md rounded-lg p-4 ">
     {!isEditing ? (
-      <div className="text-lg font-semibold">
+      <div className="flex flex-col justify-center items-center text-xl font-semibold">
         {trackerData.stage === 'pregnancy' ? (
           <>
             <p>You are currently pregnant!</p>
+            <img  className="w-1/2 lg:w-1/4 my-3"src="images/stork-delivery.gif" alt="stork flying holding baby" />
             {trackerData.dueDate && <p>Your due date is: {trackerData.dueDate}</p>}
           </>
         ) : (
