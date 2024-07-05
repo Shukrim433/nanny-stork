@@ -60,23 +60,31 @@ const PostList = ({ posts}) => {
             {posts &&
                 posts.map((post) => (
                     <div key={post._id} className="single-post-card">
-                        <p> 
-                            <Link to={`/profiles/${post.postAuthor}`} > 
-                            {post.postAuthor} 
-                            </Link>
-                        </p> 
-                        <p> posted <ReactTimeAgo date={new Date(parseInt(post.createdAt))} locale="en-US" /> </p> <br/>
+                        
                         {/* click on post title it take you to the posts individual page */}
                         <h2 className='post-title'>
                             <Link to={`/posts/${post._id}`}>
                             {post.postTitle}
                             </Link>
-                        </h2> <br/>
-
-                        {/*  commented out text so the posts list looks less clunky, you can see post text on single post page
-                        <div>
-                            <p>{post.postText}</p>
+                            <div style={themeStyles} className="post-heading-line w-full h-[2px] "></div>
+                        </h2>
+                        
+                         <br/>
+                        <div className='post-bottom flex flex-col items-end'>
+                        <p className="font-bold underline">
+                            {/* click on username it takes u to the user's profile page, if the username is the logged in user's then ur redirect to /me */}
+                            <Link to={ (`/profiles/${post.postAuthor}`)} > 
+                            {post.postAuthor}
+                            </Link>
+                        </p>
+                        <p> posted <ReactTimeAgo date={new Date(parseInt(post.createdAt))} locale="en-US" /> </p>
+                        </div>
+                        
+                        {/* <div className='whitespace-pre-wrap'> optional styling for the post text,
+                            <ReactMarkdown>{post.postText}</ReactMarkdown>
                         </div> */}
+                        
+                        
                     </div>
                 ))
             }
