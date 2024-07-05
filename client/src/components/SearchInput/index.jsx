@@ -1,7 +1,14 @@
 import React, { useState } from 'react';
 import { Button, Input } from '@material-tailwind/react';
+import { useTheme } from '../../utils/ThemeContext';
 
 const SearchInput = ({ onSearch }) => {
+
+    const { pinkTheme, toggleTheme } = useTheme(); // theme changung functionality
+    const themeStyles = pinkTheme
+    ? { background: '#f48fb1' }
+    : { background: '#90caf9' };
+
     const [search, setSearch] = useState('');
 
     const handleChange = (e) => {
@@ -27,7 +34,7 @@ const SearchInput = ({ onSearch }) => {
                 />
                 <div className='flex justify-center'>
                 <Button
-    style={{ background: '#f48fb1' }}
+    style={themeStyles}
     size="sm"
     className="mt-2 w-1/6 flex justify-center items-center" 
     onClick={onClickSearch}
