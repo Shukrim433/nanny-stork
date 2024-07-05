@@ -20,11 +20,25 @@ const Profile = () => {
   useLogInRedirect(); //redirects to login page if not logged in
   // state for showing form boolean
   const [showForm, setShowForm] = useState(false);
+  const [showFriends, setShowFriends] = useState(false)
+  const [showPosts, setShowPosts] = useState(true)
 
   // Toggle the visibility of the form
   const handleButtonClick = () => {
       setShowForm(!showForm);
   };
+
+  // Toggle the visibility of friends
+  const handleButtonClickFriends = () => {
+    setShowFriends(!showFriends);
+    setShowPosts(false);
+};
+
+// Toggle the visibility of the posts
+const handleButtonClickPosts = () => {
+  setShowPosts(!showPosts);
+  setShowFriends(false);
+};
 
 
   // QUERY_USER query
@@ -49,27 +63,54 @@ const Profile = () => {
           <h2 className="text-2xl font-bold mb-4">
             Welcome, {Auth.getProfile().authenticatedPerson.username}!
           </h2>
-          <h3 className=" font-bold mb-4">  <span className="p-4">Friends: {user.friends.length}</span>  Posts: {user.posts.length}</h3>
-          <div className="pregnancy-container flex flex-row flex-wrap lg:w-full mb-4">
-  {/* If user already has a tracker, display tracker, else show addPregTracker btn */}
-  <div className="w-1/2">
-    {user.tracker ? (
-      <PregnancyTracker />
-    ) : (
-      <Button onClick={handleButtonClick}> Add Pregnancy Tracker </Button>
-    )}
-    {/* Only show pregnancy tracker when showForm state is true */}
-    {showForm && <PregnancyTrackerForm />}
-  </div>
+          <h3 className=" font-bold mb-4">  
+            <button className=" hover:text-gray-700 p-4">Friends: {user.friends.length}</button>  
+            <button className="hover:text-gray-700">Posts: {user.posts.length} </button>
+          </h3>
+          <div className="pregnancy-container flex flex-row items-center justify-center flex-wrap lg:w-full mb-4">
+          {/* If user already has a tracker, display tracker, else show addPregTracker btn */}
+          <div className="w-full  p-4">
+            {user.tracker ? (
+              <PregnancyTracker />
+            ) : (
+              <Button onClick={handleButtonClick}> Add Pregnancy Tracker </Button>
+            )}
+            {/* Only show pregnancy tracker when showForm state is true */}
+            {showForm && <PregnancyTrackerForm />}
+          </div> 
+
+          <div className="w-full p-4" >
+            <nav className="w-3/4">
+            <ul className="navbar flex justify-between lg:ml-9">
+              <li className="navLink text-lg font-thin hover:text-gray-700">
+                 <button 
+                  className={showPosts ? "font-bold underline" : "navLink text-lg font-thin hover:text-gray-700"} 
+                  onClick={handleButtonClickPosts}>
+                     POSTS 
+                 </button>
+              </li>
+              <li className="navLink text-lg font-thin hover:text-gray-700"> 
+                <button 
+                  className={showFriends ? "font-bold underline" : "navLink text-lg font-thin hover:text-gray-700"}  
+                  onClick={handleButtonClickFriends}>
+                     FRIENDS 
+                </button> 
+              </li>
+            </ul>
+            </nav>
+          </div>
   
-  <div className="w-1/2">
-    <FriendsList friends={user.friends} />
-  </div>
-</div>
+          <div className="w-1/2 p-4">
+            {/* Only show friends when showFriends state is true */}
+            { showFriends && <FriendsList friends={user.friends} />}
+          </div>
+
+        </div>
 
           <div className="flex flex-wrap">
             <div className="w-full mb-4">
-              <PostsList posts={user.posts} />
+              {/* Only show posts when showPosts state is true */}
+              {showPosts && <PostsList posts={user.posts} />}
             </div>
           </div>
 

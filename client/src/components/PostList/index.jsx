@@ -34,9 +34,9 @@ const PostList = ({ posts}) => {
                             </Link>
                         </h2> <br/>
                         
-                        <div className='whitespace-pre-wrap'>
+                        {/* <div className='whitespace-pre-wrap'>
                             <ReactMarkdown>{post.postText}</ReactMarkdown>
-                        </div>
+                        </div> */}
                         
                         
                     </div>
@@ -61,7 +61,8 @@ const PostList = ({ posts}) => {
                             {post.postTitle}
                             </Link>
                         </h2> <br/>
-                        {/* 
+
+                        {/*  commented out text so the posts list looks less clunky, you can see post text on single post page
                         <div>
                             <p>{post.postText}</p>
                         </div> */}
