@@ -7,7 +7,7 @@ import {
 import { setContext } from '@apollo/client/link/context';
 import { Outlet } from 'react-router-dom';
 import ThemeProvider from './utils/ThemeContext';
-
+import AiBtn from './components/AiBtn';
 import Header from './components/Header';
 
 // Construct our main GraphQL API endpoint
@@ -40,6 +40,9 @@ function App() {
     <ApolloProvider client={client}>
       <ThemeProvider>
         <Header />
+        <div className="hidden md:block">
+          <AiBtn />
+        </div>
           <Outlet />
       </ThemeProvider>
     </ApolloProvider>
