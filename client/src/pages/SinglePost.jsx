@@ -8,6 +8,8 @@ import ReactTimeAgo from 'react-time-ago'
 import Auth from '../utils/auth'; 
 import QuoteContainer from '../components/quote-container';
 import Footer from '../components/Footer';
+import ReactMarkdown from 'react-markdown';
+import { useTheme } from '../utils/ThemeContext';
 
 
 
@@ -28,6 +30,11 @@ const SinglePost = () => {
     return <div>Loading...</div>
   }
 
+  const { pinkTheme, toggleTheme } = useTheme(); // theme changung functionality
+  const themeStyles = pinkTheme
+  ? { background: '#f48fb1', transitionProperty: 'background-color', transitionDuration: '300ms' }
+  : { background: '#90caf9', transitionProperty: 'background-color', transitionDuration: '300ms' };
+
   return (
     <>
     <QuoteContainer />
@@ -42,9 +49,10 @@ const SinglePost = () => {
         </p>
         <p> posted <ReactTimeAgo date={new Date(parseInt(post.createdAt))} locale="en-US" /> </p> <br/>
         <h2>{post.postTitle}</h2>
-        <div>
-          <p>{post.postText}</p>
-        </div>
+        <div className='whitespace-pre-wrap'> optional styling for the post text,
+                            <ReactMarkdown>{post.postText}</ReactMarkdown>
+                        </div>
+        
         
 
         <div>
@@ -57,18 +65,24 @@ const SinglePost = () => {
 
       </div>
     ) : ( // if youre not logged in you can click on the postAuthor and it will take you to that user's profile
-      <div className="single-post-card">
-        <p> 
-            <Link to={`/profiles/${post.postAuthor}`} > 
-            {post.postAuthor} 
-            </Link>
-        </p> 
-        <p> posted <ReactTimeAgo date={new Date(parseInt(post.createdAt))} locale="en-US" /> </p> <br/>
+      <div className='post-container flex items-center justify-center w-full'>
+      <div className="single-post-card  ">
+       
 
-        <h2>{post.postTitle}</h2> <br/>
-        <div>
-          <p>{post.postText}</p> 
-        </div> <br/>
+        <h2 className='post-title' >{post.postTitle}</h2> <br/>
+        <div className='whitespace-pre-wrap'>
+                            <ReactMarkdown>{post.postText}</ReactMarkdown>
+                        </div> <br/>
+                        <div className='post-bottom flex flex-col items-end'>
+                        <p className="font-bold underline">
+                            {/* click on username it takes u to the user's profile page, if the username is the logged in user's then ur redirect to /me */}
+                            <Link to={ (`/profiles/${post.postAuthor}`)} > 
+                            {post.postAuthor}
+                            </Link>
+                        </p>
+                        <p> posted <ReactTimeAgo date={new Date(parseInt(post.createdAt))} locale="en-US" /> </p>
+                        <div style={themeStyles} className="post-heading-line w-full h-[2px] my-4"></div>
+                        </div>
 
         <div>
         <CommentList comments={post.comments} post={post}/>
@@ -78,6 +92,7 @@ const SinglePost = () => {
           <CommentForm postId={post._id} />
         </div>
 
+    </div>
     </div>
     )}
     <Footer />
