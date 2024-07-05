@@ -56,10 +56,7 @@ const CommentForm = ({postId}) => {
                     </p> <br/>
                     <p>Comment:</p> <br/>
                     <form onSubmit={handleFormSubmit}>
-                        <Input
-                        color="lightBlue" 
-                        size="large" 
-                        outline={true} 
+                        <Input 
                         placeholder="comment here..." 
                         name="commentText"
                         value={commentText} 
@@ -67,13 +64,6 @@ const CommentForm = ({postId}) => {
                         required 
                         /> <br/>
                         <Button 
-                        color="lightBlue" 
-                        buttonType="filled" 
-                        size="regular" 
-                        rounded={false} 
-                        block={false} 
-                        iconOnly={false} 
-                        ripple="light" 
                         type="submit" 
                         disabled={loading}
                         >
