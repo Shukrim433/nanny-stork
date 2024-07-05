@@ -50,23 +50,26 @@ const Profile = () => {
             Welcome, {Auth.getProfile().authenticatedPerson.username}!
           </h2>
           <h3 className=" font-bold mb-4">  <span className="p-4">Friends: {user.friends.length}</span>  Posts: {user.posts.length}</h3>
-          <div className="mb-4">
-            {/* If user already has a tracker, display tracker, else show addPregTracker btn */}
-            {user.tracker ? (
-              <PregnancyTracker />
-            ) : (
-              <Button onClick={handleButtonClick}> Add Pregnancy Tracker </Button>
-            )}
-            {/* Only show pregnancy tracker when showForm state is true */}
-            {showForm && <PregnancyTrackerForm />}
-          </div>
+          <div className="pregnancy-container flex flex-row flex-wrap lg:w-full mb-4">
+  {/* If user already has a tracker, display tracker, else show addPregTracker btn */}
+  <div className="w-1/2">
+    {user.tracker ? (
+      <PregnancyTracker />
+    ) : (
+      <Button onClick={handleButtonClick}> Add Pregnancy Tracker </Button>
+    )}
+    {/* Only show pregnancy tracker when showForm state is true */}
+    {showForm && <PregnancyTrackerForm />}
+  </div>
+  
+  <div className="w-1/2">
+    <FriendsList friends={user.friends} />
+  </div>
+</div>
 
           <div className="flex flex-wrap">
-            <div className="w-full md:w-1/2 mb-4">
+            <div className="w-full mb-4">
               <PostsList posts={user.posts} />
-            </div>
-            <div className="w-full md:w-1/2 mb-4 flex justify-center ">
-              <FriendsList friends={user.friends} />
             </div>
           </div>
 
