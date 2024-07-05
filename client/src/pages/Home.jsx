@@ -28,11 +28,7 @@ export default function Home() {
             description="Join a community of mothers and keep in touch throughout pregnancy and post-partum. Browse the various blog posts to keep up to date on pregnancy tips and health advice post birth."
             btnText="Start Now"
             />
-        </div>  
-
-        <button>  {/* temporary button to take me to the posts page */}
-          <Link to={`/posts`} > POSTS PAGE</Link>
-        </button>
+        </div>
         <button>  {/* temporary button to take me to the posts page */}
           <Link to={`/nanny-bot`} > AI PAGE</Link>
         </button>

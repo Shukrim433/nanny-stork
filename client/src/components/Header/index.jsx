@@ -53,7 +53,7 @@ export default function Header() {
             {Auth.loggedIn() ? (
               <>
                 <li className="navLink text-lg font-thin hover:text-gray-700"><Link to="/about">ABOUT US</Link></li>
-                <li className="navLink text-lg font-thin hover:text-gray-700"><Link to="/me">PROFILE</Link></li>
+                <li className="navLink text-lg font-thin hover:text-gray-700"><Link to="/posts">POSTS</Link></li>
                 <li className="navLink text-lg font-thin hover:text-gray-700"><Link to="/newPost">NEW POST</Link></li>
               </>
             ) : null}
