@@ -54,17 +54,18 @@ const SinglePost = () => {
 
       </div>
     ) : ( // if youre not logged in you can click on the postAuthor and it will take you to that user's profile
-      <div>
+      <div className="single-post-card">
         <p> 
             <Link to={`/profiles/${post.postAuthor}`} > 
             {post.postAuthor} 
             </Link>
         </p> 
-        <h2>{post.postTitle}</h2>
+        <p> posted <ReactTimeAgo date={new Date(parseInt(post.createdAt))} locale="en-US" /> </p> <br/>
+
+        <h2>{post.postTitle}</h2> <br/>
         <div>
-          <p>{post.postText}</p>
-        </div>
-        <p> posted on {post.createdAt}</p> <br/>
+          <p>{post.postText}</p> 
+        </div> <br/>
 
         <div>
         <CommentList comments={post.comments} post={post}/>

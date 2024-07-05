@@ -61,7 +61,7 @@ const Signup = () => {
           <Card color="transparent" shadow={false} className="p-5">
             {data ? (
               <Typography color="green" className="text-center">
-                Success! You may now head <Link to="/">back to the homepage.</Link>
+               
               </Typography>
             ) : (
               <>

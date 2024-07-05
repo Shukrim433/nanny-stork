@@ -52,6 +52,7 @@ const Posts = () => {
     }
    }, [searchData]) 
 
+
    return (
     <div className="page-div">
         <div className="search-div flex justify-center items-center my-4">
@@ -80,6 +81,7 @@ const Posts = () => {
   </Button>
 </div>
             </form>
+
         </div>
         <div className="container w-100">
             <div className="posts-card w-100">

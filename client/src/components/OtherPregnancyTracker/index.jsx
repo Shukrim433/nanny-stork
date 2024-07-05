@@ -19,17 +19,17 @@ const OtherPregnancyTracker = ({user}) => {
     
 
     return (
-        <div className="tracker-container">
+        <div className="tracker-container bg-white shadow-md rounded-lg p-4 ">
             <p>
             {trackerData.stage === 'pregnancy' ? (
                 <>
-                <p>{user.username} is currently pregnant! </p>
-                {trackerData.dueDate ? (<p>Their due date is: {trackerData.dueDate}</p>) : ('')}
+                <p className="text-lg font-semibold">{user.username} is currently pregnant! </p>
+                {trackerData.dueDate ? (<p className="text-lg font-semibold">Their due date is: {trackerData.dueDate}</p>) : ('')}
                 </>
                 ) : (
                 <>
-                <p>{user.username} is currently postpartum! </p>
-                {trackerData.birthDate ? (<p>Their birth date was: {trackerData.birthDate}</p>) : ('') }
+                <p className="text-lg font-semibold">{user.username} is currently postpartum! </p>
+                {trackerData.birthDate ? (<p className="text-lg font-semibold">Their birth date was: {trackerData.birthDate}</p>) : ('') }
                 </>
                 )}
             </p>
