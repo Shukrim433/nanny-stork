@@ -1,5 +1,7 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { useTheme } from "../../utils/ThemeContext";
+import Auth from "../../utils/auth";
 import {
   IconButton,
   Typography,
@@ -24,6 +26,8 @@ import {
   Cog6ToothIcon,
   InboxIcon,
   PowerIcon,
+  QuestionMarkCircleIcon,
+  SparklesIcon,
 } from "@heroicons/react/24/solid";
 import {
   ChevronRightIcon,
@@ -32,9 +36,16 @@ import {
   MagnifyingGlassIcon,
   Bars3Icon,
   XMarkIcon,
+  HomeIcon,
+  BookOpenIcon,
 } from "@heroicons/react/24/outline";
  
 export default function Sidebar() {
+    const logout = (event) => {
+        event.preventDefault();
+        Auth.logout();
+      };
+
     const { pinkTheme, toggleTheme } = useTheme();
     const themeStyles = pinkTheme  // if pinkTheme is set to true...
   ? "rounded-full border border-2 border-black bg-pink-100 px-2 py-1 hover:bg-blue-100 transition duration-300 ease-in-out"// this is the pinl theme styling  
@@ -86,28 +97,70 @@ export default function Sidebar() {
           <List>
            
             <hr className="my-2 border-blue-gray-50" />
-            
+            <Link to="/">
+            <ListItem>
+              <ListItemPrefix>
+                <HomeIcon className="h-5 w-5" />
+              </ListItemPrefix>
+              Home
+            </ListItem>
+            </Link>
+
+            <Link to="/posts">
+            <ListItem>
+              <ListItemPrefix>
+                <BookOpenIcon className="h-5 w-5" />
+              </ListItemPrefix>
+              Posts
+            </ListItem>
+            </Link>
+            <Link to="/about">
+            <ListItem>
+              <ListItemPrefix>
+                <QuestionMarkCircleIcon className="h-5 w-5" />
+              </ListItemPrefix>
+              About Us
+            </ListItem>
+            </Link>
+            {!Auth.loggedIn() ? (
+                <Link to="/login">
+            <ListItem>
+              <ListItemPrefix>
+                <PowerIcon className="h-5 w-5" />
+              </ListItemPrefix>
+              Log In
+            </ListItem>
+            </Link>
+            ) : (
+                <>
+                <Link to="/me">
             <ListItem>
               <ListItemPrefix>
                 <UserCircleIcon className="h-5 w-5" />
               </ListItemPrefix>
               Profile
             </ListItem>
+            </Link>
+            <Link to="/nanny-bot">
             <ListItem>
               <ListItemPrefix>
-                <Cog6ToothIcon className="h-5 w-5" />
+                <SparklesIcon className="h-5 w-5" />
               </ListItemPrefix>
-              Settings
+              A.I Bot
             </ListItem>
-            <ListItem>
+            </Link>
+            <ListItem onClick={logout}>
               <ListItemPrefix>
                 <PowerIcon className="h-5 w-5" />
               </ListItemPrefix>
               Log Out
             </ListItem>
+            </>
+            )}
           </List>
         </Card>
       </Drawer>
     </>
   );
 }
+
