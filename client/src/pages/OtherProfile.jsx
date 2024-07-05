@@ -1,3 +1,4 @@
+import React, { useState } from 'react';
 import { useParams, } from 'react-router-dom';
 import { useQuery, useMutation, } from '@apollo/client';
 import { ADD_FRIEND, REMOVE_FRIEND } from '../utils/mutations';
@@ -21,6 +22,9 @@ const OtherProfile = () => {
         variables: { username: username }
     })
     const { loading: myLoading, data: myData } = useQuery(QUERY_ME);
+
+    const [showFriends, setShowFriends] = useState(false)
+    const [showPosts, setShowPosts] = useState(true)
 
     const [addFriend, { loading: mutationLoading, error: mutationError }] = useMutation(ADD_FRIEND);
     const [removeFriend, { loading: removeLoading, error: removeError }] = useMutation(REMOVE_FRIEND);
@@ -68,6 +72,17 @@ const OtherProfile = () => {
         }
     }
     
+    // Toggle the visibility of friends
+    const handleButtonClickFriends = () => {
+        setShowFriends(!showFriends);
+        setShowPosts(false);
+    };
+
+    // Toggle the visibility of the posts
+    const handleButtonClickPosts = () => {
+    setShowPosts(!showPosts);
+    setShowFriends(false);
+    };
    
 
     if (pregnancyTrackerLoading|| myLoading) {
@@ -80,29 +95,59 @@ const OtherProfile = () => {
         <div className="container mx-auto p-4">
             <div className="bg-white shadow-lg rounded-lg p-6">
                 <h1 className="text-2xl font-bold mb-4">{user.username}'s Profile</h1>
-                <h3 className=" font-bold mb-4">  <span className="p-4">Friends: {user.friends.length}</span>  Posts: {user.posts.length}
-                <span className="p-4">
-                {Auth.loggedIn() ? (
-                !isFriend ? (
-                    <Button onClick={useAddFriend}>Add Friend</Button>
-                ) : (
-                    <Button onClick={useRemoveFriend}>Remove Friend</Button>
-                )) : (<></>)}
-                </span>
+                
+                <h3 className=" font-bold mb-4">  
+                    <button className=" hover:text-gray-700 p-4">Friends: {user.friends.length}</button>  
+                    <button className="hover:text-gray-700">Posts: {user.posts.length} </button>
+                    <span className="p-4">
+                        {Auth.loggedIn() ? (
+                        !isFriend ? (
+                            <Button onClick={useAddFriend}>Add Friend</Button>
+                        ) : (
+                            <Button onClick={useRemoveFriend}>Remove Friend</Button>
+                        )) : (<></>)}
+                    </span>
                 </h3>
 
                 <div>
                 { user.tracker && <OtherPregnancyTracker user={user} />}
                 </div>
 
-                <div className="flex flex-wrap">
-                    <div className="w-full md:w-1/2 mb-4">
-                    <PostsList posts={user.posts} />
-                    </div>
-                    <div className="w-full md:w-1/2 mb-4 flex justify-center ">
-                    <FriendsList friends={user.friends} />
+          <div className="w-full p-4" >
+            <nav className="w-3/4">
+            <ul className="navbar flex justify-between lg:ml-9">
+              <li className="navLink text-lg font-thin hover:text-gray-700">
+                 <button 
+                  className={showPosts ? "font-bold underline" : "navLink text-lg font-thin hover:text-gray-700"} 
+                  onClick={handleButtonClickPosts}>
+                     POSTS 
+                 </button>
+              </li>
+              <li className="navLink text-lg font-thin hover:text-gray-700"> 
+                <button 
+                  className={showFriends ? "font-bold underline" : "navLink text-lg font-thin hover:text-gray-700"}  
+                  onClick={handleButtonClickFriends}>
+                     FRIENDS 
+                </button> 
+              </li>
+            </ul>
+            </nav>
+          </div>
+
+                <div className="flex flex-row items-center justify-center flex-wrap lg:w-full mb-4">
+                    <div className="w-1/2 p-4">
+                        {/* Only show friends when showFriends state is true */}
+                        { showFriends && <FriendsList friends={user.friends} />}
                     </div>
                 </div>
+
+                <div className="flex flex-wrap">
+                    <div className="w-full mb-4">
+                        {/* Only show posts when showPosts state is true */}
+                        {showPosts && <PostsList posts={user.posts} />}
+                    </div>
+                </div>
+
 
             </div>
         </div>
