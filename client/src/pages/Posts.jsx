@@ -73,8 +73,8 @@ const Posts = () => {
           </div>
         </form>
       </div>
-      <div className="container w-100">
-        <div className="posts-card flex justify-center">
+      <div>
+        <div className="posts-card ">
           {loading || searchLoading ? (
             <div>Loading...</div>
           ) : error || searchError ? (

@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom';
 import './postList.css';
 import ReactTimeAgo from 'react-time-ago'
 import Auth from '../../utils/auth';
+import 
 
 const PostList = ({ posts, title}) => {
     
@@ -33,7 +34,7 @@ const PostList = ({ posts, title}) => {
                             </Link>
                         </h2> <br/>
                         
-                        <div>
+                        <div className='whitespace-pre-wrap'>
                             <p>{post.postText}</p>
                         </div>
                         

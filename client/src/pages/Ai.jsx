@@ -27,10 +27,10 @@ export default function Ai() {
     <>
     <QuoteContainer />
     <main className="flex flex-col items-center justify-center w-full h-screen bg-white overflow-hidden">
-      <header className="flex items-center justify-center w-1/2 py-6 text-black bg-white">
+      <header className="flex items-center justify-center py-6 text-black bg-white w-full ">
         <h1 className="text-4xl font-bold">Nanny Stork</h1>
       </header>
-      <section className="flex flex-col items-center justify-center w-1/2 py-6 text-black bg-white overflow-auto" style={{ maxHeight: 'calc(100vh - 12rem)' }}>
+      <section className="flex flex-col items-center justify-center  py-6 text-black bg-white overflow-auto lg:w-1/2" style={{ maxHeight: 'calc(100vh - 12rem)' }}>
         {search.length === 0 ?
           <HomeOptions />
           :
