@@ -80,8 +80,8 @@ const handleButtonClickPosts = () => {
           </div> 
 
           <div className="w-full p-4">
-            <nav className="w-3/4">
-              <ul className="navbar flex justify-between lg:ml-9">
+            <nav className="lg:mx-14">
+              <ul className="navbar flex justify-between ">
                 <li className="navLink text-lg font-thin hover:text-gray-700">
                   <button 
                     className={showPosts ? "flex justify-center items-center flex-col font-bold underline" : "navLink flex justify-center items-center flex-col text-lg font-thin hover:text-gray-700"} 
