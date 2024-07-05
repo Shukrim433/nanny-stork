@@ -34,9 +34,9 @@ const PostList = ({ posts}) => {
                             </Link>
                         </h2> <br/>
                         
-                        <div className='whitespace-pre-wrap'>
+                        {/* <div className='whitespace-pre-wrap'>
                             <ReactMarkdown>{post.postText}</ReactMarkdown>
-                        </div>
+                        </div> */}
                         
                         
                     </div>
