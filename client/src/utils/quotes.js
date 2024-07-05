@@ -1,4 +1,4 @@
-const quotes = [
+const quoteArray = [
 { quote: "A baby is a blessing. A gift from heaven above, a precious little angel to cherish and to love.", author: "Anonymous: Unknown" },
 { quote: "Babies are bits of stardust, blown from the hand of God.", author: "Barretto: 1928" },
 { quote: "A baby fills a place in your heart that you never knew was empty.", author: "Unknown: Unknown" },
@@ -19,3 +19,5 @@ const quotes = [
 { quote: "Babies are the buds of life ready to bloom like a fresh flower to refresh humanity.", author: "Debasish Mridha: 2015" },
 { quote: "A baby is the most adorable experience a woman can enjoy.", author: "Jayne Mansfield: 1960" } 
 ]
+
+export default quoteArray;
