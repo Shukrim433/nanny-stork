@@ -4,6 +4,7 @@ import { useMutation } from '@apollo/client';
 import { LOGIN_USER } from '../utils/mutations';
 import Auth from '../utils/auth';
 import Footer from '../components/Footer';
+import QuoteContainer from '../components/quote-container';
 import {
   Card,
   CardHeader,
@@ -57,6 +58,7 @@ export function Login() {
 
   return (
     <>
+    <QuoteContainer />
     <Card className="w-96 justify-center m-auto mt-20 ">
       <CardHeader
         style={{ background:  '#f48fb1' }}

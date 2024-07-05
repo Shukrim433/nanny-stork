@@ -6,6 +6,7 @@ import PostsList from '../components/PostList'
 import PregnancyTrackerForm from '../components/PregnancyTrackerForm';
 import PregnancyTracker from '../components/PregnancyTracker'
 import { useLogInRedirect } from '../utils/log-in-redirection';
+import QuoteContainer from '../components/quote-container';
 
 
 import Auth from '../utils/auth';
@@ -39,6 +40,7 @@ const Profile = () => {
 
     return (
       <>
+      <QuoteContainer />
       <div>
         {Auth.loggedIn() ? (
           <div>

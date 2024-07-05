@@ -3,6 +3,7 @@ import SearchInput from '../components/SearchInput';
 import Credits from '../components/Credits';
 import HomeOptions from '../components/HomeOptions';
 import TypeWriterText from '../components/TypeWriterTextEffect';
+import QuoteContainer from '../components/quote-container';
 
 import answers from '../utils/answers.json';
 
@@ -23,6 +24,8 @@ export default function Ai() {
   }
 
   return (
+    <>
+    <QuoteContainer />
     <main className="flex flex-col items-center justify-center w-full h-screen bg-white overflow-hidden">
       <header className="flex items-center justify-center w-1/2 py-6 text-black bg-white">
         <h1 className="text-4xl font-bold">Nanny Stork</h1>
@@ -46,5 +49,6 @@ export default function Ai() {
         <Credits />
       </footer>
     </main>
+    </>
   );
 }

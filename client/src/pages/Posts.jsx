@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 import PostList from '../components/PostList';
 import { QUERY_POSTS, SEARCH_POSTS } from '../utils/queries';
 import { Button, Input } from '@material-tailwind/react';
+import QuoteContainer from '../components/quote-container';
 
 const Posts = () => {
   const [searchTerm, setSearchTerm] = useState('');
@@ -41,6 +42,8 @@ const Posts = () => {
   }, [searchData]);
 
   return (
+    <>
+    <QuoteContainer />
     <div className="page-div">
       <div className="search-div flex justify-center items-center my-4">
         <form onSubmit={handleSubmit} className="flex">
@@ -84,6 +87,7 @@ const Posts = () => {
         </div>
       </div>
     </div>
+    </>
   );
 };
 

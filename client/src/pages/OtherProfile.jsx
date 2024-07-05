@@ -5,6 +5,7 @@ import { QUERY_USER, QUERY_ME } from '../utils/queries';
 import PostsList from '../components/PostList'
 import { Button } from "@material-tailwind/react";
 import OtherPregnancyTracker from '../components/OtherPregnancyTracker'
+import QuoteContainer from '../components/quote-container';
 
 
 const OtherProfile = () => {
@@ -71,6 +72,8 @@ const OtherProfile = () => {
     }
 
     return (
+        <>
+        <QuoteContainer />
         <div>
             <h1>{user.username}'s Profile</h1>
             {!isFriend ? (
@@ -89,6 +92,7 @@ const OtherProfile = () => {
                 />
             </div>
         </div>
+        </>
     )
     
 

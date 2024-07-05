@@ -8,9 +8,9 @@ import QuoteContainer from "../components/quote-container";
 export default function Home() {
   return (
     <>
+    <QuoteContainer />
       <div className="page-container flex flex-col min-h-screen ">
         <div className="info-allignment flex justify-center gap-12">
-          <QuoteContainer />
             <InfoCard
             imageURL="images/stork-playing.png"
             title="An AI Companion For New Parents"

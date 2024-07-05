@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import QuoteContainer from '../components/quote-container';
 import {
     Card,
     Input,
@@ -57,6 +58,8 @@ const Signup = () => {
     }
 
     return (
+      <>
+      <QuoteContainer/>
         <main className="flex justify-center items-center mt-10">
           <Card color="transparent" shadow={false} className="p-5">
             {data ? (
@@ -133,6 +136,7 @@ const Signup = () => {
             )}
           </Card>
         </main>
+        </>
       );
 
 }
