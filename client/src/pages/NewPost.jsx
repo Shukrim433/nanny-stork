@@ -4,7 +4,7 @@ import { ADD_POST } from '../utils/mutations';
 import { Button, Input, Textarea, Card, CardBody, Alert } from '@material-tailwind/react';
 import { useLogInRedirect } from '../utils/log-in-redirection';
 import QuoteContainer from '../components/quote-container';
-
+import Footer from '../components/Footer';
 export default function NewPost() {
     useLogInRedirect(); //redirects to login page if not logged in
     //holds character count state
@@ -119,6 +119,7 @@ export default function NewPost() {
                 </form>
             </CardBody>
         </Card>
+        <Footer />
         </>
     );
 }

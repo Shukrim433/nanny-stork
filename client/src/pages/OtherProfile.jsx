@@ -6,6 +6,7 @@ import PostsList from '../components/PostList'
 import { Button } from "@material-tailwind/react";
 import OtherPregnancyTracker from '../components/OtherPregnancyTracker'
 import QuoteContainer from '../components/quote-container';
+import Footer from '../components/Footer';
 
 
 const OtherProfile = () => {
@@ -92,6 +93,7 @@ const OtherProfile = () => {
                 />
             </div>
         </div>
+        <Footer />
         </>
     )
     

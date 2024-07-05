@@ -7,6 +7,7 @@ import { QUERY_SINGLE_POST } from '../utils/queries';
 import ReactTimeAgo from 'react-time-ago'
 import Auth from '../utils/auth'; 
 import QuoteContainer from '../components/quote-container';
+import Footer from '../components/Footer';
 
 
 
@@ -78,6 +79,7 @@ const SinglePost = () => {
 
     </div>
     )}
+    <Footer />
     </>
 
   )

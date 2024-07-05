@@ -7,6 +7,7 @@ import PregnancyTrackerForm from '../components/PregnancyTrackerForm';
 import PregnancyTracker from '../components/PregnancyTracker'
 import { useLogInRedirect } from '../utils/log-in-redirection';
 import QuoteContainer from '../components/quote-container';
+import Footer from '../components/Footer';
 
 
 import Auth from '../utils/auth';
@@ -81,6 +82,7 @@ const Profile = () => {
         )}
 
      </div>
+      <Footer />
      </>
     );
 }

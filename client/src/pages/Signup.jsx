@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import QuoteContainer from '../components/quote-container';
+import Footer from '../components/Footer';
 import {
     Card,
     Input,
@@ -136,6 +137,7 @@ const Signup = () => {
             )}
           </Card>
         </main>
+        <Footer />
         </>
       );
 

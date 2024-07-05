@@ -4,6 +4,7 @@ import PostList from '../components/PostList';
 import { QUERY_POSTS, SEARCH_POSTS } from '../utils/queries';
 import { Button, Input } from '@material-tailwind/react';
 import QuoteContainer from '../components/quote-container';
+import Footer from '../components/Footer';
 
 const Posts = () => {
   const [searchTerm, setSearchTerm] = useState('');
@@ -87,6 +88,7 @@ const Posts = () => {
         </div>
       </div>
     </div>
+    <Footer />
     </>
   );
 };
