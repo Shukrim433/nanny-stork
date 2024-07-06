@@ -39,28 +39,28 @@ import {
   HomeIcon,
   BookOpenIcon,
 } from "@heroicons/react/24/outline";
- 
-export default function Sidebar() {
-    const logout = (event) => {
-        event.preventDefault();
-        Auth.logout();
-      };
 
-    const { pinkTheme, toggleTheme } = useTheme();
-    const themeStyles = pinkTheme  // if pinkTheme is set to true...
-  ? "rounded-full border border-2 border-black bg-pink-100 px-2 py-1 hover:bg-blue-100 transition duration-300 ease-in-out"// this is the pinl theme styling  
-  : "rounded-full border border-2 border-black bg-blue-100 px-2 py-1 hover:bg-pink-100 transition duration-300 ease-in-out"
+export default function Sidebar() {
+  const logout = (event) => {
+    event.preventDefault();
+    Auth.logout();
+  };
+
+  const { pinkTheme, toggleTheme } = useTheme();
+  const themeStyles = pinkTheme // if pinkTheme is set to true...
+    ? "rounded-full border border-2 border-black bg-pink-100 px-2 py-1 hover:bg-blue-100 transition duration-300 ease-in-out" // this is the pinl theme styling
+    : "rounded-full border border-2 border-black bg-blue-100 px-2 py-1 hover:bg-pink-100 transition duration-300 ease-in-out";
   const [open, setOpen] = React.useState(0);
   const [openAlert, setOpenAlert] = React.useState(true);
   const [isDrawerOpen, setIsDrawerOpen] = React.useState(false);
- 
+
   const handleOpen = (value) => {
     setOpen(open === value ? 0 : value);
   };
- 
+
   const openDrawer = () => setIsDrawerOpen(true);
   const closeDrawer = () => setIsDrawerOpen(false);
- 
+
   return (
     <>
       <IconButton variant="text" size="lg" onClick={openDrawer}>
@@ -77,11 +77,20 @@ export default function Sidebar() {
           className="h-[calc(100vh-2rem)] w-full p-4"
         >
           <div className="mb-2 flex items-center gap-4 p-4">
-          <Button 
-            onClick={toggleTheme}
-            className={themeStyles}>
-              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-6">
-                <path strokeLinecap="round" strokeLinejoin="round" d="M9.53 16.122a3 3 0 0 0-5.78 1.128 2.25 2.25 0 0 1-2.4 2.245 4.5 4.5 0 0 0 8.4-2.245c0-.399-.078-.78-.22-1.128Zm0 0a15.998 15.998 0 0 0 3.388-1.62m-5.043-.025a15.994 15.994 0 0 1 1.622-3.395m3.42 3.42a15.995 15.995 0 0 0 4.764-4.648l3.876-5.814a1.151 1.151 0 0 0-1.597-1.597L14.146 6.32a15.996 15.996 0 0 0-4.649 4.763m3.42 3.42a6.776 6.776 0 0 0-3.42-3.42" />
+            <Button onClick={toggleTheme} className={themeStyles}>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                strokeWidth={1.5}
+                stroke="currentColor"
+                className="size-6"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M9.53 16.122a3 3 0 0 0-5.78 1.128 2.25 2.25 0 0 1-2.4 2.245 4.5 4.5 0 0 0 8.4-2.245c0-.399-.078-.78-.22-1.128Zm0 0a15.998 15.998 0 0 0 3.388-1.62m-5.043-.025a15.994 15.994 0 0 1 1.622-3.395m3.42 3.42a15.995 15.995 0 0 0 4.764-4.648l3.876-5.814a1.151 1.151 0 0 0-1.597-1.597L14.146 6.32a15.996 15.996 0 0 0-4.649 4.763m3.42 3.42a6.776 6.776 0 0 0-3.42-3.42"
+                />
               </svg>
             </Button>
             <Typography variant="h5" color="blue-gray">
@@ -95,67 +104,74 @@ export default function Sidebar() {
             />
           </div>
           <List>
-           
             <hr className="my-2 border-blue-gray-50" />
             <Link to="/">
-            <ListItem>
-              <ListItemPrefix>
-                <HomeIcon className="h-5 w-5" />
-              </ListItemPrefix>
-              Home
-            </ListItem>
+              <ListItem>
+                <ListItemPrefix>
+                  <HomeIcon className="h-5 w-5" />
+                </ListItemPrefix>
+                Home
+              </ListItem>
             </Link>
 
             <Link to="/posts">
-            <ListItem>
-              <ListItemPrefix>
-                <BookOpenIcon className="h-5 w-5" />
-              </ListItemPrefix>
-              Posts
-            </ListItem>
+              <ListItem>
+                <ListItemPrefix>
+                  <BookOpenIcon className="h-5 w-5" />
+                </ListItemPrefix>
+                Posts
+              </ListItem>
             </Link>
             <Link to="/about">
-            <ListItem>
-              <ListItemPrefix>
-                <QuestionMarkCircleIcon className="h-5 w-5" />
-              </ListItemPrefix>
-              About Us
-            </ListItem>
+              <ListItem>
+                <ListItemPrefix>
+                  <QuestionMarkCircleIcon className="h-5 w-5" />
+                </ListItemPrefix>
+                About Us
+              </ListItem>
+            </Link>
+            <Link to="/newPost">
+              <ListItem>
+                <ListItemPrefix>
+                  <CubeTransparentIcon className="h-5 w-5" />
+                </ListItemPrefix>
+                New Post
+              </ListItem>
             </Link>
             {!Auth.loggedIn() ? (
-                <Link to="/login">
-            <ListItem>
-              <ListItemPrefix>
-                <PowerIcon className="h-5 w-5" />
-              </ListItemPrefix>
-              Log In
-            </ListItem>
-            </Link>
+              <Link to="/login">
+                <ListItem>
+                  <ListItemPrefix>
+                    <PowerIcon className="h-5 w-5" />
+                  </ListItemPrefix>
+                  Log In
+                </ListItem>
+              </Link>
             ) : (
-                <>
+              <>
                 <Link to="/me">
-            <ListItem>
-              <ListItemPrefix>
-                <UserCircleIcon className="h-5 w-5" />
-              </ListItemPrefix>
-              Profile
-            </ListItem>
-            </Link>
-            <Link to="/nanny-bot">
-            <ListItem>
-              <ListItemPrefix>
-                <SparklesIcon className="h-5 w-5" />
-              </ListItemPrefix>
-              A.I Bot
-            </ListItem>
-            </Link>
-            <ListItem onClick={logout}>
-              <ListItemPrefix>
-                <PowerIcon className="h-5 w-5" />
-              </ListItemPrefix>
-              Log Out
-            </ListItem>
-            </>
+                  <ListItem>
+                    <ListItemPrefix>
+                      <UserCircleIcon className="h-5 w-5" />
+                    </ListItemPrefix>
+                    Profile
+                  </ListItem>
+                </Link>
+                <Link to="/nanny-bot">
+                  <ListItem>
+                    <ListItemPrefix>
+                      <SparklesIcon className="h-5 w-5" />
+                    </ListItemPrefix>
+                    A.I Bot
+                  </ListItem>
+                </Link>
+                <ListItem onClick={logout}>
+                  <ListItemPrefix>
+                    <PowerIcon className="h-5 w-5" />
+                  </ListItemPrefix>
+                  Log Out
+                </ListItem>
+              </>
             )}
           </List>
         </Card>
@@ -163,4 +179,3 @@ export default function Sidebar() {
     </>
   );
 }
-
