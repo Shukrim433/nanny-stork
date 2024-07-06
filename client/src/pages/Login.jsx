@@ -5,6 +5,7 @@ import { LOGIN_USER } from '../utils/mutations';
 import Auth from '../utils/auth';
 import Footer from '../components/Footer';
 import QuoteContainer from '../components/quote-container';
+import { useTheme } from '../utils/ThemeContext';
 import {
   Card,
   CardHeader,
@@ -17,6 +18,12 @@ import {
 } from "@material-tailwind/react";
 
 export function Login() {
+
+  const { pinkTheme, toggleTheme } = useTheme(); // theme changung functionality
+  const themeStyles = pinkTheme
+  ? { background: '#f48fb1', transitionProperty: 'background-color', transitionDuration: '300ms' }
+  : { background: '#90caf9', transitionProperty: 'background-color', transitionDuration: '300ms' };
+
   const navigate = useNavigate();
   const [formState, setFormState] = useState({ email: '', password: '', rememberMe: false });
   const [login, { error }] = useMutation(LOGIN_USER);
@@ -61,7 +68,7 @@ export function Login() {
     <QuoteContainer />
     <Card className="w-96 justify-center m-auto mt-20 ">
       <CardHeader
-        style={{ background:  '#f48fb1' }}
+        style={themeStyles}
         className="mb-4 grid h-28 place-items-center"
       >
         <Typography variant="h3" color="white">
@@ -96,7 +103,7 @@ export function Login() {
             />
           </div>
           <CardFooter className="pt-0">
-            <Button fullWidth type="submit" style={{ background: '#f48fb1' }}>
+            <Button fullWidth type="submit" style={themeStyles}>
                 
               Sign In
             </Button>

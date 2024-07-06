@@ -7,8 +7,9 @@ import {
 import { setContext } from '@apollo/client/link/context';
 import { Outlet } from 'react-router-dom';
 import ThemeProvider from './utils/ThemeContext';
-
+import AiBtn from './components/AiBtn';
 import Header from './components/Header';
+import Auth from './utils/auth';
 
 // Construct our main GraphQL API endpoint
 const httpLink = createHttpLink({
@@ -40,6 +41,11 @@ function App() {
     <ApolloProvider client={client}>
       <ThemeProvider>
         <Header />
+        {Auth.loggedIn() && (
+          <div className="hidden md:block">
+            <AiBtn />
+          </div>
+        )}
           <Outlet />
       </ThemeProvider>
     </ApolloProvider>

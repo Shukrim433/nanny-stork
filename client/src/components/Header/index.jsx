@@ -5,6 +5,7 @@ import Auth from '../../utils/auth';
 import { useHandleNavLinkClick } from '../../utils/log-in-redirection';
 // Import our custom hook.
 import { useTheme } from '../../utils/ThemeContext';
+import Sidebar from "../Sidebar";
 
 export default function Header() {
   // Pluck values from our ThemeContext by invoking our useTheme hook
@@ -24,8 +25,8 @@ export default function Header() {
   return (
     <>
       <header className="flex justify-center items-center flex-col">
-        <div className="header-top flex flex-row justify-between items-center w-3/4 ml-1">
-          <div className="header-buttons-left flex justify-center items-center ml-5">
+        <div className="header-top flex flex-row justify-between items-center md:w-3/4 lg:ml-1">
+          <div className="header-buttons-left md:flex justify-center items-center ml-5 hidden">
             <Button 
             onClick={toggleTheme}
             className={themeStyles}>
@@ -34,20 +35,26 @@ export default function Header() {
               </svg>
             </Button>
           </div>
-          <img src="./images/ns-logo.png" alt="nanny-stork-logo" className="w-56 lg:ml-12" />
+          <img src="/images/ns-logo.png" alt="nanny-stork-logo" className="w-56 lg:ml-12 " />
           <div className="header-buttons-right flex justify-center items-center">
             {Auth.loggedIn() ? (
               <>
-                <Link to="/me">
+              <div className="md:flex flex-row hidden">
+                <button>
+                <Link to="/me"
+                className="mt-1">
                   profile
                 </Link>
-                <p className="text-xl mx-2 text-gray-500">|</p>
+                </button>
+                <p className="text-xl mx-2 text-gray-500 ">|</p>
                 <button onClick={logout}>
                   Logout
                 </button>
+                </div>
               </>
             ) : (
               <>
+              <div className="md:flex flex-row hidden">
                 <Link to="/login" className="text-black hover:underline">
                   Login
                 </Link>
@@ -55,18 +62,21 @@ export default function Header() {
                 <Link to="/signup" className="text-black hover:underline">
                   Signup
                 </Link>
+                </div>
               </>
             )}
           </div>
         </div>
-        <nav className="w-2/3">
+        <nav className="md:w-2/3">
+        <div className="md:hidden"><Sidebar/></div>
           <ul className="navbar flex justify-between lg:ml-9">
-            <li className="navLink text-lg font-thin hover:text-gray-700"><Link to="/">HOME</Link></li>
-            <li className="navLink text-lg font-thin hover:text-gray-700"><Link to="/posts">POSTS</Link></li>
+            <li className="navLink text-lg font-thin hover:text-gray-700 md:block hidden"><Link to="/">HOME</Link></li>
+            <li className="navLink text-lg font-thin hover:text-gray-700 md:block hidden"><Link to="/posts">POSTS</Link></li>
+
             {Auth.loggedIn() ? (
               <>
-                <li className="navLink text-lg font-thin hover:text-gray-700"><Link to="/about">ABOUT US</Link></li>
-                <li className="navLink text-lg font-thin hover:text-gray-700"><Link to="/newPost">NEW POST</Link></li>
+                <li className="navLink text-lg font-thin hover:text-gray-700 md:block hidden"><Link to="/about">ABOUT US</Link></li>
+                <li className="navLink text-lg font-thin hover:text-gray-700 md:block hidden"><Link to="/newPost">NEW POST</Link></li>
               </>
             ) : null}
           </ul>

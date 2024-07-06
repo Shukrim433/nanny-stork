@@ -10,7 +10,7 @@ export default function Home() {
     <>
     <QuoteContainer />
       <div className="page-container flex flex-col min-h-screen ">
-        <div className="info-allignment flex justify-center gap-12">
+        <div className="info-allignment flex flex-col items-center md:flex-row justify-center gap-12">
             <InfoCard
             imageURL="images/stork-playing.png"
             title="An AI Companion For New Parents"
@@ -24,9 +24,6 @@ export default function Home() {
             btnText="Start Now"
             />
         </div>
-        <button>  {/* temporary button to take me to the posts page */}
-          <Link to={`/nanny-bot`} > AI PAGE</Link>
-        </button>
 
         <Footer />
       </div>

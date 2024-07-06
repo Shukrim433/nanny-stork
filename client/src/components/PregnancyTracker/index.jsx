@@ -35,21 +35,25 @@ const PregnancyTracker = () => {
   return (
   <div className="tracker-container bg-white shadow-md rounded-lg p-4 ">
     {!isEditing ? (
-      <>
-      <p className="text-lg font-semibold">
-      {trackerData.stage === 'pregnancy' ? (
-        <>
-        <p>You are currently pregnant! </p>
-        {trackerData.dueDate ? (<p className="text-lg font-semibold">Your due date is: {trackerData.dueDate}</p>) : ('')}
-        </>
+      <div className="flex flex-col justify-center items-center text-xl font-semibold">
+        {trackerData.stage === 'pregnancy' ? (
+          <>
+            <p>You are currently pregnant!</p>
+            <img  className="w-1/2 lg:w-1/4 my-3"src="images/stork-delivery.gif" alt="stork flying holding baby" />
+            {trackerData.dueDate && <p>Your due date is: {trackerData.dueDate}</p>}
+          </>
         ) : (
           <>
-        <p>You are currently postpartum! </p>
-        {trackerData.birthDate ? (<p className="text-lg font-semibold">Your birth date was: {trackerData.birthDate}</p>) : ('') }
-        </>
+            <p>You are currently postpartum!</p>
+            {trackerData.birthDate && <p>Your birth date was: {trackerData.birthDate}</p>}
+          </>
         )}
-      </p>
-      
+      </div>
+    ) : (
+      <PregnancyTrackerForm initialData={trackerData} trackerId={pregnancyTracker.tracker._id}/>
+    )}
+    
+    {!isEditing && (
       <button onClick={handleEditClick} className="flex items-center mt-4">
           <svg className="h-8 w-8 text-gray-500 mr-2" viewBox="0 0 24 24" strokeWidth="2" stroke="currentColor" fill="none"  /* code for edit icon */
            strokeLinecap="round" strokeLinejoin="round">
@@ -59,11 +63,7 @@ const PregnancyTracker = () => {
             <line x1="16" y1="5" x2="19" y2="8" />
           </svg>
       </button>
-      </>
-    ) : (
-      <PregnancyTrackerForm initialData={trackerData}  trackerId={pregnancyTracker.tracker._id}/>
     )}
-    
   </div>
 )
 };
