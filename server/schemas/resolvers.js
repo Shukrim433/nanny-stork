@@ -313,8 +313,9 @@ const resolvers = {
     }
   },
     // mutation to delete a post and update a specific user by removing the deleted post from their "posts" array (only if logged in)
-    // removePost(postId: ID!): Post
+    // removePost(postId: ID!): User
     removePost: async (parent, { postId }, context) => {
+      console.log(postId, "resolver")
       if (context.user) {
         try {
           const post = await Post.findOneAndDelete({
@@ -322,12 +323,12 @@ const resolvers = {
             postAuthor: context.user.username,
           });
 
-          await User.findOneAndUpdate(
+          const user = await User.findOneAndUpdate(
             { _id: context.user._id },
             { $pull: { posts: post._id } }
           );
 
-          return post;
+          return user;
         } catch (error) {
           console.error("Server Error removing post from user:", error);
         }

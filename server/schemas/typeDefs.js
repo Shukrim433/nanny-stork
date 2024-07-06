@@ -62,7 +62,7 @@ const typeDefs = `
     addComment(postId: ID!, commentText: String!): Post
     addFriend(friendName: String!): User
     removeFriend(friendName: String!): User
-    removePost(postId: ID!): Post
+    removePost(postId: ID!): User
     removeComment(postId: ID!, commentId: ID!): Post
     addPregnancyTracker(stage: Stage!, dueDate: String, birthDate: String): PregnancyTracker
     updatePregnancyTracker(trackerId: ID!, stage: Stage, dueDate: String, birthDate: String): PregnancyTracker
