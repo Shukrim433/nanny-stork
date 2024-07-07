@@ -5,6 +5,7 @@ const typeDefs = `
     email: String
     posts: [Post]!
     friends: [User]!
+    savedPosts: [Post]
     tracker: PregnancyTracker
   }
 
@@ -59,6 +60,8 @@ const typeDefs = `
     addUser(username: String!, email: String!, password: String!): Auth
     login(email: String!, password: String!): Auth
     addPost(postText: String!, postTitle: String): Post
+    addSavedPost(postId: ID!): User
+    removeSavedPost(postId: ID!): User
     addComment(postId: ID!, commentText: String!): Post
     addFriend(friendName: String!): User
     removeFriend(friendName: String!): User

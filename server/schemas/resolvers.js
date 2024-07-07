@@ -10,7 +10,8 @@ const resolvers = {
         return await User.find()
           .populate("posts")
           .populate("friends")
-          .populate("tracker");
+          .populate("tracker")
+          .populate("savedPosts")
       } catch (error) {
         console.error("Server Error fetching users:", error);
       }
@@ -23,7 +24,8 @@ const resolvers = {
         return await User.findOne({ username })
           .populate("posts")
           .populate("friends")
-          .populate("tracker");
+          .populate("tracker")
+          .populate("savedPosts")
       } catch (error) {
         console.error("Server Error fetching user:", error);
       }
@@ -159,6 +161,37 @@ const resolvers = {
           return post; // may need to remove
         } catch (error) {
           console.error("Server Error adding post to user:", error);
+        }
+      }
+      throw AuthenticationError;
+    },
+    //addSavedPost(postId: ID!): User
+    addSavedPost: async (parent, { postId }, context) => {
+      console.log(postId, "save resolver")
+      if (context.user) {
+        try {
+          return await User.findOneAndUpdate(
+            { _id: context.user._id },
+            { $addToSet: { savedPosts: postId } }
+          );
+        } catch(error) {
+          console.error("Server Error adding savedPost to user:", error);
+        }
+      }
+      throw AuthenticationError;
+    },
+    //removeSavedPost(postId: ID!): User
+    removeSavedPost : async (parent, { postId }, context) => {
+      console.log(postId, "removeSaved resolver")
+      if (context.user) {
+        try {
+          return await User.findOneAndUpdate(
+            { _id: context.user._id },
+            { $pull: { savedPosts: postId } },
+            { new: true }
+          );
+        } catch(error) {
+          console.error("Server Error adding savedPost to user:", error);
         }
       }
       throw AuthenticationError;

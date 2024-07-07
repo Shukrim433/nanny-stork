@@ -33,6 +33,12 @@ const userSchema = new Schema({
       ref: "Post",
     },
   ],
+  savedPosts: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: "Post",
+    },
+  ],
   tracker: {
     type: Schema.Types.ObjectId,
     ref: "PregnancyTracker",

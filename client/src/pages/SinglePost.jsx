@@ -1,9 +1,11 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
 import { useQuery } from "@apollo/client";
 import CommentForm from "../components/CommentForm";
 import CommentList from "../components/CommentList";
-import { QUERY_SINGLE_POST } from "../utils/queries";
+import { QUERY_SINGLE_POST, QUERY_USER } from "../utils/queries";
+import { ADD_SAVED_POST, REMOVE_SAVED_POST } from "../utils/mutations";
+import { useMutation } from "@apollo/client";
 import ReactTimeAgo from "react-time-ago";
 import Auth from "../utils/auth";
 import QuoteContainer from "../components/quote-container";
@@ -14,18 +16,61 @@ import { useTheme } from "../utils/ThemeContext";
 
 const SinglePost = () => {
   const [showDeleteModal, setShowDeleteModal] = useState(false);
+  const [saved, setSaved] = useState(false); // State to track if the post is saved
   const { postId } = useParams();
   const { loading, data } = useQuery(QUERY_SINGLE_POST, {
     variables: { postId: postId },
     pollInterval: 500,
   });
+  const [savePost, { loading: saveLoading, error }] = useMutation(ADD_SAVED_POST);
+  const [removeSavePost, { loading: removeSaveLoading, error: loadingError }] = useMutation(REMOVE_SAVED_POST);
 
   const post = data?.post || {};
   console.log(data, "comment polling");
+
+  if (Auth.loggedIn()) {
+    // QUERY_USER query
+    const { loading: userLoading, data: userData } = useQuery(QUERY_USER, {
+      // pass the loggedin user's username
+      variables: { username: Auth.getProfile().authenticatedPerson.username }
+    });
+    const user = userData?.user || {};
+    console.log(user, "user")
+
+    useEffect(() => {
+      // check if the post is already saved
+      if (user.savedPosts) { // checks if post.savedPosts exists 
+        const isSaved = user.savedPosts.some((savedPost) => savedPost._id === postId); // checks if this post is saved
+        setSaved(isSaved)
+      }
+    }, [user, postId])
+  }
+    
+
   // Toggle the visibility of the delete post modal
   const handleButtonClick = () => {
     setShowDeleteModal(!showDeleteModal);
   };
+
+  const handleSave = async () => {
+    try {
+      await savePost({ variables: { postId } });
+      console.log(postId, "onclick save")
+      setSaved(true)
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  const handleRemoveSave = async () => {
+    try {
+      await removeSavePost({ variables: { postId } });
+      console.log(postId, "onclick remove save")
+      setSaved(false)
+    } catch (error) {
+      console.log(error);
+    }
+  }
 
   const { pinkTheme } = useTheme();
   const themeStyles = pinkTheme
@@ -40,7 +85,7 @@ const SinglePost = () => {
         transitionDuration: "300ms",
       };
 
-  if (loading) {
+  if (loading ) {
     return <div>Loading...</div>;
   }
 
@@ -53,6 +98,7 @@ const SinglePost = () => {
           <div className="single-post-card">
             <div className="flex justify-between">
               <h2 className="post-title">{post.postTitle}</h2>
+              <span>
               {post.postAuthor ===
                 Auth.getProfile().authenticatedPerson.username && (
                 <button onClick={handleButtonClick}>
@@ -72,6 +118,25 @@ const SinglePost = () => {
                   </svg>
                 </button>
               )}
+              {saved ? (
+                 <button
+                 disabled={removeSaveLoading}
+                 onClick={handleRemoveSave}>
+                   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="size-6">
+                     <path fillRule="evenodd" d="M6.32 2.577a49.255 49.255 0 0 1 11.36 0c1.497.174 2.57 1.46 2.57 2.93V21a.75.75 0 0 1-1.085.67L12 18.089l-7.165 3.583A.75.75 0 0 1 3.75 21V5.507c0-1.47 1.073-2.756 2.57-2.93Z" clipRule="evenodd" />
+                   </svg>
+                 </button>
+              ) : (
+
+              <button 
+              disabled={saveLoading}
+              onClick={handleSave}>
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-6">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M17.593 3.322c1.1.128 1.907 1.077 1.907 2.185V21L12 17.25 4.5 21V5.507c0-1.108.806-2.057 1.907-2.185a48.507 48.507 0 0 1 11.186 0Z" />
+                </svg>
+              </button> 
+              )}
+              </span>
             </div>
             <div
               style={themeStyles}

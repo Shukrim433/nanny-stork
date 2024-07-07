@@ -26,6 +26,13 @@ export const QUERY_USER = gql`
       dueDate
       birthDate
       }
+      savedPosts {
+        _id
+        postTitle
+        postText
+        postAuthor
+        createdAt
+      }
     }
   }
 `;
