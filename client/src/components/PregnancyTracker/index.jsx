@@ -5,7 +5,8 @@ import Auth from "../../utils/auth";
 import PregnancyTrackerForm from "../PregnancyTrackerForm";
 import "./tracker.css";
 
-const PregnancyTracker = () => {
+const PregnancyTracker = ({setShowForm}) => {
+  setShowForm(false)
   const [isEditing, setIsEditing] = useState(false);
   // QUERY_USER_TRACKER query
   const { loading, data, error, refetch } = useQuery(QUERY_USER, {

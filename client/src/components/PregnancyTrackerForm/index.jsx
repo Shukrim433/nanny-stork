@@ -19,6 +19,7 @@ const PregnancyTrackerForm = ({
   trackerId,
   refetchPregnancyData,
   setIsEditing,
+  setShowForm,
 }) => {
   // holds PregnancyTrackerForm form state
   const [formState, setFormState] = useState({
@@ -51,7 +52,7 @@ const PregnancyTrackerForm = ({
     });
   };
 
-  // onSubmit create the pregnancy tracker
+  // onSubmit create/ update the pregnancy tracker
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -71,6 +72,7 @@ const PregnancyTrackerForm = ({
       //   window.location.assign("/me");
       refetchPregnancyData();
       setIsEditing(false);
+      setShowForm(false)
     } catch (error) {
       console.error("Error adding pregnancy tracker:", error);
     }
