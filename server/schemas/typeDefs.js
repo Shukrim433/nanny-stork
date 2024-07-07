@@ -69,11 +69,11 @@ const typeDefs = `
     removePregnancyTracker(trackerId: ID!): PregnancyTracker
   }
     
-`
+`;
 
 module.exports = typeDefs;
 
 //_id is the id of the pregnancy tracker - userId is the id of the user associated with that pregnancy tracker
-// for the add/updatePregnancyTracker mutation:  since we're creating a pregnancy tracker for the currently logged-in user, 
+// for the add/updatePregnancyTracker mutation:  since we're creating a pregnancy tracker for the currently logged-in user,
 //we don't need to pass userId as an argument. You can retrieve it from the context.user. in the resolver (same as commentAuthor)
 // friendId is just the user id of the friend

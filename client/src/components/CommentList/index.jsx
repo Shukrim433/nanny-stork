@@ -20,15 +20,15 @@ const CommentList = ({ comments = [], post }) => {
                 <p className="font-bold underline">
                   {Auth.loggedIn() ? (
                     <Link
-                    to={
-                      comment.commentAuthor ===
-                      Auth.getProfile().authenticatedPerson.username
-                        ? `/me`
-                        : `/profiles/${comment.commentAuthor}`
-                    }
-                  >
-                    {comment.commentAuthor}
-                  </Link>
+                      to={
+                        comment.commentAuthor ===
+                        Auth.getProfile().authenticatedPerson.username
+                          ? `/me`
+                          : `/profiles/${comment.commentAuthor}`
+                      }
+                    >
+                      {comment.commentAuthor}
+                    </Link>
                   ) : (
                     <Link to={`/profiles/${comment.commentAuthor}`}>
                       {comment.commentAuthor}

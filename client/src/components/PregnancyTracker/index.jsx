@@ -14,10 +14,10 @@ const PregnancyTracker = () => {
     },
   });
 
-  console.log(data?.user?.tracker, loading, error, "tracker data");
+  /* console.log(data?.user?.tracker, loading, error, "tracker data"); */
   let pregnancyTracker = data?.user || {};
 
-  console.log(pregnancyTracker, "pregnancyTracker");
+  /* console.log(pregnancyTracker, "pregnancyTracker"); */
 
   const formatUnixTimestamp = (timestamp) => {
     if (!timestamp) return "";
