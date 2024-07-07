@@ -111,3 +111,31 @@ mutation RemoveFriend($friendName: String!) {
   }
 }
 `;
+
+// removePost(postId: ID!): User
+export const REMOVE_POST = gql`
+mutation removePost($postId: ID!) {
+ removePost(postId: $postId) {
+  _id
+  username
+  posts {
+    _id
+    postTitle
+  }
+ }
+}
+`
+
+// removePost(postId: ID!): User
+export const REMOVE_PREGNANCY_TRACKER = gql`
+mutation removePost($postId: ID!) {
+ removePost(postId: $postId) {
+  _id
+  username
+  posts {
+    _id
+    postTitle
+  }
+ }
+}
+`

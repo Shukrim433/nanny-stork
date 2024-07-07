@@ -1,22 +1,23 @@
-import React from 'react'
-import Typewriter from 'typewriter-effect';
+import React from "react";
+import Typewriter from "typewriter-effect";
 
 function TypeWriterText({ text, onTextCompleted }) {
-    return (
-        <Typewriter
-            options={{
-                delay: 15,
-                autoStart: true
-            }}
-            onInit={(typewriter) => {
-                typewriter.typeString(text)
-                    .callFunction(() => {
-                        onTextCompleted(true)
-                    })
-                    .start();
-            }}
-        />
-    )
+  return (
+    <Typewriter
+      options={{
+        delay: 15,
+        autoStart: true,
+      }}
+      onInit={(typewriter) => {
+        typewriter
+          .typeString(text)
+          .callFunction(() => {
+            onTextCompleted(true);
+          })
+          .start();
+      }}
+    />
+  );
 }
 
-export default TypeWriterText
+export default TypeWriterText;

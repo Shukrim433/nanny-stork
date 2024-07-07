@@ -12,4 +12,5 @@ export default function ErrorPage() {
         <i>{error.statusText || error.message}</i>
       </p>
     </div>
-)};
+  );
+}

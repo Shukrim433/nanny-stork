@@ -1,4 +1,4 @@
-import { createContext, useState, useContext } from 'react';
+import { createContext, useState, useContext } from "react";
 
 // Create our theme context using createContext()
 export const ThemeContext = createContext();
@@ -13,7 +13,7 @@ export default function ThemeProvider({ children }) {
 
   // Method to update our state
   const toggleTheme = () => {
-    console.log('inside toggle theme');
+    console.log("inside toggle theme");
     return setPinkTheme((prev) => !prev);
   };
 

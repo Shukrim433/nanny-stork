@@ -1,74 +1,78 @@
-import ReactDOM from 'react-dom/client'
-import { createBrowserRouter, RouterProvider } from 'react-router-dom/dist'
-import './index.css'
+import ReactDOM from "react-dom/client";
+import { createBrowserRouter, RouterProvider } from "react-router-dom/dist";
+import "./index.css";
 
-import TimeAgo from 'javascript-time-ago'
+import TimeAgo from "javascript-time-ago";
 
-import en from 'javascript-time-ago/locale/en'
-import ru from 'javascript-time-ago/locale/ru'
+import en from "javascript-time-ago/locale/en";
+import ru from "javascript-time-ago/locale/ru";
 
-TimeAgo.addDefaultLocale(en)
-TimeAgo.addLocale(ru)
+TimeAgo.addDefaultLocale(en);
+TimeAgo.addLocale(ru);
 
-import App from './App.jsx'
-import Home from './pages/Home';
-import Signup from './pages/Signup';
-import Login from './pages/Login';
-import SinglePost from './pages/SinglePost';
-import Profile from './pages/Profile';
-import OtherProfile from './pages/OtherProfile.jsx'
-import Error from './pages/Error';
-import NewPost from './pages/NewPost';
-import Posts from './pages/Posts.jsx';
-import Ai from './pages/Ai.jsx';
-import AboutUs from './pages/AboutUs.jsx';
+import App from "./App.jsx";
+import Home from "./pages/Home";
+import Signup from "./pages/Signup";
+import Login from "./pages/Login";
+import SinglePost from "./pages/SinglePost";
+import Profile from "./pages/Profile";
+import OtherProfile from "./pages/OtherProfile.jsx";
+import Error from "./pages/Error";
+import NewPost from "./pages/NewPost";
+import Posts from "./pages/Posts.jsx";
+import Ai from "./pages/Ai.jsx";
+import AboutUs from "./pages/AboutUs.jsx";
 
 const router = createBrowserRouter([
   {
-    path: '/',
+    path: "/",
     element: <App />,
     error: <Error />,
     children: [
       {
         index: true,
-        element: <Home />
-      }, {
-        path: '/login',
-        element: <Login />
-      }, {
-        path: '/signup',
-        element: <Signup />
-      }, {
-        path: '/me',
-        element: <Profile />
-      }, {
-        path: '/profiles/:username', // probably change to /:username OR /:userId
-        element: <OtherProfile /> // change this to <OtherProfiles/>
-      }, {
-        path: '/posts/:postId',
-        element: <SinglePost />
+        element: <Home />,
       },
       {
-        path: '/posts',
-        element: <Posts />
+        path: "/login",
+        element: <Login />,
       },
       {
-        path: '/newPost',
-        element: <NewPost />
+        path: "/signup",
+        element: <Signup />,
       },
       {
-        path: '/nanny-bot',
-        element: <Ai />
+        path: "/me",
+        element: <Profile />,
       },
       {
-        path: '/about',
-        element: <AboutUs/>
-      }
-    ]
-  }
-])
+        path: "/profiles/:username",
+        element: <OtherProfile />,
+      },
+      {
+        path: "/posts/:postId",
+        element: <SinglePost />,
+      },
+      {
+        path: "/posts",
+        element: <Posts />,
+      },
+      {
+        path: "/newPost",
+        element: <NewPost />,
+      },
+      {
+        path: "/nanny-bot",
+        element: <Ai />,
+      },
+      {
+        path: "/about",
+        element: <AboutUs />,
+      },
+    ],
+  },
+]);
 
-ReactDOM.createRoot(document.getElementById('root')).render(
+ReactDOM.createRoot(document.getElementById("root")).render(
   <RouterProvider router={router} />
-)
-
+);

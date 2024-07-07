@@ -7,7 +7,10 @@ const resolvers = {
     // users: [User]
     users: async () => {
       try {
-        return await User.find().populate("posts").populate("friends").populate('tracker');
+        return await User.find()
+          .populate("posts")
+          .populate("friends")
+          .populate("tracker");
       } catch (error) {
         console.error("Server Error fetching users:", error);
       }
@@ -15,11 +18,12 @@ const resolvers = {
     // query to get a single user object by their username and their associated posts and friends arrays
     // user(username: String!): User
     user: async (parent, { username }) => {
-        console.log(username, "username in resolver")
+      /* console.log(username, "username in resolver"); */
       try {
         return await User.findOne({ username })
           .populate("posts")
-          .populate("friends").populate('tracker');
+          .populate("friends")
+          .populate("tracker");
       } catch (error) {
         console.error("Server Error fetching user:", error);
       }
@@ -27,22 +31,22 @@ const resolvers = {
     // searchCategories(category: String) : [Post]
     searchCategories: async (parent, { category }) => {
       try {
-        Post.find({postCategory: category})
-      } catch(error) {
+        Post.find({ postCategory: category });
+      } catch (error) {
         console.error("Server Error fetching posts by category:", error);
       }
     },
     // searchPosts(query: String!): [Post]
-    searchPosts:  async (parent, { query }) => {
+    searchPosts: async (parent, { query }) => {
       try {
         return Post.find({
           $or: [
-            { postTitle: { $regex: query, $options: 'i' } },
-             { postCategory: { $regex: query, $options: 'i' } },  
-            { postAuthor: { $regex: query, $options: 'i' } }
-          ]
-        })
-      } catch(error) {
+            { postTitle: { $regex: query, $options: "i" } },
+            { postCategory: { $regex: query, $options: "i" } },
+            { postAuthor: { $regex: query, $options: "i" } },
+          ],
+        });
+      } catch (error) {
         console.error("Server Error fetching searchPosts:", error);
       }
     },
@@ -184,31 +188,33 @@ const resolvers = {
     // mutation to update a user by adding another user to their "friends" array (only if logged in)
     // addFriend(username: ID!): User
     addFriend: async (parent, { friendName }, context) => {
-        if (!context.user) {
-          throw new AuthenticationError('You must be logged in to perform this action');
+      if (!context.user) {
+        throw new AuthenticationError(
+          "You must be logged in to perform this action"
+        );
+      }
+      try {
+        const friend = await User.findOne({ username: friendName });
+        if (!friend) {
+          throw new Error("Friend not found");
         }
-        try {
-          const friend = await User.findOne({ username: friendName });
-          if (!friend) {
-            throw new Error('Friend not found');
-          }
-          // Add the friend's _id to the current user's friends array
-          const updatedUser = await User.findOneAndUpdate(
-            { _id: context.user._id },
-            { $addToSet: { friends: friend._id } }, // Add friend's _id as users is an array of objects
-            { new: true }
-          ).populate('friends'); // Populate the friends field to match the expected return type
-      
-          if (!updatedUser) {
-            throw new Error('User not found after update');
-          }
-      
-          return updatedUser;
-        } catch (error) {
-          console.error("Server Error adding friend to user:", error);
-          throw new Error('Error adding friend');
+        // Add the friend's _id to the current user's friends array
+        const updatedUser = await User.findOneAndUpdate(
+          { _id: context.user._id },
+          { $addToSet: { friends: friend._id } }, // Add friend's _id as users is an array of objects
+          { new: true }
+        ).populate("friends"); // Populate the friends field to match the expected return type
+
+        if (!updatedUser) {
+          throw new Error("User not found after update");
         }
-      },
+
+        return updatedUser;
+      } catch (error) {
+        console.error("Server Error adding friend to user:", error);
+        throw new Error("Error adding friend");
+      }
+    },
     // mutation to create a pregnancy tracker (the associated user wil be the user currently logged in)
     // addPregnancyTracker(stage: Stage!, dueDate: String, birthDate: String): PregnancyTracker
     addPregnancyTracker: async (
@@ -216,8 +222,8 @@ const resolvers = {
       { stage, dueDate, birthDate },
       context
     ) => {
-      console.log(stage, dueDate, birthDate, "client data");
-      console.log(context.user, context?.user?._id, "user data");
+      /* console.log(stage, dueDate, birthDate, "client data");
+      console.log(context.user, context?.user?._id, "user data"); */
 
       if (context?.user) {
         try {
@@ -241,19 +247,29 @@ const resolvers = {
 
       throw AuthenticationError;
     },
-    
-    // mutation to update a single existing pregnancy tracker, 
+
+    // mutation to update a single existing pregnancy tracker,
     // updatePregnancyTracker(trackerId: ID!, stage: Stage, dueDate: String, birthDate: String): PregnancyTracker
-    updatePregnancyTracker: async ( parent, { trackerId, stage, dueDate, birthDate }, context ) => {
-        console.log(trackerId, stage, dueDate, birthDate, "passed to update resolver")
+    updatePregnancyTracker: async (
+      parent,
+      { trackerId, stage, dueDate, birthDate },
+      context
+    ) => {
+      /* console.log(
+        trackerId,
+        stage,
+        dueDate,
+        birthDate,
+        "passed to update resolver"
+      ); */
       if (context.user) {
         try {
-            const updateFields = {}
-            if (stage !== undefined) updateFields.stage = stage
-            if (dueDate !== undefined) updateFields.dueDate = dueDate
-            if (birthDate !== undefined) updateFields.birthDate = birthDate
+          const updateFields = {};
+          if (stage !== undefined) updateFields.stage = stage;
+          if (dueDate !== undefined) updateFields.dueDate = dueDate;
+          if (birthDate !== undefined) updateFields.birthDate = birthDate;
 
-            const updatedTracker = await PregnancyTracker.findOneAndUpdate(
+          const updatedTracker = await PregnancyTracker.findOneAndUpdate(
             {
               _id: trackerId,
               userId: context.user._id,
@@ -261,8 +277,7 @@ const resolvers = {
             { $set: updateFields },
             { new: true }
           );
-          return updatedTracker
-
+          return updatedTracker;
         } catch (error) {
           console.error("Server Error updating pregnancy tracker:", error);
         }
@@ -286,35 +301,39 @@ const resolvers = {
     },
     // mutation to update a user by removing another user from their "friends" array (only if logged in)
     // removeFriend(friendId: ID!): User
-    
- removeFriend: async (parent, { friendName }, context) => { // copied from addFriend with the change of pull instead of addToSet
-    if (!context.user) {
-      throw new AuthenticationError('You must be logged in to perform this action');
-    }
-    try {
-      const friend = await User.findOne({ username: friendName });
-      if (!friend) {
-        throw new Error('Friend not found');
+
+    removeFriend: async (parent, { friendName }, context) => {
+      // copied from addFriend with the change of pull instead of addToSet
+      if (!context.user) {
+        throw new AuthenticationError(
+          "You must be logged in to perform this action"
+        );
       }
-      const updatedUser = await User.findOneAndUpdate(
-        { _id: context.user._id },
-        { $pull: { friends: friend._id } }, // Remove by friend's _id
-        { new: true }
-      ).populate('friends'); 
-  
-      if (!updatedUser) {
-        throw new Error('User not found after update');
+      try {
+        const friend = await User.findOne({ username: friendName });
+        if (!friend) {
+          throw new Error("Friend not found");
+        }
+        const updatedUser = await User.findOneAndUpdate(
+          { _id: context.user._id },
+          { $pull: { friends: friend._id } }, // Remove by friend's _id
+          { new: true }
+        ).populate("friends");
+
+        if (!updatedUser) {
+          throw new Error("User not found after update");
+        }
+
+        return updatedUser;
+      } catch (error) {
+        console.error("Server Error removing friend from user:", error);
+        throw new Error("Error removing friend");
       }
-  
-      return updatedUser;
-    } catch (error) {
-      console.error("Server Error removing friend from user:", error);
-      throw new Error('Error removing friend');
-    }
-  },
+    },
     // mutation to delete a post and update a specific user by removing the deleted post from their "posts" array (only if logged in)
-    // removePost(postId: ID!): Post
+    // removePost(postId: ID!): User
     removePost: async (parent, { postId }, context) => {
+      /* console.log(postId, "resolver"); */
       if (context.user) {
         try {
           const post = await Post.findOneAndDelete({
@@ -322,12 +341,12 @@ const resolvers = {
             postAuthor: context.user.username,
           });
 
-          await User.findOneAndUpdate(
+          const user = await User.findOneAndUpdate(
             { _id: context.user._id },
             { $pull: { posts: post._id } }
           );
 
-          return post;
+          return user;
         } catch (error) {
           console.error("Server Error removing post from user:", error);
         }

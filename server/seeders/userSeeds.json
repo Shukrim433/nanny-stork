@@ -1,103 +1,102 @@
 [
-    {
-      "username": "Brian Han",
-      "email": "bkernighan@techfriends.dev",
-      "password": "password01"
-    },
-    {
-      "username": "Max Alexander",
-      "email": "mkanatalexander@techfriends.dev",
-      "password": "password02"
-    },
-    {
-      "username": "Whisky Johnny",
-      "email": "wtls@techfriends.dev",
-      "password": "password03"
-    },
-    {
-      "username": "Kent Beck",
-      "email": "kbeck@techfriends.dev",
-      "password": "password04"
-    },
-    {
-      "username": "Edward Bernard",
-      "email": "evberard@techfriends.dev",
-      "password": "password05"
-    },
-    {
-      "username": "Alan Kay",
-      "email": "akay@techfriends.dev",
-      "password": "password06"
-    },
-    {
-      "username": "Caddy Hair",
-      "email": "choare@techfriends.dev",
-      "password": "password07"
-    },
-    {
-      "username": "David Thomas",
-      "email": "dthomas@techfriends.dev",
-      "password": "password08"
-    },
-    {
-      "username": "Donald Knuth",
-      "email": "dknuth@techfriends.dev",
-      "password": "password09"
-    },
-    {
-      "username": "Ler Toto",
-      "email": "ler@techfriends.dev",
-      "password": "password10"
-    },
-    {
-        "username": "Brian Khan",
-        "email": "bkhan@techfriends.dev",
-        "password": "password11"
-      },
-      {
-        "username": "Maxim Lander",
-        "email": "mlander@techfriends.dev",
-        "password": "password12"
-      },
-      {
-        "username": "Lucky Coin",
-        "email": "Lucky@techfriends.dev",
-        "password": "password13"
-      },
-      {
-        "username": "Becky Ham",
-        "email": "Ham@techfriends.dev",
-        "password": "password14"
-      },
-      {
-        "username": "Edwin Bad",
-        "email": "bad@techfriends.dev",
-        "password": "password15"
-      },
-      {
-        "username": "Alan May",
-        "email": "may@techfriends.dev",
-        "password": "password16"
-      },
-      {
-        "username": "Cindy Ore",
-        "email": "ore@techfriends.dev",
-        "password": "password17"
-      },
-      {
-        "username": "Danny Tom",
-        "email": "tom@techfriends.dev",
-        "password": "password18"
-      },
-      {
-        "username": "Don Johnson",
-        "email": "dh@techfriends.dev",
-        "password": "password19"
-      },
-      {
-        "username": "Nanny Bird",
-        "email": "lernantino@techfriends.dev",
-        "password": "password20"
-      }
-  ]
-  
+  {
+    "username": "Brian Han",
+    "email": "bkernighan@techfriends.dev",
+    "password": "password01"
+  },
+  {
+    "username": "Max Alexander",
+    "email": "mkanatalexander@techfriends.dev",
+    "password": "password02"
+  },
+  {
+    "username": "Whisky Johnny",
+    "email": "wtls@techfriends.dev",
+    "password": "password03"
+  },
+  {
+    "username": "Kent Beck",
+    "email": "kbeck@techfriends.dev",
+    "password": "password04"
+  },
+  {
+    "username": "Edward Bernard",
+    "email": "evberard@techfriends.dev",
+    "password": "password05"
+  },
+  {
+    "username": "Alan Kay",
+    "email": "akay@techfriends.dev",
+    "password": "password06"
+  },
+  {
+    "username": "Caddy Hair",
+    "email": "choare@techfriends.dev",
+    "password": "password07"
+  },
+  {
+    "username": "David Thomas",
+    "email": "dthomas@techfriends.dev",
+    "password": "password08"
+  },
+  {
+    "username": "Donald Knuth",
+    "email": "dknuth@techfriends.dev",
+    "password": "password09"
+  },
+  {
+    "username": "Ler Toto",
+    "email": "ler@techfriends.dev",
+    "password": "password10"
+  },
+  {
+    "username": "Brian Khan",
+    "email": "bkhan@techfriends.dev",
+    "password": "password11"
+  },
+  {
+    "username": "Maxim Lander",
+    "email": "mlander@techfriends.dev",
+    "password": "password12"
+  },
+  {
+    "username": "Lucky Coin",
+    "email": "Lucky@techfriends.dev",
+    "password": "password13"
+  },
+  {
+    "username": "Becky Ham",
+    "email": "Ham@techfriends.dev",
+    "password": "password14"
+  },
+  {
+    "username": "Edwin Bad",
+    "email": "bad@techfriends.dev",
+    "password": "password15"
+  },
+  {
+    "username": "Alan May",
+    "email": "may@techfriends.dev",
+    "password": "password16"
+  },
+  {
+    "username": "Cindy Ore",
+    "email": "ore@techfriends.dev",
+    "password": "password17"
+  },
+  {
+    "username": "Danny Tom",
+    "email": "tom@techfriends.dev",
+    "password": "password18"
+  },
+  {
+    "username": "Don Johnson",
+    "email": "dh@techfriends.dev",
+    "password": "password19"
+  },
+  {
+    "username": "Nanny Bird",
+    "email": "lernantino@techfriends.dev",
+    "password": "password20"
+  }
+]
