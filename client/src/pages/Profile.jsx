@@ -17,6 +17,7 @@ const Profile = () => {
   // state for showing form boolean
   const [showForm, setShowForm] = useState(false);
   const [showFriends, setShowFriends] = useState(false);
+  const [showSavedPosts, setShowSavedPosts] = useState(false);
   const [showPosts, setShowPosts] = useState(true);
 
   // Toggle the visibility of the form
@@ -26,14 +27,24 @@ const Profile = () => {
 
   // Toggle the visibility of friends
   const handleButtonClickFriends = () => {
-    setShowFriends(!showFriends);
+    setShowFriends(true);
+    setShowPosts(false);
+    setShowSavedPosts(false)
+    
+  };
+
+  // Toggle the visibility of savedPosts
+  const handleButtonClickSavedPosts = () => {
+    setShowSavedPosts(true)
+    setShowFriends(false);
     setShowPosts(false);
   };
 
   // Toggle the visibility of the posts
   const handleButtonClickPosts = () => {
-    setShowPosts(!showPosts);
+    setShowPosts(true);
     setShowFriends(false);
+    setShowSavedPosts(false)
   };
 
   // QUERY_USER query
@@ -45,6 +56,7 @@ const Profile = () => {
 
   // if the "data" returned by the query is falsy, post = empty object{}
   const user = data?.user || {};
+  console.log(user, "saved posts?")
   console.log(data, "profile posts polling");
 
   if (loading) {
@@ -72,7 +84,7 @@ const Profile = () => {
               {/* If user already has a tracker, display tracker, else show addPregTracker btn */}
               <div className="w-full  p-4">
                 {user.tracker ? (
-                  <PregnancyTracker />
+                  <PregnancyTracker setShowForm={setShowForm} />
                 ) : (
                   <Button onClick={handleButtonClick}>
                     {" "}
@@ -80,7 +92,7 @@ const Profile = () => {
                   </Button>
                 )}
                 {/* Only show pregnancy tracker when showForm state is true */}
-                {showForm && <PregnancyTrackerForm />}
+                {showForm && <PregnancyTrackerForm setShowForm={setShowForm} />}
               </div>
 
               <div className="w-full p-4">
@@ -109,6 +121,21 @@ const Profile = () => {
                             strokeLinejoin="round"
                             d="M12 6.042A8.967 8.967 0 0 0 6 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 0 1 6 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 0 1 6-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0 0 18 18a8.967 8.967 0 0 0-6 2.292m0-14.25v14.25"
                           />
+                        </svg>
+                      </button>
+                    </li>
+                    <li className="navLink text-lg font-thin hover:text-gray-700">
+                      <button
+                        className={
+                          showSavedPosts
+                            ? "flex justify-center items-center flex-col font-bold underline"
+                            : "navLink flex justify-center items-center flex-col text-lg font-thin hover:text-gray-700"
+                        }
+                        onClick={handleButtonClickSavedPosts}
+                      >
+                        SAVED
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-6">
+                          <path strokeLinecap="round" strokeLinejoin="round" d="M17.593 3.322c1.1.128 1.907 1.077 1.907 2.185V21L12 17.25 4.5 21V5.507c0-1.108.806-2.057 1.907-2.185a48.507 48.507 0 0 1 11.186 0Z" />
                         </svg>
                       </button>
                     </li>
@@ -152,6 +179,7 @@ const Profile = () => {
               <div className="w-full mb-4">
                 {/* Only show posts when showPosts state is true */}
                 {showPosts && <PostsList posts={user.posts} />}
+                {showSavedPosts && <PostsList posts={user.savedPosts} />}
               </div>
             </div>
           </div>
