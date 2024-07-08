@@ -64,6 +64,11 @@ Successes:
 License
 - This project is licensed under the MIT License. See the LICENSE file for details.
 
-GitHub links:
+Screeenshot: 
+- ![Screenshot 2024-07-08 161957](https://github.com/Shukrim433/nanny-stork/assets/150862418/14b968ee-0613-4b24-8d5f-04b52c66405a)
+- ![Screenshot 2024-07-08 162034](https://github.com/Shukrim433/nanny-stork/assets/150862418/fc7ba128-2305-4ffb-b7f4-6dd458f8e2fe)
 
-Screen recording:
+Deployed link
+-  https://nanny-stork.onrender.com/
+
+
