@@ -63,7 +63,6 @@ const Signup = () => {
   // OnSubmit create user using ADD_USER mutation using formState
   const handleFormSubmit = async (event) => {
     event.preventDefault();
-    console.log(formState);
 
     try {
       const { data } = await addUser({
