@@ -54,9 +54,7 @@ Challenges:
 - Improved Collaboration: collaboration tools enhanced team productivity.
 - High-Quality UX: Extensive research and testing led to a user-friendly interface.
 - Robust Security: Comprehensive security protocols ensured data protection and user trust.
-- Successful Integrations: Seamless API and third-party service integrations expanded app functionality.
 - Performance Optimization: Faster load times and smoother interactions improved user experience.
-- Scalability: Scalable architecture and cloud services ensured the app could handle growth.
 
 ## License
 - This project is licensed under the MIT License. See the LICENSE file for details.
