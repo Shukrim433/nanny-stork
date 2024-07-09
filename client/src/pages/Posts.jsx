@@ -43,11 +43,9 @@ const Posts = () => {
 
   const posts = postsData?.posts || [];
 
-  console.log(postsData, "polling");
 
   useEffect(() => {
     if (searchData?.searchPosts) {
-      console.log(searchData);
       setSearchedPosts(searchData.searchPosts);
     }
   }, [searchData]);

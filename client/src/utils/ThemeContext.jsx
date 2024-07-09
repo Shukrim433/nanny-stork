@@ -13,7 +13,6 @@ export default function ThemeProvider({ children }) {
 
   // Method to update our state
   const toggleTheme = () => {
-    console.log("inside toggle theme");
     return setPinkTheme((prev) => !prev);
   };
 
