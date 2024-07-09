@@ -29,9 +29,6 @@ Parenting AI App for New Parents
 - Chat with AI: here user can ask questions and get instant advice.
 - Track Development: record and monitor baby's milestones and progress.
 
-## Contributing
-We welcome users to help to improve the app. 
-To contribute:
 
 ## Roadmap
 Future Features:
@@ -70,5 +67,12 @@ Challenges:
 
 ## Deployed link
 -  https://nanny-stork.onrender.com/
+-  
+## Contributors 
+The team that built this project was made up of the following developers 
+- @LWSE13: https://github.com/LWSE13
+- @Shukrim433: https://github.com/Shukrim433
+- @ANUDT: https://github.com/ANUDT
+- @Shemaalnn: https://github.com/shemaalnn
 
 
