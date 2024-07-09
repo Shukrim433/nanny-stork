@@ -28,7 +28,6 @@ const SinglePost = () => {
     useMutation(REMOVE_SAVED_POST);
 
   const post = data?.post || {};
-  console.log(data, "comment polling");
 
   if (Auth.loggedIn()) {
     // QUERY_USER query
@@ -37,7 +36,6 @@ const SinglePost = () => {
       variables: { username: Auth.getProfile().authenticatedPerson.username },
     });
     const user = userData?.user || {};
-    console.log(user, "user");
 
     useEffect(() => {
       // check if the post is already saved
@@ -59,7 +57,6 @@ const SinglePost = () => {
   const handleSave = async () => {
     try {
       await savePost({ variables: { postId } });
-      console.log(postId, "onclick save");
       setSaved(true);
     } catch (error) {
       console.log(error);
@@ -69,7 +66,6 @@ const SinglePost = () => {
   const handleRemoveSave = async () => {
     try {
       await removeSavePost({ variables: { postId } });
-      console.log(postId, "onclick remove save");
       setSaved(false);
     } catch (error) {
       console.log(error);

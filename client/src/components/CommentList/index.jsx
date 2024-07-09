@@ -15,7 +15,7 @@ const CommentList = ({ comments = [], post }) => {
       <div>
         {comments &&
           comments.map((comment) => (
-            <div className="bg-white rounded-lg p-4 hover:shadow-lg transition-shadow duration-300 w-full mb-1 ">
+            <div key={comment._id} className="bg-white rounded-lg p-4 hover:shadow-lg transition-shadow duration-300 w-full mb-1 ">
               <div>
                 <p className="font-bold underline">
                   {Auth.loggedIn() ? (

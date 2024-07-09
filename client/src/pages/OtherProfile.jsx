@@ -32,7 +32,6 @@ const OtherProfile = () => {
 
   const user = data?.user || {};
   const me = myData?.me || {};
-  console.log("Current user data:", me);
   // access current user if it exists and check if the current user is friends with the user
   const isFriend =
     me?.friends?.some((friend) => friend.username === user.username) ?? false;
@@ -40,18 +39,17 @@ const OtherProfile = () => {
   const useAddFriend = async () => {
     try {
       const friendName = user.username;
-      console.log(`Adding friend: ${friendName}`);
       await addFriend({
         variables: { friendName: friendName },
       });
     } catch (err) {
       console.error("Error adding friend:", err);
       if (err.networkError) {
-        console.log(`Network error: ${err.networkError.message}`);
+        console.error(`Network error: ${err.networkError.message}`);
       }
       if (err.graphQLErrors) {
         err.graphQLErrors.forEach((e) =>
-          console.log(`GraphQL error: ${e.message}`)
+          console.error(`GraphQL error: ${e.message}`)
         );
       }
     }
@@ -60,18 +58,17 @@ const OtherProfile = () => {
   const useRemoveFriend = async () => {
     try {
       const friendName = user.username;
-      console.log(`Removing friend: ${friendName}`);
       await removeFriend({
         variables: { friendName: friendName },
       });
     } catch (err) {
       console.error("Error removing friend:", err);
       if (err.networkError) {
-        console.log(`Network error: ${err.networkError.message}`);
+        console.error(`Network error: ${err.networkError.message}`);
       }
       if (err.graphQLErrors) {
         err.graphQLErrors.forEach((e) =>
-          console.log(`GraphQL error: ${e.message}`)
+          console.error(`GraphQL error: ${e.message}`)
         );
       }
     }

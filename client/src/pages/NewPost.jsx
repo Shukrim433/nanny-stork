@@ -115,13 +115,6 @@ export default function NewPost() {
                 required
               />
               <Button
-                color="lightBlue"
-                buttonType="filled"
-                size="regular"
-                rounded={false}
-                block={false}
-                iconOnly={false}
-                ripple="light"
                 type="submit"
                 disabled={loading}
                 // onClick={handleClick}

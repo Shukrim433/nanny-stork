@@ -167,7 +167,6 @@ const resolvers = {
     },
     //addSavedPost(postId: ID!): User
     addSavedPost: async (parent, { postId }, context) => {
-      console.log(postId, "save resolver")
       if (context.user) {
         try {
           return await User.findOneAndUpdate(
@@ -182,7 +181,6 @@ const resolvers = {
     },
     //removeSavedPost(postId: ID!): User
     removeSavedPost : async (parent, { postId }, context) => {
-      console.log(postId, "removeSaved resolver")
       if (context.user) {
         try {
           return await User.findOneAndUpdate(

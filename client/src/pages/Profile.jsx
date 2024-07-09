@@ -56,8 +56,6 @@ const Profile = () => {
 
   // if the "data" returned by the query is falsy, post = empty object{}
   const user = data?.user || {};
-  console.log(user, "saved posts?")
-  console.log(data, "profile posts polling");
 
   if (loading) {
     return <div>Loading...</div>;
